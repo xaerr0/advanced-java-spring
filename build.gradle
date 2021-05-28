@@ -1,0 +1,76 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'java-library'
+}
+
+group = 'platform.codingnomads.co'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.0'
+    implementation group: 'org.webjars', name: 'jquery', version: '3.2.1'
+    implementation group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.0.5'
+
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5'
+    implementation 'org.springframework.security:spring-security-oauth2-client'
+//    implementation 'org.springframework.security:spring-security-oauth2-jose'
+
+//    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.28.Final'
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+
+    //QueryDSL
+
+    annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
+    annotationProcessor("com.querydsl:querydsl-apt:4.2.1:jpa")
+    implementation("com.querydsl:querydsl-jpa:4.2.1")
+
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+}
+
+
+wrapper {
+    gradleVersion = '6.3'
+    distributionType = Wrapper.DistributionType.ALL
+}
+test {
+    useJUnitPlatform()
+}
+

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>CodingNomads Comedy App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="https://platform.codingnomads.co/learn/theme/image.php/maker/theme/1614200408/favicon">
+
+</head>
+    <body>
+        <div style="font-size: 1.5em; padding-top: 10%;">
+            <center>
+                <pre>
+                    <p th:text="${joke}" />
+
+                    <p>Want to hear another joke? <a href="/comedy">Click Here!</a></p>
+                </pre>
+            </center>
+        </div>
+        <div style="bottom: 10px; display: flex; align-items: center; justify-content: center; padding-top: 15%;">
+            <a style="padding-right: 10px;"
+               href="https://www.rd.com/list/short-jokes/"
+               target="_blank">Joke Source #1</a>
+            <a style="padding-right: 10px;"
+               href="https://devdojo.com/devdojo/10-awesome-programming-jokes"
+               target="_blank">Joke Source #2</a>
+            <a style="padding-right: 10px;"
+               href="https://levelup.gitconnected.com/10-programming-jokes-for-programmers-b9c436f3e023"
+               target="_blank">Joke Source #3</a>
+            <a style="padding-right: 10px;"
+               href="https://www.hongkiat.com/blog/programming-jokes/"
+                target="_blank"> Joke Source #4</a>
+        </div>
+    </body>
+</html>

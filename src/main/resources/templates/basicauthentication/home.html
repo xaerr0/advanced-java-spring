@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{basicauthentication/fragments/layout}">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <h1>Spring Security Demo</h1>
+    <p>This is the home page. Only authenticated users can access this page</p>
+</div>
+</body>
+</html>
