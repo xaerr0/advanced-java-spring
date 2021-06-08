@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ComedyApplication {
+public class MyDemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ComedyApplication.class, args);
+        SpringApplication.run(MyDemoApplication.class, args);
     }
 }
