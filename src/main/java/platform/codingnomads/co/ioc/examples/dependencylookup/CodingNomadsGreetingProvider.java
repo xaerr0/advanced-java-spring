@@ -1,9 +1,9 @@
 package platform.codingnomads.co.ioc.examples.dependencylookup;
 
-public class CodeWarriorGreetingProvider implements GreetingProvider {
+public class CodingNomadsGreetingProvider implements GreetingProvider {
     @Override
     public String getGreeting() {
-        return "Hello Code Warriors!";
+        return "Hello CodingNomads!";
     }
 
 }

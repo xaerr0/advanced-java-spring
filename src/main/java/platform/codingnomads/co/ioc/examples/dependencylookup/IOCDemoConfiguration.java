@@ -8,7 +8,7 @@ public class IOCDemoConfiguration {
 
     @Bean
     public GreetingProvider provider() {
-        return new CodeWarriorGreetingProvider();
+        return new CodingNomadsGreetingProvider();
     }
 
     @Bean
