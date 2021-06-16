@@ -10,7 +10,6 @@ public class ComedyService {
     // declare a simple String array of length 10
     private String[] jokes = new String[10];
 
-
     // simple constructor that invokes the populateJokes() method
     public ComedyService(){
         populateJokes();
