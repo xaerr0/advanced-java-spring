@@ -18,6 +18,6 @@ public class EventListenerDemo implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        userRegistrationCompletedEventPublisher.publishEventAndSendEmail("code_warrior@codingnomads.co");
+        userRegistrationCompletedEventPublisher.publishEventAndSendEmail("nomad@codingnomads.co");
     }
 }

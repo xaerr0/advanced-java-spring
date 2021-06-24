@@ -4,13 +4,13 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+// @Component tells Spring that this is a bean it should register
 @Component
-public class ContextRefreshedListener implements ApplicationListener<ContextRefreshedEvent> {
-
+public class ContextRefreshedListener
+        implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        System.out.println("Code Warrior!, please handle ContextRefreshedEvent!! ");
+        System.out.println("ContextRefreshedEvent has fired!!");
     }
-
 }
 

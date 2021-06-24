@@ -5,10 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackageClasses = CodeWarrior.class)
+@ComponentScan(basePackageClasses = SpringDeveloper.class)
 public class SpringBeansDemoConfig {
     @Bean
     public Address address() {
-        return new Address("Codingnomads Street", 1500);
+        return new Address("Main Street", 1500);
     }
 }

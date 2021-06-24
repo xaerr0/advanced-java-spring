@@ -12,7 +12,7 @@ public class UserRegistrationCompletedEventPublisher {
     private final ApplicationEventPublisher applicationEventPublisher;
 
     public void publishEventAndSendEmail(final String message) {
-        System.out.println("-----Publishing UserRegistrationCompletedEvent------\n");
+        System.out.println("-----Publishing UserRegistrationCompletedEvent-----");
         UserRegistrationCompletedEvent customSpringEvent = new UserRegistrationCompletedEvent(this, message);
         applicationEventPublisher.publishEvent(customSpringEvent);
     }
