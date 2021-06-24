@@ -8,14 +8,15 @@ import java.text.MessageFormat;
 
 @Component
 @RequiredArgsConstructor
-public class CodeWarrior {
+public class CodingNomad {
     private final JDK jdk;
     private final IDE ide;
     private final Framework framework;
 
     public String createAwesomeSoftware() {
         return MessageFormat
-                .format("Code warrior is creating awesome software using, IDE:({0}:{1}), JDK: ({2}:{3}), Framework:({4}:{5})",
+                .format("This coding nomad is creating awesome software using, " +
+                                "IDE:({0}:{1}), JDK: ({2}:{3}), Framework:({4}:{5})",
                         ide.getName(),
                         ide.getVersion(),
                         jdk.getName(),

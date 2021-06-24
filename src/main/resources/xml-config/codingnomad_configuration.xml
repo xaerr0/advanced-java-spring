@@ -1,5 +1,4 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -9,15 +8,14 @@
 
     <bean id="framework" class="platform.codingnomads.co.corespring.examples.application_context.xml.Framework">
         <property name="name" value="Spring Boot"/>
-        <property name="version" value="2.2"/>
+        <property name="version" value="2.5"/>
     </bean>
-
     <bean id="ide" class="platform.codingnomads.co.corespring.examples.application_context.xml.IDE">
-        <property name="name" value="IntelliJ IDEA "/>
-        <property name="version" value="2019.3"/>
+        <property name="name" value="IntelliJ IDEA"/>
+        <property name="version" value="2021.1"/>
     </bean>
     <bean id="jdk" class="platform.codingnomads.co.corespring.examples.application_context.xml.JDK">
-        <property name="name" value="Open JDK"/>
+        <property name="name" value="OpenJDK"/>
         <property name="version" value="11"/>
     </bean>
 

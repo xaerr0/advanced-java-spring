@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class UserRegistrationCompletedEventListener implements ApplicationListener<UserRegistrationCompletedEvent> {
     @Override
     public void onApplicationEvent(UserRegistrationCompletedEvent event) {
-        System.out.println("----Received User RegistrationCompleted Event------\n");
-        System.out.println("Sending Email To :" + event.getMessage());
+        System.out.println("-----Received UserRegistrationCompletedEvent-----");
+        System.out.println("-----Sending Email To: " + event.getMessage() + "-----");
     }
 }
