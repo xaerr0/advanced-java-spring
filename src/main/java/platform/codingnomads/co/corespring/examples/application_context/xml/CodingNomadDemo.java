@@ -5,12 +5,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
-public class CodeWarriorDemo {
+public class CodingNomadDemo {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("xml-config/code_warrior_configuration.xml");
-        CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
-        System.out.println(codeWarrior.createAwesomeSoftware());
+        ApplicationContext ctx =
+                new ClassPathXmlApplicationContext("xml-config/codingnomad_configuration.xml");
+        CodingNomad codingNomad = ctx.getBean(CodingNomad.class);
+        System.out.println(codingNomad.createAwesomeSoftware());
     }
 }
 

@@ -1,16 +1,19 @@
 package platform.codingnomads.co.corespring.examples.springbeans;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBeansDemo {
 
-//    public static void main(String[] args) {
-//        ApplicationContext ctx = new AnnotationConfigApplicationContext(
-//                SpringBeansDemoConfig.class
-//        );
-//        CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
-//        System.out.println("Code Warrior Address: " + codeWarrior.getAddress().getStreet() + " " +
-//                codeWarrior.getAddress().getStreetNumber());
-//    }
+    public static void main(String[] args) {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(
+                SpringBeansDemoConfig.class
+        );
+        SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
+        System.out.println("Spring Developer Address: " + springDeveloper.getAddress().getStreetNumber() + " " +
+                springDeveloper.getAddress().getStreet());
+    }
 }
