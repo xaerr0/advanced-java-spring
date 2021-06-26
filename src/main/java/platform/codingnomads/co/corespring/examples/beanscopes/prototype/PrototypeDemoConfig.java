@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Scope;
 public class PrototypeDemoConfig {
     @Bean
     @Scope(value = "prototype")
-    public CodeWarrior codeWarrior() {
-        return new CodeWarrior();
+    public SpringBean springBean() {
+        return new SpringBean();
     }
 }

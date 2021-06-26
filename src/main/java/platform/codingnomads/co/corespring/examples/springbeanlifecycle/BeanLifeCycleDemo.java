@@ -9,7 +9,7 @@ public class BeanLifeCycleDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(BeanLifeCycleConfig.class);
         ctx.refresh();
-        final CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
+        final SpringBean springBean = ctx.getBean(SpringBean.class);
         ctx.close();
     }
 }

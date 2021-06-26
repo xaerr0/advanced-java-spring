@@ -10,11 +10,11 @@ public class SingletonDemo {
         ctx.register(SingletonDemoConfig.class);
         ctx.refresh();
 
-        CodeWarrior codeWarrior1 = ctx.getBean(CodeWarrior.class);
-        System.out.println(codeWarrior1.hashCode());
+        SpringBean springBean1 = ctx.getBean(SpringBean.class);
+        System.out.println("Hash code: " + springBean1.hashCode());
 
-        CodeWarrior codeWarrior2 = ctx.getBean(CodeWarrior.class);
-        System.out.println(codeWarrior2.hashCode());
+        SpringBean springBean2 = ctx.getBean(SpringBean.class);
+        System.out.println("Hash code: " + springBean2.hashCode());
 
         ctx.close();
     }
