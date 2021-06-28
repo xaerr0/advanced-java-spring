@@ -1,6 +1,5 @@
 package platform.codingnomads.co.corespring.examples.configurationannotation;
 
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -9,7 +8,7 @@ public class ConfigurationDemo {
 
     public static void main(String[] args) {
         applicationContext = new AnnotationConfigApplicationContext(ConfigurationDemoConfig.class);
-        isBeanPresent("codeWarrior", "configurationDemoConfig");
+        isBeanPresent("sampleClass", "configurationDemoConfig");
     }
 
     private static void isBeanPresent(String... beans) {
