@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class ConfigurationDemoConfig {
     @Bean
-    public CodeWarrior codeWarrior() {
-        return new CodeWarrior();
+    public SampleClass sampleClass() {
+        return new SampleClass();
     }
 }

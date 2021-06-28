@@ -9,7 +9,7 @@ public class BeanAnnotationJSR_250_Demo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(BeanAnnotation_JSR_250_Config.class);
         ctx.refresh();
-        CodeWarrior codeWarrior1 = ctx.getBean( CodeWarrior.class);
+        SampleBean sampleBean = ctx.getBean(SampleBean.class);
         ctx.close();
     }
 }
