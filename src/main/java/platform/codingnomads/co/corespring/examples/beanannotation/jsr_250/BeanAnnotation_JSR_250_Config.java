@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BeanAnnotation_JSR_250_Config {
     @Bean
-    public CodeWarrior codeWarrior() {
-        return new CodeWarrior();
+    public SampleBean sampleBean() {
+        return new SampleBean();
     }
 }
