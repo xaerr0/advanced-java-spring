@@ -1,6 +1,5 @@
 package platform.codingnomads.co.corespring.examples.componentscanannotation;
 
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,7 +9,7 @@ public class ComponentScanDemo {
 
     public static void main(String[] args) {
         applicationContext = new AnnotationConfigApplicationContext(ComponentScanConfiguration.class);
-        isBeanPresent("framework", "JDK", "motherBoard", "OS", "codeWarrior","componentScanConfiguration");
+        isBeanPresent("framework", "JDK", "motherBoard", "OS", "sampleBean","componentScanConfiguration");
     }
 
     private static void isBeanPresent(String... beans) {

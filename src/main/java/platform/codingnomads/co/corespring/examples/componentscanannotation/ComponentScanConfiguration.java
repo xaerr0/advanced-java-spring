@@ -5,10 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "platform.codingnomads.co.corespring.examples.componentscanannotation.weapon")
+@ComponentScan(basePackages = "platform.codingnomads.co.corespring.examples.componentscanannotation.tools")
 public class ComponentScanConfiguration {
     @Bean
-    public CodeWarrior codeWarrior() {
-        return new CodeWarrior();
+    public SampleBean sampleBean() {
+        return new SampleBean();
     }
 }
