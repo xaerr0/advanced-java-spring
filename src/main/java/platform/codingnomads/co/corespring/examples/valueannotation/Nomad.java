@@ -1,6 +1,5 @@
 package platform.codingnomads.co.corespring.examples.valueannotation;
 
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -8,32 +7,32 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class CodeWarrior {
+public class Nomad {
 
     private String name;
 
     private Integer age;
 
-    public CodeWarrior(@Value("${codewarrior.name}") String name, @Value("${codewarrior.age}") Integer age) {
+    public Nomad(@Value("${nomad.name}") String name, @Value("${nomad.age}") Integer age) {
         this.name = name;
         this.age = age;
     }
 
-    @Value("Code Warrior saying hello....!!")
+    @Value("Hello!!")
     private String greeting;
 
-    @Value("${codewarrior.framework}")
+    @Value("${nomad.framework}")
     private String framework;
 
-    @Value("${codewarrior.jdk}")
+    @Value("${nomad.jdk}")
     private String jdk;
 
 
-    @Value("${codewarrior.ide:Intellj Idea}")
+    @Value("${nomad.ide:IntelliJ IDEA}")
     private String ide;
 
 
-    @Value("${codewarrior.workingDays}")
+    @Value("${nomad.workingDays}")
     private List<String> workingDays;
 
 
@@ -41,7 +40,7 @@ public class CodeWarrior {
     private Map<String, String> databaseValues;
 
 
-    public String codeWarriorIdentity() {
+    public String nomadIdentity() {
         return name.concat(" ").concat(age.toString());
     }
 
