@@ -8,13 +8,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ValueAnnotationDemo {
     public static void main(String[] args) {
         final ConfigurableApplicationContext ctx = SpringApplication.run(ValueAnnotationDemo.class);
-        final CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
-        System.out.println(codeWarrior.getGreeting());
-        final String output = codeWarrior.output();
+        final Nomad nomad = ctx.getBean(Nomad.class);
+        System.out.println(nomad.getGreeting());
+        final String output = nomad.output();
         System.out.println(output);
-        codeWarrior.getWorkingDays().forEach(System.out::println);
-        System.out.println(codeWarrior.getDatabaseValues());
-        System.out.println(codeWarrior.codeWarriorIdentity());
+        nomad.getWorkingDays().forEach(System.out::println);
+        System.out.println(nomad.getDatabaseValues());
+        System.out.println(nomad.nomadIdentity());
         ctx.close();
     }
 }
