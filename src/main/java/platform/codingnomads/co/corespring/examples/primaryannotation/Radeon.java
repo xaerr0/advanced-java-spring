@@ -5,5 +5,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Primary
-public class Framework implements Weapon {
+public class Radeon implements VideoCard {
 }
