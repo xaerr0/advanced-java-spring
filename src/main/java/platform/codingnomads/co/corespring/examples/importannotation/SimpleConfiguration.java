@@ -1,13 +1,12 @@
-package platform.codingnomads.co.corespring.examples.ImportAnnotation;
+package platform.codingnomads.co.corespring.examples.importannotation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SimpleConfiguration {
-
     @Bean
-    public CodeWarrior codeWarrior() {
-        return new CodeWarrior();
+    public SpringDeveloper springDeveloper() {
+        return new SpringDeveloper();
     }
 }

@@ -9,8 +9,8 @@ public class DependsOnDemoConfig {
 
     @Bean
     @DependsOn(value = "jdk")
-    public CodeWarrior codeWarrior() {
-        return new CodeWarrior();
+    public SpringDeveloper springDeveloper() {
+        return new SpringDeveloper();
     }
 
     @Bean("jdk")

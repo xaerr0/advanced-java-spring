@@ -2,11 +2,11 @@ package platform.codingnomads.co.corespring.examples.dependsonannotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class CodeWarrior {
+public class SpringDeveloper {
     @Autowired
     private JDK jdk;
 
-    public CodeWarrior() {
-        System.out.println("Code Warrior is preparing for code battle !!!");
+    public SpringDeveloper() {
+        System.out.println("SpringDeveloper is ready.");
     }
 }

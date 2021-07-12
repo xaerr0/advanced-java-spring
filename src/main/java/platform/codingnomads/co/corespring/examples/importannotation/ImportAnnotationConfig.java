@@ -1,5 +1,4 @@
-package platform.codingnomads.co.corespring.examples.ImportAnnotation;
-
+package platform.codingnomads.co.corespring.examples.importannotation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

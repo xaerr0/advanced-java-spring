@@ -1,4 +1,4 @@
-package platform.codingnomads.co.corespring.examples.ImportAnnotation;
+package platform.codingnomads.co.corespring.examples.importannotation;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -7,7 +7,7 @@ public class ImportAnnotationDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(ImportAnnotationConfig.class);
         ctx.refresh();
-        final CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
+        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         final Framework framework = ctx.getBean(Framework.class);
         ctx.close();
     }

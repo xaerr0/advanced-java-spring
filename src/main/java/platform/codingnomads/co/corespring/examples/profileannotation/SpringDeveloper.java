@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("test")
-public class CodeWarrior {
-    public CodeWarrior() {
-        System.out.println("Code Warrior is preparing for battle....!!!");
+public class SpringDeveloper {
+    public SpringDeveloper() {
+        System.out.println("SpringDeveloper is ready.");
     }
 }
