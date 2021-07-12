@@ -6,5 +6,5 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan
-@PropertySource(value = "codewarrior.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "myapp.properties", ignoreResourceNotFound = true)
 public class PropertySourceAnnotationConfig { }

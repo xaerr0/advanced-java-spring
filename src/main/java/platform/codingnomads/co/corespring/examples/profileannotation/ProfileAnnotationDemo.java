@@ -1,6 +1,5 @@
 package platform.codingnomads.co.corespring.examples.profileannotation;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -9,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ProfileAnnotationDemo {
     public static void main(String[] args) {
         final ConfigurableApplicationContext ctx = SpringApplication.run(ProfileAnnotationDemo.class);
-        final CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
+        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         ctx.close();
     }
 }
