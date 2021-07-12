@@ -10,19 +10,19 @@ public class ScopeAnnotationDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(ScopeAnnotationDemoConfig.class);
         ctx.refresh();
-        CodeWarrior codeWarrior1 = ctx.getBean(CodeWarrior.class);
-        CodeWarrior codeWarrior2 = ctx.getBean(CodeWarrior.class);
+        SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+        SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
 
-        System.out.println("--------Hashcode of Singleton Bean-------");
-        System.out.println(codeWarrior1.hashCode());
-        System.out.println(codeWarrior2.hashCode());
+        System.out.println("-----Hashcode of SingletonBean-----");
+        System.out.println(singletonBean1.hashCode());
+        System.out.println(singletonBean2.hashCode());
 
-        final JDK jdk1 = ctx.getBean(JDK.class);
-        final JDK jdk2 = ctx.getBean(JDK.class);
+        final PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
+        final PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 
-        System.out.println("--------Hashcode of Prototype Bean-------");
-        System.out.println(jdk1.hashCode());
-        System.out.println(jdk2.hashCode());
+        System.out.println("-----Hashcode of PrototypeBean-----");
+        System.out.println(prototypeBean1.hashCode());
+        System.out.println(prototypeBean2.hashCode());
         System.out.println();
         ctx.close();
     }
