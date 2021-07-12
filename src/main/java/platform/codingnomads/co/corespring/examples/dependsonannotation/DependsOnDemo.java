@@ -9,7 +9,7 @@ public class DependsOnDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(DependsOnDemoConfig.class);
         ctx.refresh();
-        final CodeWarrior codeWarrior = ctx.getBean(CodeWarrior.class);
+        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         ctx.close();
     }
 }
