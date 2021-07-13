@@ -1,6 +1,5 @@
 package platform.codingnomads.co.corespring.examples.scopeannotaion;
 
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
