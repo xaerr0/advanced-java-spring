@@ -62,7 +62,7 @@ public class UserService {
         userRepo.findByAddress_id(1L).forEach(System.out::println);
 
         //find user by ID
-        System.out.println(userRepo.getOne(5L).toString());
+        System.out.println(userRepo.getOne(4L).toString());
 
         //find all users
         userRepo.findAll().forEach(System.out::println);

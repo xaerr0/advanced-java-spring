@@ -15,7 +15,6 @@ public class CommonProblemsApplication implements CommandLineRunner {
         SpringApplication.run(CommonProblemsApplication.class);
     }
 
-
     @Override
     public void run(String... args) throws Exception {
         userService.idError();
