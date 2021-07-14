@@ -26,8 +26,8 @@ public class SpringDataJDBCDemo implements CommandLineRunner {
     public void run(String... strings) {
 
         try {
-            //create code warrior table using the execute JdbcTemplate method
-            jdbcTemplate.execute("CREATE TABLE code_warriors (id BIGINT AUTO_INCREMENT PRIMARY KEY," +
+            //create employee table using the execute JdbcTemplate method
+            jdbcTemplate.execute("CREATE TABLE employees (id BIGINT AUTO_INCREMENT PRIMARY KEY," +
                     "first_name VARCHAR(255) NOT NULL,last_name  VARCHAR(255) NOT NULL);");
         }catch (Exception e) {
             //nothing
@@ -38,25 +38,22 @@ public class SpringDataJDBCDemo implements CommandLineRunner {
                 .map(name -> name.split(" "))
                 .collect(Collectors.toList());
 
-        //for each first & last name pair insert a CodeWarrior into the database
+        //for each first & last name pair insert an Employee into the database
         for(Object[] name: splitUpNames) {
-            jdbcTemplate.execute(String.format("INSERT INTO code_warriors(first_name, last_name) VALUES ('%s','%s')", name[0], name[1]));
+            jdbcTemplate.execute(String.format("INSERT INTO employees(first_name, last_name) VALUES ('%s','%s')", name[0], name[1]));
         }
 
-        //query the database for CodeWarriors with first name Java
-        CodeWarrior codeWarrior = jdbcTemplate.queryForObject(
-                "SELECT id, first_name, last_name FROM code_warriors WHERE first_name = 'Java' ",
-                CodeWarrior.class
-                );
-                //print each found CodeWarrior to the console
-
-        assert codeWarrior != null;
-        System.out.println(codeWarrior.toString());
+        //query the database for Employees with first name Java
+        jdbcTemplate.query(
+                "SELECT id, first_name, last_name FROM employees WHERE first_name = 'Java'",
+                (rs, rowNum) -> new Employee(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name"))
+        )
+                //print each found employee to the console
+                .forEach(employee -> System.out.println(employee.toString()));
 
         //truncate the table
-        jdbcTemplate.execute("TRUNCATE TABLE code_warriors;");
+        jdbcTemplate.execute("TRUNCATE TABLE employees;");
         //delete the table
-        jdbcTemplate.execute("DROP TABLE code_warriors");
+        jdbcTemplate.execute("DROP TABLE employees");
     }
-
 }
