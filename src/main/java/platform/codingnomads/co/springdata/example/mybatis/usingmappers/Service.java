@@ -12,7 +12,7 @@ public class Service {
     SongMapper songMapper;
 
     @Transactional(rollbackFor = Exception.class)
-    public void doSmth() throws Exception {
+    public void doSomething() throws Exception {
         Song s = songMapper.getSongById(14L);
         songMapper.insertNewSong(s);
         throw new Exception();
