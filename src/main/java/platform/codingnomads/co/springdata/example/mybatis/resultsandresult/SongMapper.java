@@ -7,6 +7,7 @@ import java.util.ArrayList;
 @Mapper
 public interface SongMapper {
 
+    //now you can easily differentiate database column names from variable names
     @Insert("INSERT INTO mybatis.songs " +
             "(name, artist_name, album_name, song_length) " +
             "VALUES (#{name}, #{artistName}, #{albumName}, #{songLength});")

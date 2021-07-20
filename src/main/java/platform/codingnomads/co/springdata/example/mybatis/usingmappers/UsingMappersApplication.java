@@ -27,10 +27,10 @@ public class UsingMappersApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        insertData();
-//        queryData();
-//        deleteSomeData();
-        service.doSmth();
+        insertData();
+        queryData();
+        deleteSomeData();
+//        service.doSomething();
     }
     
     public void insertData() {

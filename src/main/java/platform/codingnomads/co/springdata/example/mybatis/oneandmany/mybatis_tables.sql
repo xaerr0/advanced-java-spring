@@ -16,6 +16,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `artists`
+--
+
+DROP TABLE IF EXISTS `artists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `artists` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `bio` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ALTER TABLE `artists` AUTO_INCREMENT = 1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `songs`
 --
 
@@ -25,11 +41,11 @@ DROP TABLE IF EXISTS `songs`;
 CREATE TABLE `songs` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `artist_name` varchar(45) NOT NULL,
+  `artist_id` int NOT NULL,
   `album_name` varchar(45) DEFAULT NULL,
   `song_length` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ALTER TABLE `songs` AUTO_INCREMENT = 1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -42,4 +58,4 @@ ALTER TABLE `songs` AUTO_INCREMENT = 1;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-15 12:15:26
+-- Dump completed on 2021-07-15 14:08:58
