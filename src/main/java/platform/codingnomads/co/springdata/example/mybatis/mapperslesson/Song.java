@@ -6,15 +6,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Song {
+
     private Long id;
 
     private String name;
 
+    //allowed to be null if single
     private String album_name;
 
     private String artist_name;
 
     //song length in seconds
     private int song_length;
-
 }
