@@ -42,7 +42,6 @@ public class QueryDSLDemo implements CommandLineRunner {
                 )
         );
 
-
         final List<Route> routes = routeRepository.saveAll(
                 Arrays.asList(
                         Route.builder().code("A-B").name("A-B").origin(areaRepository.findByCode("A")).destination(areaRepository.findByCode("B")).build(),
