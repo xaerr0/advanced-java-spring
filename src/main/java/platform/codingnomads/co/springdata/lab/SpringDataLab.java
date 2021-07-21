@@ -13,6 +13,7 @@ import java.util.List;
 @SpringBootApplication
 @RequiredArgsConstructor
 public class SpringDataLab implements CommandLineRunner {
+
     private final AreaRepository areaRepository;
 
     public static void main(String[] args) {

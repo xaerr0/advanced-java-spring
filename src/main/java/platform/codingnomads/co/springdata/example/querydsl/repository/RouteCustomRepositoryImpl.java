@@ -17,7 +17,6 @@ public class RouteCustomRepositoryImpl extends QuerydslRepositorySupport impleme
         super(Route.class);
     }
 
-
     @Override
     public List<Route> findAllRoutesBySearchQuery(SearchQuery searchQuery) {
         QRoute route = QRoute.route;
