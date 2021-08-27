@@ -11,14 +11,12 @@ import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.usingRestTemplate.DELETE.models.ResponseObject;
 import platform.codingnomads.co.springweb.usingRestTemplate.DELETE.models.Task;
 
-
 @ComponentScan(basePackages = "")
 @SpringBootApplication
 public class deleteMain {
 
     @Autowired
     RestTemplate restTemplate;
-
 
     public static void main(String[] args) {
         SpringApplication.run(deleteMain.class, args);
@@ -40,15 +38,17 @@ public class deleteMain {
                     .completed(false)
                     .build();
 
-            //request Task 5 from server
+            //POST new task to server
             ResponseObject responseObject = restTemplate
-                    .postForObject("http://demo.codingnomads.co:8080/tasks_api/tasks/", newTask , ResponseObject.class);
+                    .postForObject("http://demo.codingnomads.co:8080/tasks_api/tasks/", newTask, ResponseObject.class);
 
             //confirm data was returned & avoid NullPointerExceptions
-            if(null == responseObject) {
+            if (responseObject == null) {
                 throw new Exception("The server did not return anything. Not even a ResponseObject!");
-            }else if(null == (newTask = responseObject.getData())) {
+            } else if (responseObject.getData() == null) {
                 throw new Exception("The server encountered this error while creating the task:" + responseObject.getError().getMessage());
+            } else {
+                newTask = responseObject.getData();
             }
 
             System.out.println("The task was successfully created");
