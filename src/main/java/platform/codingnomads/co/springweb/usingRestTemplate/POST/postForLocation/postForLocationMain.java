@@ -1,15 +1,12 @@
-package platform.codingnomads.co.springweb.usingRestTemplate.POST.getForLocation;
+package platform.codingnomads.co.springweb.usingRestTemplate.POST.postForLocation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-import platform.codingnomads.co.springweb.usingRestTemplate.POST.getForLocation.controllers.TaskControllerFacade;
 import platform.codingnomads.co.springweb.usingRestTemplate.POST.models.ResponseObject;
 import platform.codingnomads.co.springweb.usingRestTemplate.POST.models.Task;
 
@@ -21,18 +18,10 @@ public class postForLocationMain {
     @Autowired
     RestTemplate restTemplate;
 
-    @Autowired
-    TaskControllerFacade facade;
-
     public static void main(String[] args) {
         SpringApplication.run(postForLocationMain.class, args);
     }
 
-    @Bean
-    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
-    webServerFactoryCustomizer() {
-        return factory -> factory.setContextPath("/Users/bensiegler/Library/Mobile Documents/com~apple~CloudDocs/Documents/CodingShit/CodingNomads/java_spring_content/src/main/java/platform/codingnomads/co/springweb/usingRestTemplate/POST/getForLocation");
-    }
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
@@ -49,10 +38,9 @@ public class postForLocationMain {
                     .build();
 
             URI returnedLocation = restTemplate
-                    .postForLocation("http://localhost:8080/tasks_api_facade/tasks", newTask, ResponseObject.class);
+                    .postForLocation("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
 
             System.out.println(returnedLocation.toURL());
         };
     }
-
 }

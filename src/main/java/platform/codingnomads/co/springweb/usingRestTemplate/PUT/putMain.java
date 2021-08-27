@@ -16,11 +16,9 @@ public class putMain {
     @Autowired
     RestTemplate restTemplate;
 
-
     public static void main(String[] args) {
         SpringApplication.run(putMain.class, args);
     }
-
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -35,16 +33,17 @@ public class putMain {
 
             //request Task 5 from server
             ResponseObject responseObject = restTemplate
-                    .getForObject("http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskId , ResponseObject.class);
+                    .getForObject("http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskId, ResponseObject.class);
 
             //confirm data was retrieved & avoid NullPointerExceptions
             Task taskToUpdate;
-            if(null == responseObject) {
+            if (responseObject == null) {
                 throw new Exception("The server did not return anything. Not even a ResponseObject!");
-            }else if(null == (taskToUpdate = responseObject.getData())) {
+            } else if (responseObject.getData() == null) {
                 throw new Exception("The task with ID " + taskId + " could not be found");
+            } else {
+                taskToUpdate = responseObject.getData();
             }
-
 
             //update the task information
             taskToUpdate.setName("updated using put()");
@@ -54,7 +53,7 @@ public class putMain {
             //use put to update the resource on the server
             restTemplate.put("http://demo.codingnomads.co:8080/tasks_api/tasks/", taskToUpdate);
             System.out.println("The task with ID " + taskId + " was successfully updated. It should now look something like this:");
-            System.out.println(taskToUpdate.toString());
+            System.out.println(taskToUpdate);
         };
     }
 }
