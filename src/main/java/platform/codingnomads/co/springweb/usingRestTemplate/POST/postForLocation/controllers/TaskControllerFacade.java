@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springweb.usingRestTemplate.POST.getForLocation.controllers;
+package platform.codingnomads.co.springweb.usingRestTemplate.POST.postForLocation.controllers;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
