@@ -1,4 +1,4 @@
-package platform.codingnomads.co.gettingstarted.demo;
+package platform.codingnomads.co.springweb.springrestcontrollers.shortcutannotations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

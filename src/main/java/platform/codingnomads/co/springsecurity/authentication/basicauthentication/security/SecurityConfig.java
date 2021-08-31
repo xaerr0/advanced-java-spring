@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 //start the creating process of authorization settings. This will be covered in depth in the authorization chapter.
                 .authorizeRequests()
                 //CSS should always be accessible for all clients

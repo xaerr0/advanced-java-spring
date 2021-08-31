@@ -11,6 +11,7 @@ public class SessionSecurityConfigExample extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .csrf().disable()
                 //start an oath2 login system
                 .oauth2Login()
                     //change the success URL to /homepage

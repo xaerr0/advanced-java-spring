@@ -10,6 +10,7 @@ public class ChannelSecurityConfigExample extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 //start channel management
                 .requiresChannel()
                 //tell the ChannelProcessingFilter that all URLs starting with /insecure must be made over HTTP
