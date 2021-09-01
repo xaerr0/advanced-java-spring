@@ -11,12 +11,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor
 public class TaskController {
-
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String getTask(@RequestParam Long id) {
@@ -39,7 +37,7 @@ public class TaskController {
     }
 
     @GetMapping(value = "/request-parameter-with-multiple-values", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Task> getTaskWithDefaultRequestParam(@RequestParam(name = "names") List<String> names) {
+    public List<Task> getTasksWithNamesRequestParam(@RequestParam(name = "names") List<String> names) {
         return IntStream.range(0, names.size())
                 .mapToObj(i -> Task.builder().id((long) i).name(names.get(i)).build())
                 .collect(Collectors.toList());
@@ -54,10 +52,7 @@ public class TaskController {
     public String pathVariableIsNotEncoded(@PathVariable String name) {
         return name;
     }
-
-
 }
-
 
 @Data
 @Builder
