@@ -11,6 +11,7 @@ public class LogoutSecurityConfigExample extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .csrf().disable()
                 //indicate a form login should be used
                 .formLogin()
                     //change the success URL to /homepage

@@ -1,1 +1,0 @@
-package platform.codingnomads.co.springweb.webserviceswithspringweb.simpledemo;
