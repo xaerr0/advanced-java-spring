@@ -1,6 +1,7 @@
 package platform.codingnomads.co.springweb.springrestcontrollers.shortcutannotations;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TaskController {
 
-    @Nonnull private final TaskRepository taskRepository;
+    @Autowired
+    private final TaskRepository taskRepository;
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> createNewTask(@RequestBody Task task) throws URISyntaxException {

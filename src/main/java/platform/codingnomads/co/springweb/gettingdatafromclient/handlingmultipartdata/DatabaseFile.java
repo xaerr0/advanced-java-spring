@@ -1,18 +1,16 @@
 package platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "database_files")
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "database_files")
 public class DatabaseFile {
 
     @Id
@@ -27,5 +25,4 @@ public class DatabaseFile {
     @Column
     @Lob
     private byte[] data;
-
 }

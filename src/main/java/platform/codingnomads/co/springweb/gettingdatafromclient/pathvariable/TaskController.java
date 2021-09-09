@@ -33,11 +33,13 @@ public class TaskController {
 
     @GetMapping(value = "/with-map/{id}/{name}/{completed}")
     public Task getTask(@PathVariable Map<String, String> pathVariableMaps) {
-        return Task.builder().id(Long.valueOf(pathVariableMaps.get("id"))).name(pathVariableMaps.get("name")).completed(Boolean.parseBoolean(pathVariableMaps.get("completed"))).build();
+        return Task.builder()
+                .id(Long.valueOf(pathVariableMaps.get("id")))
+                .name(pathVariableMaps.get("name"))
+                .completed(Boolean.parseBoolean(pathVariableMaps.get("completed")))
+                .build();
     }
-
 }
-
 
 @Builder
 @Data
