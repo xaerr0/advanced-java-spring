@@ -30,7 +30,7 @@ public class DatabaseFile {
 
     public String getDownloadUrl() {
         return ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
+                .path("/download/")
                 .path(String.valueOf(this.id))
                 .toUriString();
     }
