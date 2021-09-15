@@ -1,4 +1,4 @@
 function greeting() {
-    alert("Hello Code Warrior!!");
+    alert("Hello Spring Developer!!");
 }
 

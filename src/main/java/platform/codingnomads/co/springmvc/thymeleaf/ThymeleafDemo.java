@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springmvc.thymleaf;
+package platform.codingnomads.co.springmvc.thymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

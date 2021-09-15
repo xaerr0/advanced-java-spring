@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springmvc.modelandmodelview;
+package platform.codingnomads.co.springmvc.model;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +14,17 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model) {
         Map<String, String> map = new HashMap<>();
-        map.put("name", "Java Code Warrior!");
+        map.put("name", "Developer");
         map.put("language", "Java");
         map.put("framework", "Spring");
         model.mergeAttributes(map);
-        return "model_view_page";
+        return "model-page";
     }
 
-    @GetMapping("/modelAndViewPage")
-    public ModelAndView passParametersWithModelAndView() {
-        ModelAndView modelAndView = new ModelAndView("modelAndViewPage");
-        modelAndView.addObject("message", "Hello Code Warrior!!");
+    @GetMapping("/model-and-view-page")
+    public ModelAndView passDataWithModelAndView() {
+        ModelAndView modelAndView = new ModelAndView("model-and-view");
+        modelAndView.addObject("message", "CodingNomads!");
         return modelAndView;
     }
 }

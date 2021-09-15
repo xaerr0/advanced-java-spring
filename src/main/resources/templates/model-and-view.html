@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ModelAndView Page</title>
+</head>
+<body>
+<h1>Welcome to the ModelAndView Demo</h1>
+<h2>
+    <span>Hello <th:block th:text="${message}">[message]</th:block></span> <br/>
+    <span><a th:href="@{/}">Click here for the Model Page</a></span>
+</h2>
+</body>
+</html>
