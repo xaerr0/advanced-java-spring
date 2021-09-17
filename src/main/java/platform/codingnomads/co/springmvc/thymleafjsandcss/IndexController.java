@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
     @GetMapping(value = "/")
     public String index() {
-        return "thymeleaf_include_js_css";
+        return "thymeleaf-include-js-css";
     }
 }
 
