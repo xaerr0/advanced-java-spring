@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Car Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Car List</h1>
+    <a th:href="@{/new-car}">Add New Car</a><br/>
+    <a th:href="@{/}">Customer List</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>License</th>
+            <th>Customer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${carList}">
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.license}"></td>
+            <td th:text="${car.customer != null} ? ${car.customer.fullName}"></td>
+<!--            <td th:text="${car.customer.fullName}"></td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

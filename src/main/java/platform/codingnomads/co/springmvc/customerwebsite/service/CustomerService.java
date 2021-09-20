@@ -10,7 +10,6 @@ public interface CustomerService {
 
     Customer saveCustomer(Customer customer);
 
-
     Customer getCustomer(Long id);
 
     void deleteCustomer(Long id);
