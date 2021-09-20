@@ -12,10 +12,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Customer {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String fullName;
     private String emailAddress;
     private Integer age;
     private String address;
+
+    @OneToOne(mappedBy = "customer")
+    @JoinColumn(name = "car_id")
+    private RentalCar car;
+
 }

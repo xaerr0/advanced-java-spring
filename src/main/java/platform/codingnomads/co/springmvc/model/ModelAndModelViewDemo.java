@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springmvc.modelandmodelview;
+package platform.codingnomads.co.springmvc.model;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

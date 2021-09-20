@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Rental Car Assignment</title>
+</head>
+<body>
+<div align="center">
+    <h1>Assign Car to Customer</h1>
+    <a th:href="@{/}">Customer List</a>
+    <br />
+    <form action="#" th:action="@{/assign}" method="post">
+    <input type="hidden" name="customerId" th:value="${customer.id}"/>
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Customer Name: <strong><span th:text="${customer.fullName}"></span></strong></td>
+            </tr>
+            <tr>
+                <td>Customer Email: <strong><span th:text="${customer.emailAddress}"></span></strong></td>
+            </tr>
+            <tr>
+                <td>Assign Car:
+                <select class="form-select" th:name="carId">
+                    <option th:if="${carList.isEmpty()}">None Available</option>
+                    <option th:each="car, carStat : ${carList}" th:value="${car.id}" th:text="${car.toString()}"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><button type="submit" th:disabled="${carList.isEmpty()}">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
