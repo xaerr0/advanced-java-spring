@@ -6,20 +6,26 @@ import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class CodingNomad {
+    // automatically injected due to being private final
     private final JDK jdk;
+    // automatically injected due to being private final
     private final IDE ide;
+    // automatically injected due to being private final
     private final Framework framework;
 
+    // notice the SoundSystem is not private final - we'll need setter or field injection on this
     private SoundSystem soundSystem;
 
+    // setter injection of the SoundSystem
     @Autowired
     public void setSoundSystem(SoundSystem soundSystem) {
         this.soundSystem = soundSystem;
     }
 
+    // field injection of the Operating System
     @Autowired
     OperatingSystem operatingSystem;
 
