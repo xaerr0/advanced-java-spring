@@ -1,19 +1,15 @@
 package platform.codingnomads.co.springtest.understandingandusingprofiles;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Profile;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Profile("understanding_and_using_profiles")
 public class CoffeePreference {
 
     @Id
@@ -36,11 +32,9 @@ public class CoffeePreference {
     private int intensity;
 
     public void setIntensity(int intensity) {
-
-        if(intensity < 0 || intensity > 10) {
+        if (intensity < 0 || intensity > 10) {
             throw new IllegalStateException("Intensity must be between 0 and 10");
         }
-
         this.intensity = intensity;
     }
 
@@ -49,5 +43,4 @@ public class CoffeePreference {
         MEDIUM,
         LARGE
     }
-
 }

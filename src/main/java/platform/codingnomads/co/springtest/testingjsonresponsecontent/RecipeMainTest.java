@@ -37,7 +37,6 @@ public class RecipeMainTest implements CommandLineRunner {
                 .reviews(Set.of(review))
                 .build();
 
-
         recipeRepo.save(recipe1);
 
         ingredient.setId(null);
@@ -50,7 +49,6 @@ public class RecipeMainTest implements CommandLineRunner {
                 .build();
         recipeRepo.save(recipe2);
 
-
         Recipe recipe3 = Recipe.builder()
                 .steps(Set.of(Step.builder().description("test 2").build()))
                 .ingredients(Set.of(Ingredient.builder().name("test ing 2").amount("2").state("wet").build()))
@@ -60,7 +58,6 @@ public class RecipeMainTest implements CommandLineRunner {
                 .build();
 
         recipeRepo.save(recipe3);
-
 
         Recipe recipe4 =  Recipe.builder()
                 .name("chocolate and potato chips")
@@ -77,5 +74,6 @@ public class RecipeMainTest implements CommandLineRunner {
                 .build();
 
         recipeRepo.save(recipe4);
+        System.out.println("FINISHED TEST DATABASE SETUP");
     }
 }

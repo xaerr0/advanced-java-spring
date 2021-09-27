@@ -41,7 +41,7 @@ public class RecipeService {
         ArrayList<Recipe> matchingRecipes = recipeRepo.findByNameContaining(name);
 
         if(matchingRecipes.isEmpty()) {
-            throw new NoSuchRecipeException("No recipes could be found with that name");
+            throw new NoSuchRecipeException("No recipes could be found with that name.");
         }
 
         for(Recipe r: matchingRecipes) {

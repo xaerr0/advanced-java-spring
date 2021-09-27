@@ -23,12 +23,13 @@ import platform.codingnomads.co.springtest.testingjsonresponsecontent.repositori
 
 import java.util.Set;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 
 @SpringBootTest(classes = RecipeMain.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -68,7 +69,7 @@ public class RecipeControllerEndpointTest {
     @Test
     @Order(2)
     public void testGetRecipeByIdFailureBehavior() throws Exception {
-        final long recipeId = 50;
+        final long recipeId = 5000;
         //set up guaranteed to fail in testing environment request
         mockMvc.perform(get("/recipes/" + recipeId))
                 //print response
@@ -156,7 +157,6 @@ public class RecipeControllerEndpointTest {
                 .andExpect(jsonPath("reviews", hasSize(1)))
                 .andExpect(jsonPath("reviews[0].username").value("idk"))
                 .andReturn().getResponse();
-
     }
 
     @Test
@@ -219,17 +219,24 @@ public class RecipeControllerEndpointTest {
                 .andExpect(jsonPath("$[0].name", containsString("potato")));
     }
 
+
     @Test
     @Order(7)
     public void testGetRecipeByNameFailureBehavior() throws Exception {
 
-        mockMvc.perform(get("/recipes/search/should not exist"))
+        byte[] contentAsByteArray = this.mockMvc.perform(get("/recipes/search/should not exist"))
                 //expect 404 NOT FOUND
                 .andExpect(status().isNotFound())
                 //expect only a String in the body
                 .andExpect(content().contentType(MediaType.TEXT_PLAIN_VALUE + ";charset=UTF-8"))
-                //expect error message in body
-                .andExpect(jsonPath("$").value("No recipes could be found with that name"));
+                //retrieve content byte array
+                .andReturn().getResponse().getContentAsByteArray();
+
+        //convert JSON to String
+        String message = new String(contentAsByteArray);
+
+        //confirm error message is correct
+        assertThat(message, is("No recipes could be found with that name."));
     }
 
     @Test
@@ -322,5 +329,4 @@ public class RecipeControllerEndpointTest {
                 .andExpect(jsonPath("$").value("There are no recipes yet :( feel free to add one though"));
 
     }
-
 }

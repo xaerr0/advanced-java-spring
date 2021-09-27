@@ -1,10 +1,7 @@
 package platform.codingnomads.co.springsecurity.recipeapi.models.securitymodels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
 import platform.codingnomads.co.springsecurity.recipeapi.models.UserMeta;
 
@@ -13,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Data
-@Builder
+@Getter
+@Setter
+//@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomUserDetails implements UserDetails {
