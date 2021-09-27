@@ -27,18 +27,14 @@ public class Nomad {
     @Value("${nomad.jdk}")
     private String jdk;
 
-
     @Value("${nomad.ide:IntelliJ IDEA}")
     private String ide;
-
 
     @Value("${nomad.workingDays}")
     private List<String> workingDays;
 
-
     @Value("#{${database.values}}")
     private Map<String, String> databaseValues;
-
 
     public String nomadIdentity() {
         return name.concat(" ").concat(age.toString());
@@ -49,7 +45,7 @@ public class Nomad {
     }
 
     public String output() {
-        return "Code Warrior is building awesome software using: ".concat(jdk).concat(" , ").concat(framework).concat(" and ").concat(ide);
+        return "Spring Developer is building awesome software using: ".concat(jdk).concat(" , ").concat(framework).concat(" and ").concat(ide);
     }
 
     public List<String> getWorkingDays() {
