@@ -19,10 +19,6 @@ public class UserDetail {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    @Column
-    private Gender sex;
-
     @Column(name = "mobile")
     private String mobile;
 

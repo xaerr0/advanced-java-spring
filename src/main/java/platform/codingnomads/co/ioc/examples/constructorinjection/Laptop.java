@@ -15,7 +15,7 @@ public class Laptop {
     }
 
     public String printLaptopConfiguration() {
-        return "processor(name:core) " + processor.getName() + " " + processor.getName() +
+        return "processor: " + processor.getCore() + " core " + processor.getName() +
                 "\nOS: " + os.getName();
     }
 }

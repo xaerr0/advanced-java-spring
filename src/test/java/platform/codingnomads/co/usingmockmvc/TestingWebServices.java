@@ -34,7 +34,7 @@ public class TestingWebServices {
                 .andDo(print())
                 //the response should have status 200 OK
                 .andExpect(status().isOk())
-                //test this endpoint has a body that contains a Hello Back String
+                //test that this response has a body that contains a "Hello Back" String
                 .andExpect(content().string(containsString("Hello Back")));
 
     }

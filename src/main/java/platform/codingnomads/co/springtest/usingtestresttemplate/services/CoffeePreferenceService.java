@@ -14,5 +14,4 @@ public class CoffeePreferenceService {
     public CoffeePreference insertNewCoffeePreference(CoffeePreference coffeePreference) {
         return repo.save(coffeePreference);
     }
-
 }

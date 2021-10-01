@@ -32,7 +32,6 @@ public class JPADomainDemo implements CommandLineRunner {
         userDetailRepository.deleteAllInBatch();
 
         UserDetail userDetail = UserDetail.builder()
-                .sex(Gender.MALE)
                 .mobile("0123456789")
                 .build();
 
