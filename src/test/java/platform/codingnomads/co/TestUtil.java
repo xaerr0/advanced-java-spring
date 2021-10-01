@@ -30,6 +30,4 @@ public class TestUtil {
         //read the byte array containing the JSON and translate it into an object.
         return reader.readValue(bytes);
     }
-
-
 }

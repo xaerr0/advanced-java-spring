@@ -26,7 +26,7 @@ public class SpringDataJDBCDemo implements CommandLineRunner {
     public void run(String... strings) {
 
         try {
-            //create employee table using the execute JdbcTemplate method
+            //create employee table using the JdbcTemplate method "execute"
             jdbcTemplate.execute("CREATE TABLE employees (id BIGINT AUTO_INCREMENT PRIMARY KEY," +
                     "first_name VARCHAR(255) NOT NULL,last_name  VARCHAR(255) NOT NULL);");
         }catch (Exception e) {

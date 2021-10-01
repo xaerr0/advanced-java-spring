@@ -104,7 +104,7 @@ public class RecipeControllerUnitTest {
 
                         Recipe.builder()
                                 .id(2L)
-                                .name("searched reciped 2")
+                                .name("searched recipe 2")
                                 .difficultyRating(10)
                                 .minutesToMake(10)
                                 .build()
