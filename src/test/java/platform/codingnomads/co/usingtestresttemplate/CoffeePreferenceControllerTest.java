@@ -41,5 +41,4 @@ public class CoffeePreferenceControllerTest {
         //confirm ID was assigned
         assertThat(Objects.requireNonNull(postedCoffeePreference.getBody()).getId()).isNotNull();
     }
-
 }

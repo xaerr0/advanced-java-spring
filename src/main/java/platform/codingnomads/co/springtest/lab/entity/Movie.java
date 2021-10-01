@@ -1,6 +1,5 @@
 package platform.codingnomads.co.springtest.lab.entity;
 
-
 import lombok.*;
 
 import javax.persistence.*;

@@ -9,17 +9,23 @@ import platform.codingnomads.co.springtest.lab.SpringTestLab;
 
 @SpringBootTest(classes = SpringTestLab.class)
 @AutoConfigureMockMvc
-public class MovieResourceTest {
+public class MovieControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void getAllMoviesHTTPRequestShouldReturnListOfStudents() {
+    public void testGetAllMoviesSuccess() {
 
     }
 
     @Test
-    public void getAllMoviesShouldReturnStudentListFromService() {
+    public void testGetAllMoviesFailure() {
+
+    }
+
+    @Test
+    public void testGetAllMoviesSuccessMockService() {
 
     }
 }
