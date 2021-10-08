@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.lab.complete.domain;
+package platform.codingnomads.co.springdata.lab_complete.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
