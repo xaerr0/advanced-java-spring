@@ -1,6 +1,5 @@
-package platform.codingnomads.co.springdata.lab.complete.domain;
+package platform.codingnomads.co.springdata.lab_complete.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,7 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 @Data
 public class Route implements Serializable {
-    private static final long serialVersionUID = -2624055642258734917L;
+    private static final long serialVersionUID = -5152091262404575395L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
