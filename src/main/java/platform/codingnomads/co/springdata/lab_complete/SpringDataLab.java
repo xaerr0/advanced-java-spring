@@ -1,13 +1,13 @@
-package platform.codingnomads.co.springdata.lab.complete;
+package platform.codingnomads.co.springdata.lab_complete;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import platform.codingnomads.co.springdata.lab.complete.domain.Area;
-import platform.codingnomads.co.springdata.lab.complete.domain.Route;
-import platform.codingnomads.co.springdata.lab.complete.repository.AreaRepository;
-import platform.codingnomads.co.springdata.lab.complete.repository.RouteRepository;
+import platform.codingnomads.co.springdata.lab_complete.domain.Area;
+import platform.codingnomads.co.springdata.lab_complete.domain.Route;
+import platform.codingnomads.co.springdata.lab_complete.repository.AreaRepository;
+import platform.codingnomads.co.springdata.lab_complete.repository.RouteRepository;
 
 import java.util.Arrays;
 import java.util.List;
