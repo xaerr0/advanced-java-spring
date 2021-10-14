@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springsecurity.authorization.custompermissions;
+package platform.codingnomads.co.springsecurity.authorization.custompermissions.config;
 
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CustomPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-        ArrayList<GrantedAuthority> grantedAuthorities = (ArrayList<GrantedAuthority>) authentication.getAuthorities();
+        List<GrantedAuthority> grantedAuthorities = (List<GrantedAuthority>) authentication.getAuthorities();
 
         try {
             //Some reflective work to get the ID in question
@@ -27,7 +27,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
             //check if user has matching authority. Return true if so false otherwise
             for (GrantedAuthority ga : grantedAuthorities) {
-                if (ga.getAuthority().equals(grantedAuthorityString)) {
+                if (ga.getAuthority().equalsIgnoreCase(grantedAuthorityString)) {
                     return true;
                 }
             }
@@ -40,7 +40,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
-        ArrayList<GrantedAuthority> grantedAuthorities = (ArrayList<GrantedAuthority>) authentication.getAuthorities();
+        List<GrantedAuthority> grantedAuthorities = (List<GrantedAuthority>) authentication.getAuthorities();
 
         try {
             //compile grantedAuthorityString
@@ -48,7 +48,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
             //check if user has matching authority. Return true if so false otherwise
             for (GrantedAuthority ga : grantedAuthorities) {
-                if (ga.getAuthority().equals(grantedAuthorityString)) {
+                if (ga.getAuthority().equalsIgnoreCase(grantedAuthorityString)) {
                     return true;
                 }
             }
