@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springsecurity.authorization.addingauthorization;
+package platform.codingnomads.co.springsecurity.authorization.custompermissions;
 
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 @Component
-public class CPermissionEvaluator implements PermissionEvaluator {
+public class CustomPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
@@ -19,22 +19,21 @@ public class CPermissionEvaluator implements PermissionEvaluator {
         try {
             //Some reflective work to get the ID in question
             Class<?> targetType = targetDomainObject.getClass();
-            Method method =  targetType.getMethod("getId");
+            Method method = targetType.getMethod("getId");
             Long id = (Long) method.invoke(targetDomainObject);
 
             //compile GrantedAuthorityString
             String grantedAuthorityString = id + "_" + targetType.getName() + "_" + permission;
 
             //check if user has matching authority. Return true if so false otherwise
-            for(GrantedAuthority ga: grantedAuthorities) {
-                if(ga.getAuthority().equals(grantedAuthorityString)) {
+            for (GrantedAuthority ga : grantedAuthorities) {
+                if (ga.getAuthority().equals(grantedAuthorityString)) {
                     return true;
                 }
             }
-
             return false;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -43,16 +42,20 @@ public class CPermissionEvaluator implements PermissionEvaluator {
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
         ArrayList<GrantedAuthority> grantedAuthorities = (ArrayList<GrantedAuthority>) authentication.getAuthorities();
 
-        //compile grantedAuthorityString
-        String grantedAuthorityString = targetId + "_" + targetType + "_"  + permission;
+        try {
+            //compile grantedAuthorityString
+            String grantedAuthorityString = targetId + "_" + targetType + "_" + permission;
 
-        //check if user has matching authority. Return true if so false otherwise
-        for(GrantedAuthority ga: grantedAuthorities) {
-            if(ga.getAuthority().equals(grantedAuthorityString)) {
-                return true;
+            //check if user has matching authority. Return true if so false otherwise
+            for (GrantedAuthority ga : grantedAuthorities) {
+                if (ga.getAuthority().equals(grantedAuthorityString)) {
+                    return true;
+                }
             }
-        }
+            return false;
 
-        return false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
