@@ -10,6 +10,7 @@ import platform.codingnomads.co.springsecurity.recipeapi.exceptions.NoSuchRecipe
 import platform.codingnomads.co.springsecurity.recipeapi.models.Recipe;
 import platform.codingnomads.co.springsecurity.recipeapi.services.RecipeService;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 
@@ -21,11 +22,11 @@ public class RecipeController {
     RecipeService recipeService;
 
     @PostMapping
-    public ResponseEntity<?> createNewRecipe(@RequestBody Recipe recipe) {
+    public ResponseEntity<?> createNewRecipe(@RequestBody Recipe recipe, Principal principal) {
         try {
             Recipe insertedRecipe = recipeService.createNewRecipe(recipe);
             return ResponseEntity.created(insertedRecipe.getLocationURI()).body(insertedRecipe);
-        }catch (IllegalStateException e) {
+        } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -35,7 +36,7 @@ public class RecipeController {
         try {
             Recipe recipe = recipeService.getRecipeById(id);
             return ResponseEntity.ok(recipe);
-        }catch(NoSuchRecipeException e) {
+        } catch (NoSuchRecipeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
@@ -44,7 +45,7 @@ public class RecipeController {
     public ResponseEntity<?> getAllRecipes() {
         try {
             return ResponseEntity.ok(recipeService.getAllRecipes());
-        }catch (NoSuchRecipeException e) {
+        } catch (NoSuchRecipeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
@@ -54,7 +55,7 @@ public class RecipeController {
         try {
             ArrayList<Recipe> matchingRecipes = recipeService.getRecipesByName(name);
             return ResponseEntity.ok(matchingRecipes);
-        }catch (NoSuchRecipeException e) {
+        } catch (NoSuchRecipeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
@@ -65,7 +66,7 @@ public class RecipeController {
         try {
             Recipe deletedRecipe = recipeService.deleteRecipeById(id);
             return ResponseEntity.ok("The recipe with ID " + deletedRecipe.getId() + " and name " + deletedRecipe.getName() + " was deleted");
-        }catch (NoSuchRecipeException e) {
+        } catch (NoSuchRecipeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -76,7 +77,7 @@ public class RecipeController {
         try {
             Recipe returnedUpdatedRecipe = recipeService.updateRecipe(updatedRecipe, true);
             return ResponseEntity.ok(returnedUpdatedRecipe);
-        }catch (NoSuchRecipeException | IllegalStateException e) {
+        } catch (NoSuchRecipeException | IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
