@@ -38,21 +38,24 @@ public class AuthorizationDemo implements CommandLineRunner {
         Authority adminAuth = Authority.builder().authority(AuthorityEnum.ROLE_ADMIN).build();
         Authority superUAuth = Authority.builder().authority(AuthorityEnum.ROLE_SUPERU).build();
         Authority updaterAuth = Authority.builder().authority(AuthorityEnum.UPDATER).build();
-        authorityRepo.saveAll(Arrays.asList(userAuth,adminAuth, superUAuth, updaterAuth));
+
+        if (authorityRepo.findAll().isEmpty()) {
+            authorityRepo.saveAll(Arrays.asList(userAuth,adminAuth, superUAuth, updaterAuth));
+        }
 
         UserMeta superUser = UserMeta.builder().name("super user").email("superuser@email.com").build();
         UserMeta admin = UserMeta.builder().name("admin").email("admin@email.com").build();
         UserMeta basicUser = UserMeta.builder().name("basic user").email("basicuser@email.com").build();
 
-
-
-        userPrincipalRepo.saveAll(
-            Arrays.asList(
-                    new UserPrincipal("SUPERUSER", passwordEncoder.encode("su"), Arrays.asList(userAuth, adminAuth, superUAuth, updaterAuth), superUser),
-                    new UserPrincipal("USER", passwordEncoder.encode("user"), Collections.singletonList(userAuth), basicUser),
-                    new UserPrincipal("ADMIN", passwordEncoder.encode("admin"), Arrays.asList(adminAuth, userAuth), admin)
-            )
-        );
+        if (userPrincipalRepo.findAll().isEmpty()) {
+            userPrincipalRepo.saveAll(
+                    Arrays.asList(
+                            new UserPrincipal("SUPERUSER", passwordEncoder.encode("su"), Arrays.asList(userAuth, adminAuth, superUAuth, updaterAuth), superUser),
+                            new UserPrincipal("USER", passwordEncoder.encode("user"), Collections.singletonList(userAuth), basicUser),
+                            new UserPrincipal("ADMIN", passwordEncoder.encode("admin"), Arrays.asList(adminAuth, userAuth), admin)
+                    )
+            );
+        }
     }
 }
 

@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
 
-                //formLogin() is used to indicate a HTML form is going to be used to present a username and password.
+                //formLogin() is used to indicate an HTML form is going to be used to present a username and password.
                 // It also adds the UsernamePasswordAuthenticationFilter to the filter chain
                 .formLogin();
     }

@@ -23,7 +23,7 @@ public class Car {
     @Column(name = "horsepower")
     private int horsepower;
 
-    //note that the this annotation and field is new
+    //note that this annotation and field is new
     @OneToOne(
             //used to indicate that this is the child side of a relationship and refer the JPA
             //to the field in the Driver class that defines the relationship

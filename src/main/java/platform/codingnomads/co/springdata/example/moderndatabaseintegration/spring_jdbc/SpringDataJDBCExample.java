@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.moderndatabaseintegration;
+package platform.codingnomads.co.springdata.example.moderndatabaseintegration.spring_jdbc;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,16 +27,15 @@ public class SpringDataJDBCExample implements CommandLineRunner {
                     rs.getString("first_name"),
                     rs.getString("last_name")
             )
-        ).forEach(manager -> System.out.println(manager.toString()));
-    }
-
-    @Data
-    @AllArgsConstructor
-    private class Employee {
-        private int id;
-        private String firstName;
-        private String lastName;
+        ).forEach(employee -> System.out.println(employee.toString()));
     }
 }
 
+@Data
+@AllArgsConstructor
+class Employee {
+    private int id;
+    private String firstName;
+    private String lastName;
+}
 
