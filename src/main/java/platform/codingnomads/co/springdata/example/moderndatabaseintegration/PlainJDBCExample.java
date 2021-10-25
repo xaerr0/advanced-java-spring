@@ -23,8 +23,7 @@ public class PlainJDBCExample {
                 System.out.println(new Employee(
                         rs.getInt("id"),
                         rs.getString("first_name"),
-                        rs.getString("last_name"))
-                .toString());
+                        rs.getString("last_name")));
             }
 
             rs.close();

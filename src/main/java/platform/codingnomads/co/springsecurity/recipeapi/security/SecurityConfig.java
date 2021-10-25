@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/css", "/js").permitAll()
                 //allow all requests to read recipes and reviews
-                .antMatchers(HttpMethod.GET, "/recipes", "/reviews").permitAll()
+                .antMatchers(HttpMethod.GET, "/recipes/**", "/reviews").permitAll()
                 //allow creation of new recipes and reviews
                 .antMatchers(HttpMethod.POST, "/recipes", "reviews").permitAll()
                 //all other requests should be authenticated
@@ -35,7 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //forward to /current-user for a summary of the signed in user.
                 .defaultSuccessUrl("/current-user");
     }
-
 
     @Autowired
     CustomUserDetailService customUserDetailService;

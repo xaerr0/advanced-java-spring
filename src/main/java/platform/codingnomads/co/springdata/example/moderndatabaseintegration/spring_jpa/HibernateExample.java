@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.moderndatabaseintegration;
+package platform.codingnomads.co.springdata.example.moderndatabaseintegration.spring_jpa;
 
 import lombok.Data;
 import lombok.ToString;
@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 public class HibernateExample implements CommandLineRunner {
 
     @Autowired
-    ManagerRepository managerRepository;
+    EmployeeRepository employeeRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(HibernateExample.class);
@@ -23,21 +23,21 @@ public class HibernateExample implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        managerRepository.findAll()
-                .forEach(manager -> System.out.println(manager.toString()));
+        employeeRepository.findAll()
+                .forEach(employee -> System.out.println(employee.toString()));
     }
 }
 
 @Entity
 @Data
 @ToString
-class Manager {
+class Employee {
     private int id;
     private String firstName;
     private String lastName;
 }
 
 @Repository
-interface ManagerRepository extends JpaRepository<Manager, Long> {
+interface EmployeeRepository extends JpaRepository<Employee, Long> {
 }
 

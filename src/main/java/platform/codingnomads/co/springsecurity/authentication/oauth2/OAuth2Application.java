@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springsecurity.authentication.githuboauth2;
+package platform.codingnomads.co.springsecurity.authentication.oauth2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
