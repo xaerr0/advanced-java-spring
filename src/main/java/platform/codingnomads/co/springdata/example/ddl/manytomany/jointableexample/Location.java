@@ -25,6 +25,6 @@ public class Location {
     private Long longitude;
 
     //many to many annotation defers to the locations field in the Post class
-    @ManyToMany(mappedBy = "locations")
+    @ManyToMany
     private Set<Post> posts;
 }
