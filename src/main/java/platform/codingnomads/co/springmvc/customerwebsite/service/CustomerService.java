@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> getCustomers();
+    List<Customer> getAllCustomers();
 
     Customer saveCustomer(Customer customer);
 

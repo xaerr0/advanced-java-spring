@@ -21,7 +21,7 @@ public class CustomerApplication {
     @Bean
     public CommandLineRunner loadInitialData(CustomerService customerService, CarService carService) {
         return (args) -> {
-            if (customerService.getCustomers().isEmpty()) {
+            if (customerService.getAllCustomers().isEmpty()) {
                 customerService.saveAllCustomer(Arrays.asList(
                         Customer.builder().fullName("Customer 1").emailAddress("customer1@gmail.com").address("Customer Address One").age(30).build(),
                         Customer.builder().fullName("Customer 2").emailAddress("customer2@gmail.com").address("Customer Address Two").age(28).build(),

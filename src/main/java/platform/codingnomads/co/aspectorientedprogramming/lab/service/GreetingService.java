@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 public class GreetingService {
 
     public String greeting() {
-        return "Hello Code Warrior";
+        return "Hello Spring Developer!";
     }
-
 }

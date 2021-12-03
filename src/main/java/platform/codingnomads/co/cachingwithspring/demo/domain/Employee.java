@@ -1,8 +1,9 @@
 package platform.codingnomads.co.cachingwithspring.demo.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,15 +11,16 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 public class Employee implements Serializable {
+
+    private static final long serialVersionUID = 6527855645691638321L;
 
     @Id
     @GeneratedValue
     private int id;
     private String name;
-
 }
 
