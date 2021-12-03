@@ -7,13 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import platform.codingnomads.co.springmvc.customerwebsite.domain.Customer;
-import platform.codingnomads.co.springmvc.customerwebsite.domain.RentalCar;
 import platform.codingnomads.co.springmvc.customerwebsite.service.CarService;
 import platform.codingnomads.co.springmvc.customerwebsite.service.CustomerService;
 
-import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +24,7 @@ public class AppController {
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        final List<Customer> customerList = customerService.getCustomers();
+        final List<Customer> customerList = customerService.getAllCustomers();
         model.addAttribute("customerList", customerList);
         return "index";
     }

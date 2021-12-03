@@ -33,11 +33,16 @@ public class BasicAuthenticationDemo implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Authority userAuth = Authority.builder().authority(RoleEnum.ROLE_USER).build();
-        authorityRepo.save(userAuth);
+        if (authorityRepo.findAll().isEmpty()) {
+            authorityRepo.save(userAuth);
+        }
 
-        userPrincipalRepo.save(
-                    new UserPrincipal("USER", passwordEncoder.encode("user"),Collections.singletonList(userAuth))
-        );
+        if (userPrincipalRepo.findAll().isEmpty()) {
+            userPrincipalRepo.save(
+                    new UserPrincipal("USER", passwordEncoder.encode("user"),
+                            Collections.singletonList(userAuth))
+            );
+        }
     }
 }
 

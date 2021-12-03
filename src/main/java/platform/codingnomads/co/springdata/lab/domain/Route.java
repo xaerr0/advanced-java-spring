@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "areas")
+@Table(name = "routes")
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder

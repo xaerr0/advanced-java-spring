@@ -2,6 +2,7 @@ package platform.codingnomads.co.springweb.gettingdatafromclient.requestbody;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -21,10 +22,8 @@ public class TaskController {
     private TaskRepository taskRepository;
 
     @PostMapping(value = "/api/tasks", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Task> createTask(@RequestBody(required = false) Task task) throws URISyntaxException {
-        if (task.getId() != null
-                || StringUtils.isEmpty(task.getName())
-                || task.getCompleted() == null) {
+    public ResponseEntity<Task> createTask(@RequestBody(required = true) Task task) throws URISyntaxException {
+        if (StringUtils.isEmpty(task.getName()) || task.getCompleted() == null) {
             task.setCreatedAt(null);
             return ResponseEntity.badRequest().body(task);
         }
@@ -37,12 +36,17 @@ public class TaskController {
     }
 
     @PostMapping(value = "/print")
-    public ResponseEntity<?> createTask(@RequestBody(required = false) String message) {
+    public ResponseEntity<?> printMessage(@RequestBody(required = false) String message) {
         if (message == null) {
             message = "You did not pass in a message.";
         }
 
         System.out.println(message);
-        return ResponseEntity.ok().body(message);
+
+        if (message.equalsIgnoreCase("I'm a teapot")) {
+            return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(message);
+        } else {
+            return ResponseEntity.ok().body(message);
+        }
     }
 }

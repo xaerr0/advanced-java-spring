@@ -1,6 +1,5 @@
 package platform.codingnomads.co.aspectorientedprogramming.aop.aspect;
 
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,11 +1,15 @@
 package platform.codingnomads.co.springdata.example.ddl.joincolumn;
 
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "examples")
 public class Example {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
     //define a one-to-many relationship with a few customizations
     @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     //use @JoinColumns to indicate multiple join columns in the are needed in the examples table
