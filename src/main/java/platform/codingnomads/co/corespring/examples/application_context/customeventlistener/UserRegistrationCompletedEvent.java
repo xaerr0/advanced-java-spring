@@ -3,7 +3,8 @@ package platform.codingnomads.co.corespring.examples.application_context.custome
 import org.springframework.context.ApplicationEvent;
 
 public class UserRegistrationCompletedEvent extends ApplicationEvent {
-    private String message;
+
+    private final String message;
 
     public UserRegistrationCompletedEvent(Object source, String message) {
         super(source);

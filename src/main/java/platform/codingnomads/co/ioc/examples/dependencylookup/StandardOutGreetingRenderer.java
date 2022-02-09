@@ -3,6 +3,7 @@ package platform.codingnomads.co.ioc.examples.dependencylookup;
 public class StandardOutGreetingRenderer implements GreetingRenderer {
 
     private GreetingProvider greetingProvider;
+
     @Override
     public void render() {
         if (greetingProvider == null) {
@@ -14,7 +15,7 @@ public class StandardOutGreetingRenderer implements GreetingRenderer {
 
     @Override
     public void setGreetingProvider(GreetingProvider greetingProvider) {
-        this.greetingProvider=greetingProvider;
+        this.greetingProvider = greetingProvider;
     }
 
     @Override

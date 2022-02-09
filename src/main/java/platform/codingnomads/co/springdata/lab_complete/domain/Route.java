@@ -1,8 +1,7 @@
 package platform.codingnomads.co.springdata.lab_complete.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,9 +9,13 @@ import java.io.Serializable;
 @Entity
 @Table(name = "routes")
 @RequiredArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
 public class Route implements Serializable {
+
     private static final long serialVersionUID = -5152091262404575395L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -44,5 +47,4 @@ public class Route implements Serializable {
         this.destination = destination;
         this.code = (origin.getCode() + "-" + destination.getCode());
     }
-
 }
