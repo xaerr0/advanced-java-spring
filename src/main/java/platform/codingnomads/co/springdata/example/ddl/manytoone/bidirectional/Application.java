@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.ddl.lifecyclecallback;
+package platform.codingnomads.co.springdata.example.ddl.manytoone.bidirectional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

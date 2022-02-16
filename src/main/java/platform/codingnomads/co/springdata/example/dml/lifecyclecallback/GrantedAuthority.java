@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.ddl.lifecyclecallback;
+package platform.codingnomads.co.springdata.example.dml.lifecyclecallback;
 
 import lombok.*;
 
@@ -6,15 +6,13 @@ import javax.persistence.*;
 import java.util.NoSuchElementException;
 
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
-@RequiredArgsConstructor
-@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public class GrantedAuthority {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -47,7 +45,6 @@ public class GrantedAuthority {
         permission = permission.trim().toLowerCase();
         confirmObjectExists();
     }
-
 
     private void confirmObjectExists() {
         if(/*implement confirmation logic*/false) {

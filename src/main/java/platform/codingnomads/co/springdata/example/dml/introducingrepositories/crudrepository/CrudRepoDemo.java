@@ -6,12 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class CrudRepoDemo implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
+        SpringApplication.run(CrudRepoDemo.class);
     }
-
 
     //autowire the UserRepo into the class to gain access to the CRUD methods
     @Autowired

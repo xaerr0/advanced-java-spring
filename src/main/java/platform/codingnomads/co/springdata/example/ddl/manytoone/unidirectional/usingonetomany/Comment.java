@@ -1,15 +1,13 @@
 package platform.codingnomads.co.springdata.example.ddl.manytoone.unidirectional.usingonetomany;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Comment {
 
     @Id

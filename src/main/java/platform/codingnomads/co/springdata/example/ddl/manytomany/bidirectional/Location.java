@@ -1,14 +1,14 @@
 package platform.codingnomads.co.springdata.example.ddl.manytomany.bidirectional;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
-@Builder
+@Getter
+@Setter
+@NoArgsConstructor
 public class Location {
 
     @Id

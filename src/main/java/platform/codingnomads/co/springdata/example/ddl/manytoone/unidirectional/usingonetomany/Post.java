@@ -1,17 +1,14 @@
 package platform.codingnomads.co.springdata.example.ddl.manytoone.unidirectional.usingonetomany;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Post {
 
     @Id
@@ -24,10 +21,7 @@ public class Post {
     @Column(nullable = false)
     private String content;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private List<Comment> comments;
 }

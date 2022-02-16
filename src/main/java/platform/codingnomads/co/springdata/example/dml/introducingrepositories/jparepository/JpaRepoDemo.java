@@ -9,21 +9,19 @@ import org.springframework.data.domain.*;
 import java.util.List;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class JpaRepoDemo implements CommandLineRunner {
 
     @Autowired
     SoftDrinkRepo softDrinkRepo;
 
-
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
-
+        SpringApplication.run(JpaRepoDemo.class);
     }
 
     @Override
     public void run(String... args) throws Exception {
         SoftDrink fanta = SoftDrink.builder().name("Fanta").rating(10).build();
-        SoftDrink coke = SoftDrink.builder().name("Coca Cola").rating(4).build();
+        SoftDrink coke = SoftDrink.builder().name("Coca-Cola").rating(4).build();
         SoftDrink drPepper = SoftDrink.builder().name("Dr. Pepper").rating(1).build();
 
         //save single entity instance
@@ -36,7 +34,7 @@ public class Application implements CommandLineRunner {
         softDrinkRepo.flush();
 
         //update coke and drPepper to have rating 0 in the database
-        for(SoftDrink sd: insertedSoftDrinks) {
+        for (SoftDrink sd : insertedSoftDrinks) {
             sd.setRating(0);
             softDrinkRepo.save(sd);
         }
@@ -48,12 +46,12 @@ public class Application implements CommandLineRunner {
         //find all using an example
         System.out.println("FINDING ALL USING EXAMPLE");
         softDrinkRepo.findAll(
-                Example.of(
-                        //probe soft drink to match results with
-                        SoftDrink.builder().rating(0).build(),
-                        //ask that database entries that match any of the fields in the probe be returned
-                        ExampleMatcher.matchingAny())
-        )
+                        Example.of(
+                                //probe soft drink to match results with
+                                SoftDrink.builder().rating(0).build(),
+                                //ask that database entries that match any of the fields in the probe be returned
+                                ExampleMatcher.matchingAny())
+                )
                 .forEach(System.out::println);
 
         //create page request to paginate through these 3 soft drinks. note that the first page is indicated using a 0
@@ -68,7 +66,6 @@ public class Application implements CommandLineRunner {
         //get second page
         page = softDrinkRepo.findAll(pageRequest.next());
         page.getContent().forEach(System.out::println);
-
 
         //delete all 3 soft drinks in a batch
         softDrinkRepo.deleteAllInBatch();
