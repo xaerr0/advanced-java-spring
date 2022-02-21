@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.dml.transactional;
+package platform.codingnomads.co.springdata.example.dml.transactional.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import platform.codingnomads.co.springdata.example.dml.transactional.models.Point;
-import platform.codingnomads.co.springdata.example.dml.transactional.repos.PointRepo;
+import platform.codingnomads.co.springdata.example.dml.transactional.repositories.PointRepo;
 
 import java.io.IOException;
 
@@ -35,18 +35,24 @@ public class PointService {
     //@Transactional II
 
     @Transactional(timeout = 5)
+    public void savePoint() {
+        //create new point (1,1)
+        Point p = new Point(1,1);
+
+        //save new point
+        repo.save(p);
+    }
+
+    @Transactional(timeout = 5)
     public void timeOutAfter5() {
         Point p = new Point(2,2);
-
         repo.save(p);
     }
 
     @Transactional(timeout = 1)
     public void triggerTimeout() throws InterruptedException {
         Thread.sleep(950);
-
         Point p = new Point(1,1);
-
         repo.save(p);
     }
 

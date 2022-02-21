@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.dml.usingqueryannotation.repos;
+package platform.codingnomads.co.springdata.example.dml.usingqueryannotation.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

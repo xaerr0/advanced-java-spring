@@ -1,11 +1,11 @@
-package platform.codingnomads.co.springdata.example.dml.commonproblems;
+package platform.codingnomads.co.springdata.example.dml.commonproblems.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import platform.codingnomads.co.springdata.example.dml.commonproblems.models.Address;
 import platform.codingnomads.co.springdata.example.dml.commonproblems.models.ContactCard;
 import platform.codingnomads.co.springdata.example.dml.commonproblems.models.User;
-import platform.codingnomads.co.springdata.example.dml.commonproblems.repos.UserRepo;
+import platform.codingnomads.co.springdata.example.dml.commonproblems.repositories.UserRepo;
 
 @Service
 public class UserService {

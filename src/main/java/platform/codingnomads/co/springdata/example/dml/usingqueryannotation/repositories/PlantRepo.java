@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.dml.usingqueryannotation.repos;
+package platform.codingnomads.co.springdata.example.dml.usingqueryannotation.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -68,8 +68,8 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
 
     //////////////// PAGINATION USING @QUERY ////////////////
 
-    //page through all plants. This particular query is already present in the PagingAndSortingRepository
-    //but it is a good beginner example.
+    //page through all plants. this particular query is already present in the
+    // PagingAndSortingRepository, but it is a good beginner example.
     @Query("SELECT p FROM Plant p")
     Page<Plant> getPagedPlants(Pageable pageable);
 
@@ -78,7 +78,8 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
             //actual query used to return data
             value = "SELECT p FROM Plant p JOIN SoilType st ON p.favoriteSoilType = st.id WHERE st.name = ?1"
             //query used to count the number of results for pagination purposes
-//            countQuery = "SELECT count(p.id) FROM Plant p JOIN SoilType st ON p.favoriteSoilType = st.id WHERE st.name = ?1"
+            //countQuery =
+            // "SELECT count(p.id) FROM Plant p JOIN SoilType st ON p.favoriteSoilType = st.id WHERE st.name = ?1"
     )
     Page<Plant> getAllPlantsWithSoilTypeNameIs(String soilTypeName, Pageable pageable);
 
@@ -93,6 +94,5 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
             countQuery = "SELECT count(p.id) FROM Plant p JOIN SoilType st ON p.favoriteSoilType = st.id WHERE ph < ?1"
     )
     Page<Plant> getPlantsWithPhLessThan(double phUpperBound, Pageable pageable);
-
 
 }

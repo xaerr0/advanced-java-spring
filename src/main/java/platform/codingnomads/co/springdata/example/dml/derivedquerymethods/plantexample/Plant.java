@@ -9,9 +9,7 @@ import java.util.Objects;
 @Table(name = "plants")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Plant {
 
     @Id

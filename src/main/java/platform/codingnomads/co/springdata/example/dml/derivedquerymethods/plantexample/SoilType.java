@@ -8,9 +8,7 @@ import javax.persistence.*;
 @Table(name = "soil_types")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class SoilType {
 
     @Id

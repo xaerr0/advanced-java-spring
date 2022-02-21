@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "contact_cards")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

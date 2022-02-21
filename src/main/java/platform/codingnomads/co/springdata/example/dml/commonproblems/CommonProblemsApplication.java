@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import platform.codingnomads.co.springdata.example.dml.commonproblems.services.UserService;
 
 @SpringBootApplication
 public class CommonProblemsApplication implements CommandLineRunner {
