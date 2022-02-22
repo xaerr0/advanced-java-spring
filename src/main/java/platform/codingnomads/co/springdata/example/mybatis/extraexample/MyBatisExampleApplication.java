@@ -1,6 +1,5 @@
 package platform.codingnomads.co.springdata.example.mybatis.extraexample;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 @SpringBootApplication
-public class DemoApplication {
+public class OneAndManyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(OneAndManyApplication.class, args);
     }
 
     @Bean

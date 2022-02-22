@@ -11,11 +11,4 @@ public class Lesson {
     private String name;
     private String text;
     private List<Image> imageArrayList;
-
-
-    public Lesson(Long id, String name, String text) {
-        this.id = id;
-        this.name = name;
-        this.text = text;
-    }
 }
