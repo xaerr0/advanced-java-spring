@@ -1,7 +1,7 @@
 package platform.codingnomads.co.springdata.example.querydsl.repository;
 
-import platform.codingnomads.co.springdata.example.querydsl.SearchQuery;
-import platform.codingnomads.co.springdata.example.querydsl.domain.Route;
+import platform.codingnomads.co.springdata.example.querydsl.models.SearchQuery;
+import platform.codingnomads.co.springdata.example.querydsl.models.Route;
 
 import java.util.List;
 

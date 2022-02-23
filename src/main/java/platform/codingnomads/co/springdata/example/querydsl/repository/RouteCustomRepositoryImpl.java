@@ -4,9 +4,9 @@ import com.querydsl.core.BooleanBuilder;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
-import platform.codingnomads.co.springdata.example.querydsl.SearchQuery;
-import platform.codingnomads.co.springdata.example.querydsl.domain.Route;
-import platform.codingnomads.co.springdata.example.querydsl.domain.QRoute;
+import platform.codingnomads.co.springdata.example.querydsl.models.SearchQuery;
+import platform.codingnomads.co.springdata.example.querydsl.models.Route;
+import platform.codingnomads.co.springdata.example.querydsl.models.QRoute;
 
 import java.util.List;
 

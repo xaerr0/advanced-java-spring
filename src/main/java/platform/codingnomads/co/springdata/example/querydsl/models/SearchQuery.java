@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.querydsl;
+package platform.codingnomads.co.springdata.example.querydsl.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

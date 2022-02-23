@@ -1,26 +1,27 @@
-package platform.codingnomads.co.springdata.lab_complete.domain;
+package platform.codingnomads.co.springdata.example.querydsl.models;
 
 import lombok.*;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "routes")
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "routes")
+@Builder
 @ToString
 public class Route implements Serializable {
 
-    private static final long serialVersionUID = -5152091262404575395L;
+    private static final long serialVersionUID = -5696564962139780350L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    private String name;
     private String code;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -31,7 +32,6 @@ public class Route implements Serializable {
     )
     private Area origin;
 
-
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(
             name = "destination_area_id",
@@ -39,12 +39,4 @@ public class Route implements Serializable {
             foreignKey = @ForeignKey(name = "fk_routes_destination_area_id")
     )
     private Area destination;
-
-    // move @Builder so it uses the custom constructor
-    @Builder
-    public Route(Area origin, Area destination) {
-        this.origin = origin;
-        this.destination = destination;
-        this.code = (origin.getCode() + "-" + destination.getCode());
-    }
 }
