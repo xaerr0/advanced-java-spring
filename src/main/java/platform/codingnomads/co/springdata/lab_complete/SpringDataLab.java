@@ -29,10 +29,10 @@ public class SpringDataLab implements CommandLineRunner {
 
     @Override
     @Transactional
-    // this will keep the Route toString() method from throwing an exception due to lazy loading origin & destination
+    // this will keep toString() methods from throwing an exception due to lazy loading
     public void run(String... args) throws Exception {
         // don't attempt to add these records again on future runs
-        if (areaRepository.findAll().size() == 0) {
+       if (areaRepository.findAll().size() == 0) {
             final List<Area> areas = areaRepository.saveAll(
                     Arrays.asList(
                             Area.builder().code("A").build(),
@@ -65,13 +65,13 @@ public class SpringDataLab implements CommandLineRunner {
                                     .destination(areaRepository.findByCode("Z")).build()
                     )
             );
-            System.out.println("test");
         }
 
         if (pointOfInterestRepository.findAll().size() == 0) {
 
             PointOfInterest poi1 = new PointOfInterest("Gas Station", "Buc-ee's",
                     areaRepository.findByCode("A"));
+            // if a poi has an associated area, it may have routes as well
             poi1.addRoutes(routeRepository.findAllByCodeContaining("A"));
 
             PointOfInterest poi2 = new PointOfInterest("Gas Station", "Shell",
@@ -86,6 +86,7 @@ public class SpringDataLab implements CommandLineRunner {
                     areaRepository.findByCode("L"));
             poi4.addRoutes(routeRepository.findAllByCodeContaining("L"));
 
+            // a poi can be associated with a route only, not a particular area (somewhere between 2 areas)
             PointOfInterest poi5 = new PointOfInterest("Roadside Attraction", "Ufo",
                     routeRepository.findByCode("B-A"));
             PointOfInterest poi6 = new PointOfInterest("Roadside Attraction", "Waterfall",
@@ -99,6 +100,7 @@ public class SpringDataLab implements CommandLineRunner {
         System.out.println(pointOfInterestRepository.findAllByArea_code("A"));
         System.out.println(pointOfInterestRepository.findAllDistinctByRoutes_codeContaining("A"));
 
+        System.out.println(areaRepository.findAllByPointsOfInterest_typeIgnoreCase("gas station"));
         System.out.println(areaRepository.findByCode("A"));
 
         System.out.println(routeRepository.findByOrigin_code("T"));

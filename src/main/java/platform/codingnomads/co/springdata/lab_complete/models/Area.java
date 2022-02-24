@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -13,9 +16,10 @@ import java.util.List;
 @Setter
 @Table(name = "areas")
 @Builder
-@ToString
 public class Area implements Serializable {
 
+    // this field (and implementing Serializable) is not required here,
+    // but added for an early introduction to the concept
     private static final long serialVersionUID = 5217291127304415108L;
 
     @Id
@@ -28,4 +32,28 @@ public class Area implements Serializable {
 
     @OneToMany(mappedBy = "area")
     private List<PointOfInterest> pointsOfInterest;
+
+    public void addPointOfInterest(PointOfInterest pointOfInterest) {
+        if (this.pointsOfInterest == null) {
+            this.pointsOfInterest = new ArrayList<>(Collections.singletonList(pointOfInterest));
+        } else {
+            this.pointsOfInterest.add(pointOfInterest);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Area{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", pointsOfInterest=" + pointsOfInterest +
+                '}';
+    }
+
+    public String toStringWithoutPoi() {
+        return "Area{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }

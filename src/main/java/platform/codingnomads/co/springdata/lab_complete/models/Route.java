@@ -4,7 +4,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
@@ -47,13 +50,22 @@ public class Route implements Serializable {
         this.code = (origin.getCode() + "-" + destination.getCode());
     }
 
+    public void addPointOfInterest(PointOfInterest pointOfInterest) {
+        if (this.pointsOfInterest == null) {
+            this.pointsOfInterest = new ArrayList<>(Collections.singletonList(pointOfInterest));
+        } else {
+            this.pointsOfInterest.add(pointOfInterest);
+        }
+    }
+
     @Override
     public String toString() {
         return "Route{" +
                 "id=" + id +
                 ", code='" + code + '\'' +
-                ", origin=" + origin +
-                ", destination=" + destination +
+                ", origin=" + origin.toStringWithoutPoi() +
+                ", destination=" + destination.toStringWithoutPoi() +
+                ", pointsOfInterest=" + pointsOfInterest +
                 '}';
     }
 }

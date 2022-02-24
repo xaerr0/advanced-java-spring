@@ -10,5 +10,4 @@ public interface PointOfInterestRepository extends JpaRepository<PointOfInterest
     List<PointOfInterest> findAllByArea_code(String code);
 
     List<PointOfInterest> findAllDistinctByRoutes_codeContaining(String code);
-
 }

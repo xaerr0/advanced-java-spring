@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,8 +23,7 @@ public class PointOfInterest implements Serializable {
     private String type;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "area_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Area area;
 
     @ManyToMany
@@ -35,6 +35,7 @@ public class PointOfInterest implements Serializable {
         this.type = type;
         this.name = name;
         this.area = area;
+        area.addPointOfInterest(this);
     }
 
     public PointOfInterest(String type, String name, Route route) {
@@ -44,6 +45,11 @@ public class PointOfInterest implements Serializable {
     }
 
     public void addRoutes(List<Route> routes) {
+        if (routes != null) {
+            routes.forEach(r -> r.addPointOfInterest(this));
+        } else {
+            routes = new ArrayList<>();
+        }
         if (this.routes == null) {
             this.routes = routes;
         } else {
@@ -51,6 +57,7 @@ public class PointOfInterest implements Serializable {
         }
     }
 
+    // exclude area and routes to avoid circular reference
     @Override
     public String toString() {
         return "PointOfInterest{" +
