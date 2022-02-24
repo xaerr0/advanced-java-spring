@@ -1,18 +1,14 @@
 package platform.codingnomads.co.springdata.example.ddl.joincolumn;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Data
+@Getter
+@Setter
 public class User {
 
     @Id

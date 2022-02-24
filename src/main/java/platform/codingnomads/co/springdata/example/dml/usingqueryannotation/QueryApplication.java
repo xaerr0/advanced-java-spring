@@ -1,6 +1,5 @@
 package platform.codingnomads.co.springdata.example.dml.usingqueryannotation;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +23,4 @@ public class QueryApplication implements CommandLineRunner{
         plantService.getStuff();
 
     }
-
-
 }

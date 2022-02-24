@@ -3,7 +3,6 @@ package platform.codingnomads.co.ioc.examples.setterinjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class Laptop {
     private Processor processor;
@@ -18,7 +17,6 @@ public class Laptop {
     public void setOs(OS os) {
         this.os = os;
     }
-
 
     public String printLaptopConfiguration() {
         return "processor: " + processor.getCore() + " core " + processor.getName() +

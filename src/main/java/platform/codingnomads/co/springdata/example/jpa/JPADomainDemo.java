@@ -6,14 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import platform.codingnomads.co.springdata.example.jpa.domain.*;
-import platform.codingnomads.co.springdata.example.jpa.repository.CodeWarriorRepository;
-import platform.codingnomads.co.springdata.example.jpa.repository.UserDetailRepository;
-import platform.codingnomads.co.springdata.example.jpa.repository.UserRepository;
-
-import java.util.Arrays;
+import platform.codingnomads.co.springdata.example.jpa.repositories.CodeWarriorRepository;
+import platform.codingnomads.co.springdata.example.jpa.repositories.UserDetailRepository;
+import platform.codingnomads.co.springdata.example.jpa.repositories.UserRepository;
 
 @SpringBootApplication
-@EnableJpaRepositories("platform.codingnomads.co.springdata.example.jpa.repository")
+@EnableJpaRepositories("platform.codingnomads.co.springdata.example.jpa.repositories")
 @RequiredArgsConstructor
 public class JPADomainDemo implements CommandLineRunner {
     private final UserRepository userRepository;

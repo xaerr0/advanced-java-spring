@@ -7,7 +7,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "plants")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,7 +23,7 @@ public class Plant {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.ALL}, optional = false, fetch = FetchType.EAGER)
     private SoilType favoriteSoilType;
 
     private String sunType;

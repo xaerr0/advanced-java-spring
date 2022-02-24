@@ -58,5 +58,4 @@ public interface CodeWarriorRepo extends JpaRepository<CodeWarrior, Long> {
     List<CodeWarrior> findByLastNameOrderByFirstNameDesc(String lastName);
 
     CodeWarrior findByEmailAddress_EmailAddress(String emailAddress);
-
 }

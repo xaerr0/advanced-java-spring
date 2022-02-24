@@ -102,7 +102,7 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
     Page<Plant> findByNameContaining(String pattern, Pageable pageable);
 
     //search for top 5 plants that are fruit bearing and sort them based on other Plant fields
-    Page<Plant> findTop5DistinctByFruitBearingIsTrue(Sort sort);
+    Page<Plant> findTop5DistinctByFruitBearingIsTrue(Sort sort, Pageable pageable);
 
     //////////////// MULTIPLE CONDITIONS ////////////////
 

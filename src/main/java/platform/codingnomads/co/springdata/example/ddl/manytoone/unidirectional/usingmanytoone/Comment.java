@@ -1,15 +1,13 @@
 package platform.codingnomads.co.springdata.example.ddl.manytoone.unidirectional.usingmanytoone;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Comment {
 
     @Id
@@ -22,10 +20,6 @@ public class Comment {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne(
-            cascade = CascadeType.ALL,
-            optional = false
-    )
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Post post;
-
 }

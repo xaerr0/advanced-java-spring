@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import platform.codingnomads.co.springdata.lab.domain.Area;
-import platform.codingnomads.co.springdata.lab.repository.AreaRepository;
+import platform.codingnomads.co.springdata.lab.models.Area;
+import platform.codingnomads.co.springdata.lab.repositories.AreaRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,6 +22,7 @@ public class SpringDataLab implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         final List<Area> areas = areaRepository.saveAll(
                 Arrays.asList(
                         Area.builder().code("G").build(),
@@ -30,6 +31,7 @@ public class SpringDataLab implements CommandLineRunner {
                         Area.builder().code("Z").build()
                 )
         );
+
 
 
     }
