@@ -6,6 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.PUT.models.ResponseObject;
 import platform.codingnomads.co.springweb.resttemplate.PUT.models.Task;
@@ -51,9 +55,22 @@ public class putMain {
             taskToUpdate.setCompleted(true);
 
             //use put to update the resource on the server
-            restTemplate.put("http://demo.codingnomads.co:8080/tasks_api/tasks/", taskToUpdate);
-            System.out.println("The task with ID " + taskId + " was successfully updated. It should now look something like this:");
-            System.out.println(taskToUpdate);
+            restTemplate.put("http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskToUpdate.getId(), taskToUpdate);
+            //get the task to verify update
+            responseObject = restTemplate.getForObject(
+                    "http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskId, ResponseObject.class);
+            System.out.println(responseObject);
+
+            taskToUpdate.setName("updated using exchange() PUT");
+            taskToUpdate.setDescription("this task was updated using RestTemplate's exchange() method");
+
+            //create an HttpEntity wrapping the task to update
+            HttpEntity<Task> httpEntity = new HttpEntity<>(taskToUpdate);
+            //use exchange() to PUT the HttpEntity, and map the response to a ResponseEntity
+            ResponseEntity<ResponseObject> response = restTemplate.exchange(
+                    "http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskToUpdate.getId(),
+                    HttpMethod.PUT, httpEntity, ResponseObject.class);
+            System.out.println(response);
         };
     }
 }

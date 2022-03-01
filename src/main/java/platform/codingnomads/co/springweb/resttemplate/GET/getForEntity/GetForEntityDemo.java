@@ -12,13 +12,13 @@ import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.KanyeTemplate;
 
 @SpringBootApplication
-public class KanyeAPI {
+public class GetForEntityDemo {
 
     @Autowired
     RestTemplate restTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(KanyeAPI.class, args);
+        SpringApplication.run(GetForEntityDemo.class, args);
     }
 
     @Bean
@@ -29,15 +29,14 @@ public class KanyeAPI {
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
-               ResponseEntity<KanyeTemplate> responseEntity =
-                       restTemplate.getForEntity("https://api.kanye.rest", KanyeTemplate.class);
+            ResponseEntity<KanyeTemplate> responseEntity =
+                    restTemplate.getForEntity("https://api.kanye.rest", KanyeTemplate.class);
 
-            if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
+            if (responseEntity.getStatusCode().equals(HttpStatus.OK) && responseEntity.getBody() != null) {
                 KanyeTemplate kanyeTemplate = responseEntity.getBody();
                 System.out.println(kanyeTemplate.getQuote());
-            }else{
-                System.out.println("Something went wrong! The response was not marked with " +
-                        "status code 200");
+            } else {
+                System.out.println("Something went wrong! The response was not marked with status code 200");
             }
         };
     }

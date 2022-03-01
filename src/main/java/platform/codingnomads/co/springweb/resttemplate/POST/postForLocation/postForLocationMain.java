@@ -6,11 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.POST.models.ResponseObject;
 import platform.codingnomads.co.springweb.resttemplate.POST.models.Task;
 
 import java.net.URI;
+import java.util.Objects;
 
 @SpringBootApplication
 public class postForLocationMain {
@@ -37,10 +39,16 @@ public class postForLocationMain {
                     .completed(false)
                     .build();
 
+            //use postForLocation() to get the URL for the new resource
             URI returnedLocation = restTemplate
                     .postForLocation("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
 
-            System.out.println(returnedLocation.toURL());
+            System.out.println(Objects.requireNonNull(returnedLocation));
+
+            ResponseEntity<?> responseEntity = restTemplate
+                    .postForEntity("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
+
+            System.out.println(responseEntity.getHeaders().get("Location"));
         };
     }
 }
