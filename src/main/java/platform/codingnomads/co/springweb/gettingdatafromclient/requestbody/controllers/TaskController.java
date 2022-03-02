@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springweb.gettingdatafromclient.requestbody;
+package platform.codingnomads.co.springweb.gettingdatafromclient.requestbody.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import platform.codingnomads.co.springweb.gettingdatafromclient.requestbody.models.Task;
+import platform.codingnomads.co.springweb.gettingdatafromclient.requestbody.repositories.TaskRepository;
 
-import javax.annotation.Nonnull;
 import java.net.URI;
 import java.net.URISyntaxException;
 

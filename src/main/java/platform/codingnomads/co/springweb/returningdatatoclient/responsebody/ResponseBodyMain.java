@@ -9,5 +9,4 @@ public class ResponseBodyMain {
     public static void main(String[] args) {
         SpringApplication.run(ResponseBodyMain.class);
     }
-
 }

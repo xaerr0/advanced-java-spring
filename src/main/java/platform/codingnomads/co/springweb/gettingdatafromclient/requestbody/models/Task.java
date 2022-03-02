@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springweb.gettingdatafromclient.requestbody;
+package platform.codingnomads.co.springweb.gettingdatafromclient.requestbody.models;
 
 import lombok.*;
 

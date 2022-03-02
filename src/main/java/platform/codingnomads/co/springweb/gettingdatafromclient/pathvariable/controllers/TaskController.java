@@ -1,15 +1,13 @@
-package platform.codingnomads.co.springweb.gettingdatafromclient.pathvariable;
+package platform.codingnomads.co.springweb.gettingdatafromclient.pathvariable.controllers;
 
-import lombok.Builder;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import platform.codingnomads.co.springweb.gettingdatafromclient.pathvariable.models.Task;
 
-import java.time.LocalDateTime;
 import java.util.Map;
 
 @RestController
@@ -41,12 +39,3 @@ public class TaskController {
     }
 }
 
-@Builder
-@Data
-class Task {
-    private Long id;
-    private String name;
-    private Boolean completed;
-    @Builder.Default
-    private LocalDateTime createdAt = LocalDateTime.now();
-}

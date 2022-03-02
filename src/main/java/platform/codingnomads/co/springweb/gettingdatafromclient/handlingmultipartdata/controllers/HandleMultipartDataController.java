@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata;
+package platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +11,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.models.DatabaseFile;
+import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.models.FileResponse;
+import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.repositories.DatabaseFileRepository;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
