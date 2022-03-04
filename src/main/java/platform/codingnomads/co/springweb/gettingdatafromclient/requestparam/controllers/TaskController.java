@@ -40,14 +40,4 @@ public class TaskController {
                 .mapToObj(i -> Task.builder().id((long) i).name(names.get(i)).build())
                 .collect(Collectors.toList());
     }
-
-    @GetMapping(value = "/request-param-encoded", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String requestParamEncoded(@RequestParam String name) {
-        return name;
-    }
-
-    @GetMapping(value = "/path-variable-not-encoded/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String pathVariableIsNotEncoded(@PathVariable String name) {
-        return name;
-    }
 }

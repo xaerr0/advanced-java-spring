@@ -1,6 +1,5 @@
 package platform.codingnomads.co.springweb.gettingdatafromclient.requestbody.controllers;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,11 +15,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController
-@RequiredArgsConstructor
 public class TaskController {
 
     @Autowired
-    private TaskRepository taskRepository;
+    TaskRepository taskRepository;
 
     @PostMapping(value = "/api/tasks", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> createTask(@RequestBody(required = true) Task task) throws URISyntaxException {
@@ -38,10 +36,10 @@ public class TaskController {
 
     @PostMapping(value = "/print")
     public ResponseEntity<?> printMessage(@RequestBody(required = false) String message) {
+
         if (message == null) {
             message = "You did not pass in a message.";
         }
-
         System.out.println(message);
 
         if (message.equalsIgnoreCase("I'm a teapot")) {

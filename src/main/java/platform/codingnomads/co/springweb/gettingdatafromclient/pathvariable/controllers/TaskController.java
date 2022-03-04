@@ -1,11 +1,9 @@
 package platform.codingnomads.co.springweb.gettingdatafromclient.pathvariable.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import platform.codingnomads.co.springweb.gettingdatafromclient.pathvariable.models.Task;
 
 import java.util.Map;
@@ -36,6 +34,16 @@ public class TaskController {
                 .name(pathVariableMaps.get("name"))
                 .completed(Boolean.parseBoolean(pathVariableMaps.get("completed")))
                 .build();
+    }
+
+    @GetMapping(value = "/request-param-encoded", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String requestParamEncoded(@RequestParam String name) {
+        return name;
+    }
+
+    @GetMapping(value = "/path-variable-not-encoded/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String pathVariableIsNotEncoded(@PathVariable String name) {
+        return name;
     }
 }
 

@@ -3,8 +3,8 @@ package platform.codingnomads.co.springweb.wrappingup.multipartdata.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +31,12 @@ public class FileController {
     }
 
     @GetMapping("/download/{id}")
-    public ResponseEntity<Resource> downloadFileById(@PathVariable(name = "id") Long fileId) {
+    public ResponseEntity<?> downloadFileById(@PathVariable(name = "id") Long fileId) {
 
         DatabaseFile databaseFile = fileService.getFile(fileId);
 
         if (databaseFile == null) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found with id: " + fileId);
         } else {
             return ResponseEntity.ok()
                     .contentType(MediaType.parseMediaType(databaseFile.getFileType()))

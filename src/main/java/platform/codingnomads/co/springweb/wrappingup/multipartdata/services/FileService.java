@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import platform.codingnomads.co.springweb.wrappingup.multipartdata.models.DatabaseFile;
 import platform.codingnomads.co.springweb.wrappingup.multipartdata.models.FileResponse;
 import platform.codingnomads.co.springweb.wrappingup.multipartdata.repositories.DatabaseFileRepository;
@@ -33,7 +32,8 @@ public class FileService {
     }
 
     public FileResponse updateFile(Long fileId, MultipartFile multipartFile) throws IOException {
-        DatabaseFile databaseFile = fileRepository.findById(fileId).get();
+        validateMultiPartFile(multipartFile);
+        DatabaseFile databaseFile = getFile(fileId);
         databaseFile.setData(multipartFile.getBytes());
         databaseFile.setFileName(multipartFile.getOriginalFilename());
         databaseFile.setFileType(multipartFile.getContentType());
@@ -50,7 +50,9 @@ public class FileService {
     }
 
     private void validateMultiPartFile(MultipartFile multipartFile) throws IllegalStateException {
-        if (multipartFile.getOriginalFilename() == null) {
+        if (multipartFile == null) {
+            throw new IllegalStateException("No file received, try again?");
+        } else if (multipartFile.getOriginalFilename() == null) {
             throw new IllegalStateException("You must specify a file name!");
         } else if (multipartFile.isEmpty()) {
             throw new IllegalStateException("No file present!");
