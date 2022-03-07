@@ -30,50 +30,55 @@ public class CodeWarriorApplication implements CommandLineRunner {
 
         final List<EmailAddress> emailAddresses = Arrays.asList(java_ninja, java_guru, spring_guru, spring_ninja);
 
-        emailAddressRepo.saveAll(emailAddresses);
-
+        if (emailAddressRepo.findAll().isEmpty()) {
+            emailAddressRepo.saveAll(emailAddresses);
+        }
 
         final List<CodeWarrior> codeWarriors = Arrays.asList(
                 CodeWarrior.builder().firstName("Java").lastName("Ninja").emailAddress(java_ninja).active(true).age(20).build(),
-                CodeWarrior.builder().firstName("Java").lastName("Guru").emailAddress(java_guru).active(false).age(30).build(),
+                CodeWarrior.builder().firstName("Java").lastName("Guru").emailAddress(java_guru).active(false).age(50).build(),
                 CodeWarrior.builder().firstName("Spring").lastName("Guru").emailAddress(spring_guru).active(true).age(35).build(),
                 CodeWarrior.builder().firstName("Spring").lastName("Ninja").emailAddress(spring_ninja).active(true).age(22).build(),
-                CodeWarrior.builder().firstName("Spring").lastName("Ninja").emailAddress(spring_ninja).active(true).age(28).build()
-
+                CodeWarrior.builder().firstName("Spring").lastName("Ninja").emailAddress(spring_ninja).active(true).age(28).build(),
+                CodeWarrior.builder().firstName("Mr.").lastName("Java").emailAddress(spring_ninja).active(true).age(43).build()
         );
-        codeWarriorRepo.saveAll(codeWarriors);
+        if (codeWarriorRepo.findAll().isEmpty()) {
+            codeWarriorRepo.saveAll(codeWarriors);
+        }
 
         final EmailAddress emailAddress = emailAddressRepo.findByEmailAddress("java@ninja.com");
 
-        System.out.println("***********************************************************findByEmailAddressAndLastName***************************************************");
+        System.out.println("***************************************************findByEmailAddressAndLastName***************************************************");
         final CodeWarrior byEmailAddressAndLastName = codeWarriorRepo.findByEmailAddressAndLastName(emailAddress, "Ninja");
         System.out.println(byEmailAddressAndLastName);
 
 
-        System.out.println("***********************************************************findTop2ByLastName***************************************************");
+        System.out.println("***************************************************findTop2ByLastName***************************************************");
         final List<CodeWarrior> top2ByLastName = codeWarriorRepo.findTop2ByLastName("Ninja");
-        top2ByLastName.stream().forEach(System.out::println);
+        top2ByLastName.forEach(System.out::println);
 
 
-        System.out.println("***********************************************************findByLastNameIgnoreCase***************************************************");
+        System.out.println("***************************************************findByLastNameIgnoreCase***************************************************");
         final List<CodeWarrior> byLastNameIgnoreCase = codeWarriorRepo.findByLastNameIgnoreCase("gUrU");
-        byLastNameIgnoreCase.stream().forEach(System.out::println);
+        byLastNameIgnoreCase.forEach(System.out::println);
 
-        System.out.println("***********************************************************findByLastNameAndFirstNameAllIgnoreCase***************************************************");
+
+        System.out.println("***************************************************findByLastNameAndFirstNameAllIgnoreCase***************************************************");
         final List<CodeWarrior> byLastNameAndFirstNameAllIgnoreCase = codeWarriorRepo.findByLastNameAndFirstNameAllIgnoreCase("gUrU", "jAvA");
-        byLastNameAndFirstNameAllIgnoreCase.stream().forEach(System.out::println);
+        byLastNameAndFirstNameAllIgnoreCase.forEach(System.out::println);
 
-        System.out.println("***********************************************************findByLastNameOrderByFirstNameAsc***************************************************");
+
+        System.out.println("***************************************************findByLastNameOrderByFirstNameAsc***************************************************");
         final List<CodeWarrior> byLastNameOrderByFirstNameAsc = codeWarriorRepo.findByLastNameOrderByFirstNameAsc("Guru");
-        byLastNameOrderByFirstNameAsc.stream().forEach(System.out::println);
+        byLastNameOrderByFirstNameAsc.forEach(System.out::println);
 
 
-        System.out.println("***********************************************************findByLastNameOrderByFirstNameDesc***************************************************");
+        System.out.println("***************************************************findByLastNameOrderByFirstNameDesc***************************************************");
         final List<CodeWarrior> byLastNameOrderByFirstNameDesc = codeWarriorRepo.findByLastNameOrderByFirstNameDesc("java");
-        byLastNameOrderByFirstNameDesc.stream().forEach(System.out::println);
+        byLastNameOrderByFirstNameDesc.forEach(System.out::println);
 
 
-        System.out.println("***********************************************************findByEmailAddress_EmailAddress***************************************************");
+        System.out.println("***************************************************findByEmailAddress_EmailAddress***************************************************");
         final CodeWarrior byEmailAddress_emailAddress = codeWarriorRepo.findByEmailAddress_EmailAddress("java@ninja.com");
         System.out.println(byEmailAddress_emailAddress);
 

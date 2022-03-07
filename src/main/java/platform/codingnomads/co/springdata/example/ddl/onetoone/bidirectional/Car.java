@@ -1,16 +1,14 @@
 package platform.codingnomads.co.springdata.example.ddl.onetoone.bidirectional;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cars")
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class Car {
 
     @Id

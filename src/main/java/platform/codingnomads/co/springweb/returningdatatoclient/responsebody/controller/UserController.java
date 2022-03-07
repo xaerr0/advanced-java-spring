@@ -16,7 +16,7 @@ public class UserController {
             .email("dev@codingnomads.co")
             .build();
 
-    //using ResponseBody to a POJO
+    //using ResponseBody to return a POJO
     @ResponseBody
     @GetMapping("/response-body")
     public User userResponseBody() {

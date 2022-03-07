@@ -1,8 +1,6 @@
 package platform.codingnomads.co.corespring.examples.springbeanlifecycle;
 
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 
 public class BeanLifeCycleDemo {
     public static void main(String[] args) {

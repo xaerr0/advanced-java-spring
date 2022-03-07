@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import platform.codingnomads.co.springweb.returningdatatoclient.usingresponseentity.model.User;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 
 @RestController
 public class ResponseController {

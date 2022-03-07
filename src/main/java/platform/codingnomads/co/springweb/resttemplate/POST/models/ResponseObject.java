@@ -6,5 +6,5 @@ import lombok.Data;
 public class ResponseObject {
     Task data;
     Error error;
-    int statusCode;
+    String status;
 }

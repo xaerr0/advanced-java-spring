@@ -1,1 +1,0 @@
-package platform.codingnomads.co.springdata.example.querydsl;

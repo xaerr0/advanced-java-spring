@@ -1,16 +1,20 @@
 package platform.codingnomads.co.springdata.example.querydsl;
 
+import com.querydsl.jpa.impl.JPAQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.Transactional;
-import platform.codingnomads.co.springdata.example.querydsl.domain.Area;
-import platform.codingnomads.co.springdata.example.querydsl.domain.Route;
+import platform.codingnomads.co.springdata.example.querydsl.models.Area;
+import platform.codingnomads.co.springdata.example.querydsl.models.QArea;
+import platform.codingnomads.co.springdata.example.querydsl.models.Route;
+import platform.codingnomads.co.springdata.example.querydsl.models.SearchQuery;
 import platform.codingnomads.co.springdata.example.querydsl.repository.AreaRepository;
 import platform.codingnomads.co.springdata.example.querydsl.repository.RouteRepository;
 
+import javax.persistence.EntityManager;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +25,7 @@ public class QueryDSLDemo implements CommandLineRunner {
 
     private final RouteRepository routeRepository;
     private final AreaRepository areaRepository;
+    private final EntityManager entityManager;
 
     public static void main(String[] args) {
         SpringApplication.run(QueryDSLDemo.class);
@@ -60,5 +65,16 @@ public class QueryDSLDemo implements CommandLineRunner {
 
         routesByCodeAndOrigin.forEach(System.out::println);
 
+        //query the database straight-up without using repository
+        QArea qArea = QArea.area;
+        JPAQuery<?> query = new JPAQuery<>(entityManager);
+        Area area = query.select(qArea)
+                .from(qArea)
+                .where(qArea.code.eq("A"))
+                .fetchOne();
+        System.out.println(area);
+
+        routeRepository.deleteAll();
+        areaRepository.deleteAll();
     }
 }
