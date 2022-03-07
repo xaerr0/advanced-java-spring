@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.DELETE.models.ResponseObject;
 import platform.codingnomads.co.springweb.resttemplate.DELETE.models.Task;
@@ -52,10 +55,28 @@ public class deleteMain {
             }
 
             System.out.println("The task was successfully created");
+            System.out.println(newTask);
 
             //delete the newTask using the ID the server returned
             restTemplate.delete("http://demo.codingnomads.co:8080/tasks_api/tasks/" + newTask.getId());
             System.out.println("The task was also successfully deleted");
+
+            //try to GET, verify record was deleted
+            try {
+                restTemplate.getForEntity(
+                        "http://demo.codingnomads.co:8080/tasks_api/tasks/" + newTask.getId(), ResponseObject.class);
+            } catch (HttpClientErrorException e) {
+                System.out.println(e.getMessage());
+            }
+
+            //delete using exchange()
+            HttpEntity<Task> httpEntity = new HttpEntity<>(newTask);
+            try {
+                restTemplate.exchange("http://demo.codingnomads.co:8080/tasks_api/tasks/"
+                        + newTask.getId(), HttpMethod.DELETE, httpEntity, ResponseObject.class);
+            } catch (HttpClientErrorException e) {
+                System.out.println(e.getMessage());
+            }
         };
     }
 }

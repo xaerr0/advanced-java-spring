@@ -1,12 +1,10 @@
-package platform.codingnomads.co.springweb.gettingdatafromclient.requestparam;
+package platform.codingnomads.co.springweb.gettingdatafromclient.requestparam.controllers;
 
-import lombok.Builder;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import platform.codingnomads.co.springweb.gettingdatafromclient.requestparam.models.Task;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -42,25 +40,4 @@ public class TaskController {
                 .mapToObj(i -> Task.builder().id((long) i).name(names.get(i)).build())
                 .collect(Collectors.toList());
     }
-
-    @GetMapping(value = "/request-param-encoded", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String requestParamEncoded(@RequestParam String name) {
-        return name;
-    }
-
-    @GetMapping(value = "/path-variable-not-encoded/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String pathVariableIsNotEncoded(@PathVariable String name) {
-        return name;
-    }
-}
-
-@Data
-@Builder
-class Task {
-    private Long id;
-    private String name;
-    @Builder.Default
-    private Boolean completed = false;
-    @Builder.Default
-    private LocalDateTime createdAt = LocalDateTime.now();
 }

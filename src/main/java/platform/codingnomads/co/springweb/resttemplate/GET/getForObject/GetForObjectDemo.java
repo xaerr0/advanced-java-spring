@@ -10,13 +10,13 @@ import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.KanyeTemplate;
 
 @SpringBootApplication
-public class KanyeAPI {
+public class GetForObjectDemo {
 
     @Autowired
     RestTemplate restTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(KanyeAPI.class, args);
+        SpringApplication.run(GetForObjectDemo.class, args);
     }
 
     @Bean
@@ -30,6 +30,8 @@ public class KanyeAPI {
             KanyeTemplate kanyeQuote;
             kanyeQuote = restTemplate.getForObject("https://api.kanye.rest/", KanyeTemplate.class);
             System.out.println(kanyeQuote.toString());
+
+            // submit more requests here
         };
     }
 }

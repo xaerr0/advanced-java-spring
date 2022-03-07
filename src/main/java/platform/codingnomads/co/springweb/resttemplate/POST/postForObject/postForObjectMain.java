@@ -39,7 +39,7 @@ public class postForObjectMain {
                     .postForObject("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
 
             if (taskReturnedByServerAfterPost != null) {
-                System.out.println(taskReturnedByServerAfterPost.toString());
+                System.out.println(taskReturnedByServerAfterPost);
             }
         };
     }

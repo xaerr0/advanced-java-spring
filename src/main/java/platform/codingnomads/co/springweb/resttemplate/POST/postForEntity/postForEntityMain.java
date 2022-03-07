@@ -42,7 +42,7 @@ public class postForEntityMain {
             ResponseEntity<ResponseObject> responseEntity = restTemplate
                     .postForEntity("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
 
-            if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
+            if (responseEntity.getStatusCode().equals(HttpStatus.CREATED)) {
                 System.out.println(Objects.requireNonNull(responseEntity.getBody()));
             } else {
                 System.out.println(Objects.requireNonNull(responseEntity.getBody()).getError());

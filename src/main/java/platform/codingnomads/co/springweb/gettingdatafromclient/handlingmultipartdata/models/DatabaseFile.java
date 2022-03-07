@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata;
+package platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.models;
 
 import lombok.*;
 
@@ -17,12 +17,12 @@ public class DatabaseFile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private String fileName;
-    @Column
     private String fileType;
 
-    @Column
     @Lob
     private byte[] data;
+
+    @Transient
+    private String downloadUrl;
 }
