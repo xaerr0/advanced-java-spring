@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springsecurity.authentication.basicauthentication.models;
+package platform.codingnomads.co.springsecurity.authentication.usernamepassword.models;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

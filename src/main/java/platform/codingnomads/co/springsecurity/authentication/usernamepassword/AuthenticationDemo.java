@@ -1,20 +1,20 @@
-package platform.codingnomads.co.springsecurity.authentication.basicauthentication;
+package platform.codingnomads.co.springsecurity.authentication.usernamepassword;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.models.Authority;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.models.RoleEnum;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.models.UserPrincipal;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.repositories.AuthorityRepo;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.repositories.UserPrincipalRepo;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.Authority;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.RoleEnum;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.UserPrincipal;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.repositories.AuthorityRepo;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.repositories.UserPrincipalRepo;
 
 import java.util.Collections;
 
 @SpringBootApplication
-public class BasicAuthenticationDemo implements CommandLineRunner {
+public class AuthenticationDemo implements CommandLineRunner {
 
     @Autowired
     private AuthorityRepo authorityRepo;
@@ -26,7 +26,7 @@ public class BasicAuthenticationDemo implements CommandLineRunner {
     private PasswordEncoder passwordEncoder;
 
     public static void main(String[] args) {
-        SpringApplication.run(BasicAuthenticationDemo.class);
+        SpringApplication.run(AuthenticationDemo.class);
     }
 
     @Override

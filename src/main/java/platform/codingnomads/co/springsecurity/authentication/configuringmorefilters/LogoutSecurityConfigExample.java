@@ -1,9 +1,11 @@
 package platform.codingnomads.co.springsecurity.authentication.configuringmorefilters;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+//@Configuration
 @EnableWebSecurity
 public class LogoutSecurityConfigExample extends WebSecurityConfigurerAdapter {
 
@@ -28,5 +30,4 @@ public class LogoutSecurityConfigExample extends WebSecurityConfigurerAdapter {
                     //change where a user will be redirected after the logout completes
                     .logoutSuccessUrl("/signin");
     }
-
 }

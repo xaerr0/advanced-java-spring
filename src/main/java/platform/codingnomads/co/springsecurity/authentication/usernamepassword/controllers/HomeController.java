@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springsecurity.authentication.basicauthentication.controllers;
+package platform.codingnomads.co.springsecurity.authentication.usernamepassword.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

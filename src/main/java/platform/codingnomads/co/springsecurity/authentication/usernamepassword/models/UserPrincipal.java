@@ -1,12 +1,10 @@
-package platform.codingnomads.co.springsecurity.authentication.basicauthentication.models;
+package platform.codingnomads.co.springsecurity.authentication.usernamepassword.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity

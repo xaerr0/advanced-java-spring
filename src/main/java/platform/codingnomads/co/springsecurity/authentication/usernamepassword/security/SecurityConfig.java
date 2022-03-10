@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springsecurity.authentication.basicauthentication.security;
+package platform.codingnomads.co.springsecurity.authentication.usernamepassword.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,14 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.models.Authority;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.models.RoleEnum;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.models.UserPrincipal;
-import platform.codingnomads.co.springsecurity.authentication.basicauthentication.service.CustomUserDetailsService;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.Authority;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.RoleEnum;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.UserPrincipal;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.services.CustomUserDetailsService;
 
 import javax.sql.DataSource;
 import java.util.Collections;
-
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -32,7 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //start the creating process of authorization settings. This will be covered in depth in the authorization chapter.
                 .authorizeRequests()
                 //CSS should always be accessible for all clients
-                .antMatchers("/css/**").hasRole("USER")
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/").authenticated()
                 //any other request should be authenticated
@@ -59,6 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         Authority userAuth = Authority.builder().authority(RoleEnum.ROLE_USER).build();
 
+        // Low Customization
+
         auth.inMemoryAuthentication()
                 .withUser(new UserPrincipal("USER1", passwordEncoder().encode("hi"), Collections.singletonList(userAuth)))
                 .withUser(new UserPrincipal("USER2", passwordEncoder().encode("hello"), Collections.singletonList(userAuth)));
@@ -72,5 +72,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?");
 
     }
-
 }
