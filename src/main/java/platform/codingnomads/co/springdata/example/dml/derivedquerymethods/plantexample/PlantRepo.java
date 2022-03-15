@@ -21,6 +21,17 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
 
     int countByNameIs(String name);
 
+    //////////////// SIMILARITY KEYWORDS ////////////////
+
+    //find all plants with names starting with namePrefix
+    List<Plant> findByNameStartingWith(String namePrefix);
+
+    //find all plants with names ending in nameSuffix
+    List<Plant> findByNameEndingWith(String nameSuffix);
+
+    //find all plants with names containing pattern
+    List<Plant> findByNameContaining(String pattern);
+
     //////////////// EQUALITY KEYWORDS ////////////////
 
     //Using Is vs. findByName(String name)
@@ -39,18 +50,7 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
     List<Plant> findByFruitBearingIsTrue();
     List<Plant> findByFruitBearingIsFalse();
 
-    //////////////// SIMILARITY KEYWORDS ////////////////
-
-    //find all plants with names starting with namePrefix
-    List<Plant> findByNameStartingWith(String namePrefix);
-
-    //find all plants with names ending in nameSuffix
-    List<Plant> findByNameEndingWith(String nameSuffix);
-
-    //find all plants with names containing pattern
-    List<Plant> findByNameContaining(String pattern);
-
-    //////////////// EQUALITY KEYWORDS ////////////////
+    //////////////// MORE EQUALITY KEYWORDS ////////////////
 
     List<Plant> findByNumDaysTillRipeFruitLessThan(int numDays);
 
@@ -101,12 +101,10 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
     //search plant names containing a pattern on a page by page basis
     Page<Plant> findByNameContaining(String pattern, Pageable pageable);
 
-    //search for top 5 plants that are fruit bearing and sort them based on other Plant fields
-    Page<Plant> findTop5DistinctByFruitBearingIsTrue(Sort sort, Pageable pageable);
-
     //////////////// MULTIPLE CONDITIONS ////////////////
 
     List<Plant> findByNameContainingAndFavoriteSoilType_Name(String partialPlantName, String soilTypeName);
 
     List<Plant> findByFruitBearingAndFavoriteSoilType_dry(boolean fruitBearing, boolean drySoil);
+
 }

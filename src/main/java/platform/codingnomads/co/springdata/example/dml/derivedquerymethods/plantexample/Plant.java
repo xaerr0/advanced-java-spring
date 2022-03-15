@@ -10,6 +10,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 public class Plant {
 
     @Id
@@ -19,7 +22,7 @@ public class Plant {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private SoilType favoriteSoilType;
 
     private String sunType;
@@ -32,7 +35,7 @@ public class Plant {
     @PrePersist
     @PreUpdate
     private void checkForIllegalState() {
-        if(!fruitBearing || !Objects.isNull(numDaysTillRipeFruit)) {
+        if(!fruitBearing && !Objects.isNull(numDaysTillRipeFruit)) {
             throw new IllegalStateException("If the plant is not fruit bearing you cannot set numDaysTillRipeFruit");
         }
     }
