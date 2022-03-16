@@ -1,4 +1,4 @@
-package platform.codingnomads.co.aspectorientedprogramming.aop.domain;
+package platform.codingnomads.co.aspectorientedprogramming.aop.model;
 
 import lombok.*;
 

@@ -13,6 +13,7 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class LoggingAspect {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
     @Before("executeLogging()")
