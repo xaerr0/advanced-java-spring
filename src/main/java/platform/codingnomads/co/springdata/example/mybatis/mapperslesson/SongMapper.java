@@ -25,6 +25,11 @@ public interface SongMapper {
 
     @Select("SELECT * " +
             "FROM mybatis.songs " +
+            "WHERE song_length > #{param1}")
+    ArrayList<Song> getSongsWithLengthGreaterThan(int song_length);
+
+    @Select("SELECT * " +
+            "FROM mybatis.songs " +
             "WHERE artist_name = #{param1} AND album_name = #{param2};")
     ArrayList<Song> getSongsByAlbumAndArtist(String artistName, String albumName);
 

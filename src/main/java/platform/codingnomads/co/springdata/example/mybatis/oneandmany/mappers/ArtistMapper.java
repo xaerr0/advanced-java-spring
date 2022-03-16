@@ -26,5 +26,8 @@ public interface ArtistMapper {
                     )
             )
     })
-    Artist getArtistById(Long id);
+    Artist getArtistByIdWithSongs(Long id);
+
+    @Select("SELECT * FROM mybatis.artists WHERE id = #{param1};")
+    Artist getArtistByIdWithoutSongs(Long id);
 }

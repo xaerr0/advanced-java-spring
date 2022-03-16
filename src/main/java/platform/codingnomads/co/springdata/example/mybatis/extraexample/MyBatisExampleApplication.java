@@ -12,6 +12,17 @@ import platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.
 @SpringBootApplication
 public class MyBatisExampleApplication implements CommandLineRunner {
 
+    /* Before running this app, be sure to:
+
+        * create a new empty schema in the mysql database named "mybatis"
+
+        * execute the SQL found "database_structure.sql" on the mybatis schema
+
+        * update the "spring.datasource.url" property in your application.properties file to
+          jdbc:mysql://localhost:3306/mybatis?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+
+     */
+
     @Autowired
     ImageMapper imageMapper;
 

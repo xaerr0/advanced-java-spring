@@ -15,6 +15,17 @@ import java.util.Collections;
 @SpringBootApplication
 public class OneAndManyApplication {
 
+    /* Before running this app, be sure to:
+
+        * create a new empty schema in the mysql database named "mybatis"
+
+        * execute the SQL found "mybatis_tables.sql" on the mybatis schema
+
+        * update the "spring.datasource.url" property in your application.properties file to
+          jdbc:mysql://localhost:3306/mybatis?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+
+     */
+
     public static void main(String[] args) {
         SpringApplication.run(OneAndManyApplication.class, args);
     }
@@ -55,7 +66,7 @@ public class OneAndManyApplication {
             Song song3 = songMapper.getSongById(1L);
             System.out.println(song3.toString());
 
-            Artist artist3 = artistMapper.getArtistById(1L);
+            Artist artist3 = artistMapper.getArtistByIdWithSongs(1L);
             System.out.println(artist3.toString());
             System.out.println(artist3.getSongs());
         };

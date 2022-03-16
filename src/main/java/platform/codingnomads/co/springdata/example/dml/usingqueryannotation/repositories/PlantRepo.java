@@ -38,7 +38,7 @@ public interface PlantRepo extends JpaRepository<Plant, Long> {
     //////////////// VARIABLE SQL AND JPQL ////////////////
 
     @Query("SELECT p FROM Plant p WHERE id = ?1")
-    Plant getPlantById(Long id);
+    Plant getPlantById(Long id, int a, int b);
 
     @Query("SELECT p FROM Plant p WHERE name = ?1")
     Plant getPlantByName(String plantName);

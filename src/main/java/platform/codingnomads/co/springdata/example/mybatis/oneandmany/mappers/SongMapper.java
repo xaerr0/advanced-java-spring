@@ -30,7 +30,7 @@ public interface SongMapper {
                             column = "artist_id",
                             javaType = Artist.class,
                             one = @One(
-                                    select = "platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers.ArtistMapper.getArtistById",
+                                    select = "platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers.ArtistMapper.getArtistByIdWithoutSongs",
                                     fetchType = FetchType.LAZY
                             )
                     )
