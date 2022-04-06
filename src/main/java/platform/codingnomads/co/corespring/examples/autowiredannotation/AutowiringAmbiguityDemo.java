@@ -23,5 +23,4 @@ public class AutowiringAmbiguityDemo {
             System.out.println(desktopComputer);
         };
     }
-
 }

@@ -1,6 +1,5 @@
-package platform.codingnomads.co.cachingwithspring.demo.domain;
+package platform.codingnomads.co.cachingwithspring.demo.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

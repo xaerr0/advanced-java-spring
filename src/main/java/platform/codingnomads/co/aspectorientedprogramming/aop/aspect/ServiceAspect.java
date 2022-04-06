@@ -21,7 +21,6 @@ public class ServiceAspect {
         LOGGER.info("Before Advice : " + joinPoint.getSignature().getName());
     }
 
-
     @Before("execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.fetchAllStudents())")
     public void logFetchAllStudentMethod(JoinPoint joinPoint) {
         // write any custom logic according to business requirement
