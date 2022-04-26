@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+import platform.codingnomads.co.springweb.resttemplate.GET.getForObject.video_demo.CodingNomadsTasksApiResponse;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.KanyeTemplate;
 
 @SpringBootApplication
@@ -27,11 +28,17 @@ public class GetForObjectDemo {
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
-            KanyeTemplate kanyeQuote;
-            kanyeQuote = restTemplate.getForObject("https://api.kanye.rest/", KanyeTemplate.class);
+            KanyeTemplate kanyeQuote = restTemplate.getForObject("https://api.kanye.rest/", KanyeTemplate.class);
             System.out.println(kanyeQuote.toString());
 
             // submit more requests here
+            
+//            CodingNomadsTasksApiResponse response =
+//                    restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users/5",
+//                            CodingNomadsTasksApiResponse.class);
+//
+//            System.out.println(response.toString());
+
         };
     }
 }
