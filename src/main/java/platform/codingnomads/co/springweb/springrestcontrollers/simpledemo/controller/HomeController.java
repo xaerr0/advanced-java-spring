@@ -9,19 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
-    String get() {
-        return "Hello from get";
-    }
+    String get() { return "Hello from get"; }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    String delete() {
-        return "Hello from delete";
-    }
+    String delete() { return "Hello from delete"; }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    String post() {
-//        return "Hello from post";
-//    }
+    @RequestMapping(method = RequestMethod.POST)
+    String post() { return "Hello from post"; }
 
     @RequestMapping(method = RequestMethod.PUT)
     String put() {

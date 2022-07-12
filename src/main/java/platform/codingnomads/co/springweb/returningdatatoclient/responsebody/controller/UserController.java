@@ -3,6 +3,7 @@ package platform.codingnomads.co.springweb.returningdatatoclient.responsebody.co
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import platform.codingnomads.co.springweb.returningdatatoclient.responsebody.model.User;
@@ -29,9 +30,10 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    //returning a POJO without ResponseBody or using a ResponseEntity
+    //returning a POJO without ResponseBody or using a ResponseEntity - error expected
     @GetMapping("/user")
     public User user() {
         return user;
     }
+
 }

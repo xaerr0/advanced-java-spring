@@ -29,7 +29,7 @@ public class postForObjectMain {
     public CommandLineRunner run() throws Exception {
         return args -> {
             Task newTask = Task.builder()
-                    .name("learn how to use postForObject()")
+                    .name("learn how to use postForObject() - video demo")
                     .description("get comfortable using the RestTemplate postForObject() method")
                     .userId(5)
                     .completed(false)
@@ -39,7 +39,7 @@ public class postForObjectMain {
                     .postForObject("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
 
             if (taskReturnedByServerAfterPost != null) {
-                System.out.println(taskReturnedByServerAfterPost);
+                System.out.println(taskReturnedByServerAfterPost.toString());
             }
         };
     }

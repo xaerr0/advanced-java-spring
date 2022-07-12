@@ -50,19 +50,19 @@ public class putMain {
             }
 
             //update the task information
-            taskToUpdate.setName("updated using put()");
-            taskToUpdate.setDescription("this task was updated using RestTemplate's put() method");
-            taskToUpdate.setCompleted(true);
+            taskToUpdate.setName("updated using put() - video demo ");
+            taskToUpdate.setDescription("this task was updated using RestTemplate's put() method - video demo");
+            taskToUpdate.setCompleted(false);
 
             //use put to update the resource on the server
             restTemplate.put("http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskToUpdate.getId(), taskToUpdate);
             //get the task to verify update
             responseObject = restTemplate.getForObject(
                     "http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskId, ResponseObject.class);
-            System.out.println(responseObject);
+            System.out.println(responseObject.toString());
 
-            taskToUpdate.setName("updated using exchange() PUT");
-            taskToUpdate.setDescription("this task was updated using RestTemplate's exchange() method");
+            taskToUpdate.setName("updated using exchange() PUT - video demo 2");
+            taskToUpdate.setDescription("this task was updated using RestTemplate's exchange() method - video demo 2");
 
             //create an HttpEntity wrapping the task to update
             HttpEntity<Task> httpEntity = new HttpEntity<>(taskToUpdate);
@@ -70,7 +70,7 @@ public class putMain {
             ResponseEntity<ResponseObject> response = restTemplate.exchange(
                     "http://demo.codingnomads.co:8080/tasks_api/tasks/" + taskToUpdate.getId(),
                     HttpMethod.PUT, httpEntity, ResponseObject.class);
-            System.out.println(response);
+            System.out.println(response.toString());
         };
     }
 }

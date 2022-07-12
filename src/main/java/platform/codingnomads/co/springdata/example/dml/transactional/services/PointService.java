@@ -25,6 +25,11 @@ public class PointService {
 
         p = new Point(2,2);
         repo.save(p);
+
+        /*
+            In order to call the foo() method - we must have an existing transaction (MANDATORY)
+         */
+        foo();
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
@@ -56,7 +61,7 @@ public class PointService {
         repo.save(p);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Point getPointById(Long id) {
         return repo.getOne(id);
     }
