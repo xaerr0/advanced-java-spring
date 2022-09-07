@@ -14,7 +14,10 @@ import java.util.Map;
 public class TaskController {
 
     @GetMapping(value = "/{id}/{name}/{completed}")
-    public Task getTask(@PathVariable(name = "id") Long id, @PathVariable(name = "name") String name, @PathVariable(name = "completed") Boolean completed) {
+    public Task getTask(@PathVariable(name = "id") Long id,
+                        @PathVariable(name = "name") String name,
+                        @PathVariable(name = "completed") Boolean completed) {
+
         return Task.builder().id(id).name(name).completed(completed).build();
     }
 

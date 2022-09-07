@@ -20,12 +20,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/images")
 public class HandleMultipartDataController {
 
     @Autowired
     DatabaseFileRepository fileRepository;
 
-    @PostMapping("/uploadSingleFile")
+    //@PostMapping("/uploadSingleFile")
+    @PostMapping()
     public ResponseEntity<?> uploadFile(@RequestBody MultipartFile file) {
 
         String fileName;
@@ -50,7 +52,7 @@ public class HandleMultipartDataController {
 
             // create the download URI
             savedFile.setDownloadUrl(ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/download/")
+                    .path("/images/")
                     .path(String.valueOf(savedFile.getId()))
                     .toUriString());
 
@@ -69,7 +71,8 @@ public class HandleMultipartDataController {
         }
     }
 
-    @GetMapping("/download/{id}")
+    //@GetMapping("/download/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> downloadFileById(@PathVariable(name = "id") Long fileId) {
 
         final Optional<DatabaseFile> optional = fileRepository.findById(fileId);
@@ -92,7 +95,8 @@ public class HandleMultipartDataController {
                 .body(new ByteArrayResource(databaseFile.getData()));
     }
 
-    @PutMapping("/uploadSingleFile/{id}")
+    //@PutMapping("/uploadSingleFile/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateFileById(@PathVariable(name = "id") Long fileId, @RequestBody MultipartFile file) {
 
         final Optional<DatabaseFile> optional = fileRepository.findById(fileId);
@@ -132,7 +136,8 @@ public class HandleMultipartDataController {
                 .build());
     }
 
-    @DeleteMapping("/deleteFile/{id}")
+    //@DeleteMapping("/deleteFile/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteFileById(@PathVariable("id") Long fileId) {
         final Optional<DatabaseFile> optional = fileRepository.findById(fileId);
 

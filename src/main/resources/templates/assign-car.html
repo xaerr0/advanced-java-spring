@@ -22,7 +22,7 @@
                 <td>Assign Car:
                 <select class="form-select" th:name="carId">
                     <option th:if="${carList.isEmpty()}">None Available</option>
-                    <option th:each="car, carStat : ${carList}" th:value="${car.id}" th:text="${car.toString()}"></option>
+                    <option th:each="car : ${carList}" th:value="${car.id}" th:text="${car.toString()}"></option>
                 </select></td>
             </tr>
             <tr>

@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,8 +21,8 @@ public class Customer {
     private Integer age;
     private String address;
 
-    @OneToOne(mappedBy = "customer")
-    @JoinColumn(name = "car_id")
-    private RentalCar car;
+//    @OneToOne(mappedBy = "customer")
+//    @JoinColumn(name = "car_id")
+//    private RentalCar car;
 
 }

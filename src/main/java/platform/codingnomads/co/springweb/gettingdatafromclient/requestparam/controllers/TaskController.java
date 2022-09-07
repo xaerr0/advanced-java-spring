@@ -26,7 +26,11 @@ public class TaskController {
 
     @GetMapping(value = "/request-param-optional", produces = MediaType.APPLICATION_JSON_VALUE)
     public Task getTaskWithOptionalRequestPram(@RequestParam(name = "id", required = false) Long taskId) {
-        return Task.builder().name("Task One").build();
+        if (taskId != null){
+            return Task.builder().id(taskId).name("Task One").build();
+        }
+        else
+            return Task.builder().name("Task One").build();
     }
 
     @GetMapping(value = "/default-request-param-value", produces = MediaType.APPLICATION_JSON_VALUE)

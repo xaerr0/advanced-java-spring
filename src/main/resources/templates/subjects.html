@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application</title>
+</head>
+<body>
+<h1>Creating a table using Thymeleaf</h1>
+
+<table border="1">
+    <tr th:each="subject: ${subjects}">
+        <td th:text="${subject.name}" />
+        <td th:text="${subject.category}" />
+        <td>
+            <span th:if="${subject.name} == 'Java'" th:text="Java" />
+            <span th:unless="${subject.name} == 'Java'" th:text="Other" />
+
+        </td>
+    </tr>
+</table>
+
+<h1>Creating a list using Thymeleaf</h1>
+
+<ul>
+    <li th:each="subject : ${subjects}"
+        th:text=${subject.name}>
+    </li>
+</ul>
+
+</body>
+</html>
