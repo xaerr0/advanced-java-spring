@@ -4,14 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import platform.codingnomads.co.aspectorientedprogramming.aop.domain.Student;
+import platform.codingnomads.co.aspectorientedprogramming.aop.model.Student;
 import platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService;
 
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 @RequiredArgsConstructor
 public class AOPDemo implements CommandLineRunner {
+
     private final StudentService studentService;
 
     public static void main(String[] args) {

@@ -27,9 +27,9 @@ public class UserController {
     public ResponseEntity<?> createNewUser(@RequestBody CustomUserDetails userDetails) {
         try {
             return ResponseEntity.ok(userDetailService.createNewUser(userDetails));
-        }catch (IllegalStateException e) {
+        } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
-        }catch (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.status(500).body(e.getMessage());
         }
     }

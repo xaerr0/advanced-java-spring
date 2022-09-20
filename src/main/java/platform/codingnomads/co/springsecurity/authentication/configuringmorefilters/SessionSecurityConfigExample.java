@@ -1,9 +1,11 @@
 package platform.codingnomads.co.springsecurity.authentication.configuringmorefilters;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+//@Configuration
 @EnableWebSecurity
 public class SessionSecurityConfigExample extends WebSecurityConfigurerAdapter {
 
@@ -25,7 +27,5 @@ public class SessionSecurityConfigExample extends WebSecurityConfigurerAdapter {
                     .maximumSessions(3)
                     .maxSessionsPreventsLogin(true)
                     .expiredUrl("/signin?expired");
-
     }
-
 }

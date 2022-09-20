@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class ServiceAspect {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAspect.class);
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAspect.class);
 
     @Pointcut(value = "execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.*(..))")
     private void logAllStudentServiceMethods() {
@@ -20,7 +20,6 @@ public class ServiceAspect {
     public void logBeforeAdvice(JoinPoint joinPoint) {
         LOGGER.info("Before Advice : " + joinPoint.getSignature().getName());
     }
-
 
     @Before("execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.fetchAllStudents())")
     public void logFetchAllStudentMethod(JoinPoint joinPoint) {
