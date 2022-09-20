@@ -1,6 +1,6 @@
 package platform.codingnomads.co.springdata.example.ddl.manytomany.jointableexample;
 
-import lombok.*;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.Set;

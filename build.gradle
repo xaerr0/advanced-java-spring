@@ -44,6 +44,7 @@ dependencies {
 //    implementation 'org.springframework.security:spring-security-oauth2-jose'
 //    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.28.Final'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.projectlombok:lombok:1.18.22'
 
     runtimeOnly 'mysql:mysql-connector-java'
 
