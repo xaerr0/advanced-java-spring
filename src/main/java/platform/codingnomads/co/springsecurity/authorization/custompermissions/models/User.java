@@ -10,11 +10,12 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "custom_perm_users")
 @NoArgsConstructor
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)

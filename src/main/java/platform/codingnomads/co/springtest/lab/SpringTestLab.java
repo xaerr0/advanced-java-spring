@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import platform.codingnomads.co.springtest.lab.entity.Movie;
 import platform.codingnomads.co.springtest.lab.repository.MovieRepository;
 
-import javax.annotation.Nonnull;
 import java.util.Arrays;
 
 @SpringBootApplication

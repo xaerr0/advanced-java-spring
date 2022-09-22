@@ -2,7 +2,6 @@ package platform.codingnomads.co.springsecurity.authorization.addingauthorizatio
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/current-user")
-    public UserMeta getUser(@CurrentSecurityContext Authentication authentication) {
+    public UserMeta getUser(Authentication authentication) {
         UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
         return principal.getUserMeta();
     }
