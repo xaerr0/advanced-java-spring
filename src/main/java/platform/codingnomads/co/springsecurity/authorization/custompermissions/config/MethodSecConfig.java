@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 
 @Configuration
-//enable method security and make sure pre and post-authorization is enabled
+//enable method security and make sure pre, and post-authorization is enabled
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MethodSecConfig extends GlobalMethodSecurityConfiguration {
 

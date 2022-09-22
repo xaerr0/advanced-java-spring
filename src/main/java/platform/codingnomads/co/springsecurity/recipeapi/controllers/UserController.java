@@ -19,7 +19,7 @@ public class UserController {
     CustomUserDetailService userDetailService;
 
     @GetMapping("/current-user")
-    public CustomUserDetails getUser(@CurrentSecurityContext Authentication authentication) {
+    public CustomUserDetails getUser(Authentication authentication) {
         return (CustomUserDetails) authentication.getPrincipal();
     }
 

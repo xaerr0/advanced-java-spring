@@ -1,31 +1,34 @@
 package platform.codingnomads.co.springsecurity.authentication.configuringmorefilters;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.SecurityFilterChain;
 
+//@Configuration is normally required for your SecurityFilterChain to be registered
+//it is commented out here only so it does not interfere with other example packages
 //@Configuration
 @EnableWebSecurity
-public class SessionSecurityConfigExample extends WebSecurityConfigurerAdapter {
+public class SessionSecurityConfigExample {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                //start an oath2 login system
-                .oauth2Login()
-                    //change the success URL to /homepage
-                    .defaultSuccessUrl("/homepage")
-                    //change the location of the login page and indicate you will be providing your own page
-                    .loginPage("/signin")
-                    //call and() to finish formLogin() customizations and get back to the methods available under http
-                .and()
+                //start an oath2 login system and:
+                //change the success URL to /homepage
+                //change the location of the login page and indicate you will be providing your own page
+                .oauth2Login(oauth -> oauth
+                        .defaultSuccessUrl("/homepage")
+                        .loginPage("/signin"))
+                //indicate you are going to change the Session filters and:
+                //set the maximum allowed sessions to 3
+                //prevent a new login if the maximum number of sessions for a user has been reached
+                //forward requests made using an expired JSESSIONID to /signin?expired
+                .sessionManagement(session -> session
+                        .maximumSessions(3)
+                        .maxSessionsPreventsLogin(true)
+                        .expiredUrl("/signin?expired"));
 
-                .sessionManagement()
-                    .maximumSessions(3)
-                    .maxSessionsPreventsLogin(true)
-                    .expiredUrl("/signin?expired");
+        return http.build();
     }
 }
