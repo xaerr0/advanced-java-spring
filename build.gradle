@@ -1,6 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.7.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.7.3'
+    id "io.spring.dependency-management" version "1.0.13.RELEASE"
+//    id 'org.springframework.boot' version '2.2.7.RELEASE'
+//    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
     id 'java-library'
     id 'idea'
@@ -37,14 +39,14 @@ dependencies {
     implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.0'
     implementation group: 'org.webjars', name: 'jquery', version: '3.2.1'
     implementation group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.0.5'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 
     implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.security:spring-security-oauth2-client'
 //    implementation 'org.springframework.security:spring-security-oauth2-jose'
 //    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.28.Final'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.24'
 
     runtimeOnly 'mysql:mysql-connector-java'
 
@@ -57,8 +59,8 @@ dependencies {
 
     //QueryDSL
     annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
-    annotationProcessor("com.querydsl:querydsl-apt:4.2.1:jpa")
-    implementation("com.querydsl:querydsl-jpa:4.2.1")
+    annotationProcessor('com.querydsl:querydsl-apt:5.0.0:jpa')
+    implementation('com.querydsl:querydsl-jpa:5.0.0')
 
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -67,7 +69,7 @@ dependencies {
 }
 
 wrapper {
-    gradleVersion = '6.3'
+    gradleVersion = '7.5.1'
     distributionType = Wrapper.DistributionType.ALL
 }
 
