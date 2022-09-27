@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ToString
 public class DesktopComputer {
+
     @Autowired
     @Qualifier("radeon")
     private VideoCard videoCard;

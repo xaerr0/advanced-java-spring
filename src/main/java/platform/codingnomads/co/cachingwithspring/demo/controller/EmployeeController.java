@@ -5,10 +5,9 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import platform.codingnomads.co.cachingwithspring.demo.domain.Employee;
+import platform.codingnomads.co.cachingwithspring.demo.model.Employee;
 import platform.codingnomads.co.cachingwithspring.demo.service.EmployeeService;
 
 import java.util.List;

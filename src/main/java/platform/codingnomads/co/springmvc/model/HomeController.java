@@ -27,8 +27,10 @@ public class HomeController {
         Map<String, String> map = new HashMap<>();
         map.put("name", "Developer");
         map.put("language", "Java");
-        map.put("framework", "Spring");
         model.mergeAttributes(map);
+
+        model.addAttribute("framework", "Spring");
+
         return "model-page";
     }
 

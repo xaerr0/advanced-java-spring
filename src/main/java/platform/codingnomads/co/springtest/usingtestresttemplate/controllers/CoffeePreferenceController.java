@@ -20,8 +20,8 @@ public class CoffeePreferenceController {
     public ResponseEntity<?> postNewCoffeePreference(@RequestBody CoffeePreference coffeePreference) {
         try {
             CoffeePreference preference = service.insertNewCoffeePreference(coffeePreference);
-            return ResponseEntity.ok().header("Location","http://www.url.com/new/location").body(preference);
-        }catch (Exception e) {
+            return ResponseEntity.ok().header("Location", "http://www.url.com/new/location").body(preference);
+        } catch (Exception e) {
             return ResponseEntity.status(500).body(new Exception(e.getMessage()));
         }
     }

@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ConfigurationDemo {
+
     private static ApplicationContext applicationContext;
 
     public static void main(String[] args) {

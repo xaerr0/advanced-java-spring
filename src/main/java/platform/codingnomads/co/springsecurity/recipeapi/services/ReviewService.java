@@ -24,7 +24,7 @@ public class ReviewService {
     public Review getReviewById(Long id) throws NoSuchReviewException {
         Optional<Review> review = reviewRepo.findById(id);
 
-        if(review.isEmpty()) {
+        if (review.isEmpty()) {
             throw new NoSuchReviewException("The review with ID " + id + " could not be found");
         }
 
@@ -36,7 +36,7 @@ public class ReviewService {
 
         ArrayList<Review> reviews = new ArrayList<>(recipe.getReviews());
 
-        if(reviews.isEmpty()) {
+        if (reviews.isEmpty()) {
             throw new NoSuchReviewException("There are no reviews for this recipe");
         }
 
@@ -46,7 +46,7 @@ public class ReviewService {
     public ArrayList<Review> getReviewByUsername(String username) throws NoSuchReviewException {
         ArrayList<Review> reviews = reviewRepo.findByUser_Username(username);
 
-        if(reviews.isEmpty()) {
+        if (reviews.isEmpty()) {
             throw new NoSuchReviewException("No reviews could be found for username " + username);
         }
 
@@ -63,7 +63,7 @@ public class ReviewService {
     public Review deleteReviewById(Long id) throws NoSuchReviewException {
         Review review = getReviewById(id);
 
-        if(null == review) {
+        if (null == review) {
             throw new NoSuchReviewException("The review you are trying to delete does not exist");
         }
 
@@ -74,7 +74,7 @@ public class ReviewService {
     public Review updateReviewById(Review reviewToUpdate) throws NoSuchReviewException {
         try {
             Review review = getReviewById(reviewToUpdate.getId());
-        }catch (NoSuchReviewException e) {
+        } catch (NoSuchReviewException e) {
             throw new NoSuchReviewException("The review you are trying to update. Maybe you meant to create one? If not," +
                     "Please double check the ID you passed in");
         }

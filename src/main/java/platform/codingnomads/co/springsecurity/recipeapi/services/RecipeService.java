@@ -21,7 +21,7 @@ public class RecipeService {
 
     @Transactional
     public Recipe createNewRecipe(Recipe recipe) throws IllegalStateException {
-        CustomUserDetails userDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        CustomUserDetails userDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recipe.setUser(userDetails);
         recipe.validate();
         recipe = recipeRepo.save(recipe);
@@ -32,7 +32,7 @@ public class RecipeService {
     public Recipe getRecipeById(Long id) throws NoSuchRecipeException {
         Optional<Recipe> recipeOptional = recipeRepo.findById(id);
 
-        if(recipeOptional.isEmpty()) {
+        if (recipeOptional.isEmpty()) {
             throw new NoSuchRecipeException("No recipe with ID " + id + " could be found");
         }
 
@@ -44,11 +44,11 @@ public class RecipeService {
     public ArrayList<Recipe> getRecipesByName(String name) throws NoSuchRecipeException {
         ArrayList<Recipe> matchingRecipes = recipeRepo.findByNameContaining(name);
 
-        if(matchingRecipes.isEmpty()) {
+        if (matchingRecipes.isEmpty()) {
             throw new NoSuchRecipeException("No recipes could be found with that name");
         }
 
-        for(Recipe r: matchingRecipes) {
+        for (Recipe r : matchingRecipes) {
             r.generateLocationURI();
         }
 
@@ -56,13 +56,13 @@ public class RecipeService {
     }
 
     public ArrayList<Recipe> getAllRecipes() throws NoSuchRecipeException {
-       ArrayList<Recipe> recipes = new ArrayList<>(recipeRepo.findAll());
+        ArrayList<Recipe> recipes = new ArrayList<>(recipeRepo.findAll());
 
-       if(recipes.isEmpty()) {
-           throw new NoSuchRecipeException("There are no recipes yet :( feel free to add one though");
-       }
+        if (recipes.isEmpty()) {
+            throw new NoSuchRecipeException("There are no recipes yet :( feel free to add one though");
+        }
 
-       return recipes;
+        return recipes;
     }
 
     @Transactional
@@ -75,7 +75,7 @@ public class RecipeService {
     @Transactional
     public Recipe updateRecipe(Recipe recipe, boolean forceIdCheck) throws NoSuchRecipeException {
         try {
-            if(forceIdCheck) {
+            if (forceIdCheck) {
                 Recipe r = getRecipeById(recipe.getId());
                 //make sure author never changes from original
                 recipe.setUser(r.getUser());
@@ -85,7 +85,7 @@ public class RecipeService {
             Recipe savedRecipe = recipeRepo.save(recipe);
             savedRecipe.generateLocationURI();
             return savedRecipe;
-        }catch (NoSuchRecipeException e) {
+        } catch (NoSuchRecipeException e) {
             throw new NoSuchRecipeException("The recipe you passed in did not have an ID found in the database." +
                     " Double check that it is correct. Or maybe you meant to POST a recipe not PATCH one");
         }
