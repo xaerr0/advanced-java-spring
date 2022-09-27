@@ -1,5 +1,6 @@
 *.DS_Store
 .DS_Store
+src/main/.DS_Store
 HELP.md
 .gradle
 build/

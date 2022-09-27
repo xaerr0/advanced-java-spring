@@ -1,4 +1,4 @@
-package platform.codingnomads.co;
+package platform.codingnomads.co.springtest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;

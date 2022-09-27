@@ -1,4 +1,4 @@
-package platform.codingnomads.co.mockingmethods.services;
+package platform.codingnomads.co.springtest.mockingmethods.services;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import platform.codingnomads.co.springtest.mockingmethods.models.Ingredient;
 import platform.codingnomads.co.springtest.mockingmethods.models.Recipe;
 import platform.codingnomads.co.springtest.mockingmethods.models.Step;
 import platform.codingnomads.co.springtest.mockingmethods.repositories.RecipeRepo;
-import platform.codingnomads.co.springtest.mockingmethods.services.RecipeService;
 
 import java.util.*;
 
@@ -32,21 +31,27 @@ public class RecipeServiceUnitTest {
 
     @Test
     public void testGetRecipeByIdSuccessBehavior() throws Exception {
-        Recipe pickleRick = Recipe.builder()
+        Recipe pasta = Recipe.builder()
                 .id(1L)
-                .name("Make a Pickle Rick")
+                .name("Make a pasta")
                 .difficultyRating(1)
                 .minutesToMake(5)
                 .ingredients(Set.of(
-                        Ingredient.builder().amount("1").name("pickle").build(),
-                        Ingredient.builder().amount("1").name("Rick Sanchez").build())
+                        Ingredient.builder().amount("1").name("pasta").build(),
+                        Ingredient.builder().amount("1").name("pasta sauce").build())
                 )
-                .steps(Set.of(Step.builder().description("I'm Pickle Rick").stepNumber(1).build()))
+                .steps(Set.of(Step.builder()
+                        .description("Boil water").stepNumber(1)
+                        .description("Add and cook pasta").stepNumber(2)
+                        .description("Drain water from pasta").stepNumber(3)
+                        .description("Add sauce").stepNumber(4)
+                        .description("Enjoy!")
+                        .build()))
                 .build();
 
-        when(recipeRepo.findById(anyLong())).thenReturn(Optional.of(pickleRick));
+        when(recipeRepo.findById(anyLong())).thenReturn(Optional.of(pasta));
 
-        assertThat(recipeService.getRecipeById(1L)).isEqualTo(pickleRick);
+        assertThat(recipeService.getRecipeById(1L)).isEqualTo(pasta);
     }
 
     @Test
@@ -102,24 +107,30 @@ public class RecipeServiceUnitTest {
     @Test
     public void testGetAllRecipesSuccessBehavior() throws Exception {
 
-        Recipe recipe = Recipe.builder()
+        Recipe pasta = Recipe.builder()
                 .id(1L)
-                .name("Make a Pickle Rick")
+                .name("Make a pasta")
                 .difficultyRating(1)
                 .minutesToMake(5)
                 .ingredients(Set.of(
-                        Ingredient.builder().amount("1").name("pickle").build(),
-                        Ingredient.builder().amount("1").name("Rick Sanchez").build())
+                        Ingredient.builder().amount("1").name("pasta").build(),
+                        Ingredient.builder().amount("1").name("pasta sauce").build())
                 )
-                .steps(Set.of(Step.builder().description("I'm Pickle Rick").stepNumber(1).build()))
+                .steps(Set.of(Step.builder()
+                        .description("Boil water").stepNumber(1)
+                        .description("Add and cook pasta").stepNumber(2)
+                        .description("Drain water from pasta").stepNumber(3)
+                        .description("Add sauce").stepNumber(4)
+                        .description("Enjoy!")
+                        .build()))
                 .build();
 
-        when(recipeRepo.findAll()).thenReturn(new ArrayList<>(Collections.singletonList(recipe)));
+        when(recipeRepo.findAll()).thenReturn(new ArrayList<>(Collections.singletonList(pasta)));
 
         ArrayList<Recipe> recipes = recipeService.getAllRecipes();
 
         assertThat(recipes.size()).isEqualTo(1);
-        assertThat(recipes.get(0)).isEqualTo(recipe);
+        assertThat(recipes.get(0)).isEqualTo(pasta);
     }
 
     @Test

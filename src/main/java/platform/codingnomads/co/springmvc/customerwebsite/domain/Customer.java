@@ -21,8 +21,7 @@ public class Customer {
     private Integer age;
     private String address;
 
-//    @OneToOne(mappedBy = "customer")
-//    @JoinColumn(name = "car_id")
-//    private RentalCar car;
+    @OneToOne(mappedBy = "customer")
+    private RentalCar car;
 
 }

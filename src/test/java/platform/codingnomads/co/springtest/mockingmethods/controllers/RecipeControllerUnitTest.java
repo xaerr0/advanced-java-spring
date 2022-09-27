@@ -1,4 +1,4 @@
-package platform.codingnomads.co.mockingmethods.controllers;
+package platform.codingnomads.co.springtest.mockingmethods.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import platform.codingnomads.co.TestUtil;
+import platform.codingnomads.co.springtest.TestUtil;
 import platform.codingnomads.co.springtest.mockingmethods.RecipeMain;
-import platform.codingnomads.co.springtest.mockingmethods.controllers.RecipeController;
 import platform.codingnomads.co.springtest.mockingmethods.exceptions.NoSuchRecipeException;
 import platform.codingnomads.co.springtest.mockingmethods.models.Ingredient;
 import platform.codingnomads.co.springtest.mockingmethods.models.Recipe;

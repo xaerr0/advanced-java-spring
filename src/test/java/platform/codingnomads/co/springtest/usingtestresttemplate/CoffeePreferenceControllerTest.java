@@ -1,11 +1,10 @@
-package platform.codingnomads.co.usingtestresttemplate;
+package platform.codingnomads.co.springtest.usingtestresttemplate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
-import platform.codingnomads.co.springtest.usingtestresttemplate.UsingTestRestTemplateMain;
 import platform.codingnomads.co.springtest.usingtestresttemplate.models.CoffeePreference;
 
 import java.util.Objects;

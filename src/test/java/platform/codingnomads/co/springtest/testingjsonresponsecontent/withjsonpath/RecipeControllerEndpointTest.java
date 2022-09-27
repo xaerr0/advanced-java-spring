@@ -1,4 +1,4 @@
-package platform.codingnomads.co.testingjsonresponsecontent.withjsonpath;
+package platform.codingnomads.co.springtest.testingjsonresponsecontent.withjsonpath;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import platform.codingnomads.co.TestUtil;
+import platform.codingnomads.co.springtest.TestUtil;
 import platform.codingnomads.co.springtest.testingjsonresponsecontent.RecipeMain;
 import platform.codingnomads.co.springtest.testingjsonresponsecontent.models.Ingredient;
 import platform.codingnomads.co.springtest.testingjsonresponsecontent.models.Recipe;

@@ -6,9 +6,10 @@
 </head>
 <body>
 <div align="center">
+
     <h1>Customer List</h1>
     <a th:href="@{/new}">Add New Customer</a><br/>
-    <a th:href="@{/cars}">Car List</a>
+    <a th:href="@{/cars}">View Cars</a><br/>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -30,10 +31,11 @@
             <td th:text="${customer.age}">Age</td>
             <td th:text="${customer.address}">Address</td>
             <td th:text="${customer.car}">Car</td>
-            <td>
+            <td>    <!-- actions -->
                 <a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
                 <a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
-                <a th:text="${(customer.car == null) ? 'Assign Car' : ''}" th:href="@{'/assign/' + ${customer.id}}"></a>
+                <a th:text="${(customer.car == null) ? 'Assign Car' : ''}"
+                   th:href="@{'/cars/assign/' + ${customer.id}}"></a>
                 <a th:text="${(customer.car != null) ? 'Remove Car' : ''}"
                    th:href="${(customer.car != null) ? '/remove/' + customer.car.getId() : ''}"></a>
             </td>

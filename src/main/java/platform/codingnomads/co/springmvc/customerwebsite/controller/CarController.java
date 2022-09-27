@@ -53,7 +53,7 @@ public class CarController {
         return "redirect:/";
     }
 
-    @GetMapping("/assign/{id}")
+    @GetMapping("/cars/assign/{id}")
     public String assignCar(@PathVariable(name = "id") Long id, Model model) {
         Customer customer = customerService.getCustomer(id);
         List<RentalCar> carList = carService.getAvailableCars();
@@ -62,7 +62,7 @@ public class CarController {
         return "assign-car";
     }
 
-    @PostMapping("/assign")
+    @PostMapping("/cars/assign")
     public String saveCarAssignment(@RequestParam("customerId") Long customerId, @RequestParam("carId") Long carId) {
         RentalCar car = carService.getCar(carId);
         car.setCustomer(customerService.getCustomer(customerId));

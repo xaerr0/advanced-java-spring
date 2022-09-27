@@ -1,4 +1,4 @@
-package platform.codingnomads.co.testingjsonresponsecontent.withoutjsonpath;
+package platform.codingnomads.co.springtest.testingjsonresponsecontent.withoutjsonpath;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -12,7 +12,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import platform.codingnomads.co.TestUtil;
+import platform.codingnomads.co.springtest.TestUtil;
 import platform.codingnomads.co.springtest.mockingmethods.RecipeMain;
 import platform.codingnomads.co.springtest.mockingmethods.models.Ingredient;
 import platform.codingnomads.co.springtest.mockingmethods.models.Recipe;
