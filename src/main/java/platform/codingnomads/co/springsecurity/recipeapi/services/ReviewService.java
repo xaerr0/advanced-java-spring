@@ -10,6 +10,7 @@ import platform.codingnomads.co.springsecurity.recipeapi.models.Review;
 import platform.codingnomads.co.springsecurity.recipeapi.repositories.ReviewRepo;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,16 @@ public class ReviewService {
 
     @Autowired
     RecipeService recipeService;
+
+    public List<Review> getAllReviews() throws NoSuchReviewException {
+        List<Review> reviews = reviewRepo.findAll();
+
+        if (reviews.isEmpty()) {
+            throw new NoSuchReviewException("There are no reviews to be found");
+        }
+
+        return reviews;
+    }
 
     public Review getReviewById(Long id) throws NoSuchReviewException {
         Optional<Review> review = reviewRepo.findById(id);

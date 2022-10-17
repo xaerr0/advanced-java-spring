@@ -10,12 +10,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.Authority;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.RoleEnum;
+import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.UserPrincipal;
 
 import javax.sql.DataSource;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -34,9 +39,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                //start the creating process of authorization settings. This will be covered in depth in the authorization chapter.
                 .authorizeRequests(auth ->
                         auth.antMatchers("/").authenticated())
+
                 //formLogin() is used to indicate an HTML form is going to be used to present a username and password.
                 // It also adds the UsernamePasswordAuthenticationFilter to the filter chain
                 .formLogin();
@@ -65,8 +70,10 @@ public class SecurityConfig {
 //    @Bean
 //    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
 //        Authority userAuth = Authority.builder().authority(RoleEnum.ROLE_USER).build();
-//        UserPrincipal user1 = new UserPrincipal("USER1", passwordEncoder().encode("hi"), Collections.singletonList(userAuth));
-//        UserPrincipal user2 = new UserPrincipal("USER2", passwordEncoder().encode("hello"), Collections.singletonList(userAuth));
+//        UserPrincipal user1 = new UserPrincipal("USER1", passwordEncoder()
+//                .encode("hi"), Collections.singletonList(userAuth));
+//        UserPrincipal user2 = new UserPrincipal("USER2", passwordEncoder()
+//                .encode("hello"), Collections.singletonList(userAuth));
 //        return new InMemoryUserDetailsManager(user1, user2);
 //    }
 }

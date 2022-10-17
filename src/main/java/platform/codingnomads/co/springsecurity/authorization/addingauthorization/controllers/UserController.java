@@ -26,4 +26,14 @@ public class UserController {
         UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
         return principal.getUserMeta();
     }
+
+    /*
+        Method Security Annotations
+
+        @RolesAllowed("USER")
+        @PreAuthorize("#id != 1")
+        @PostAuthorize("returnObject.ownerUsername == authentication.principal.username")
+        @PreFilter(value = "filterObject != shutdown", filterTarget = "commands")
+        @PostFilter("filterObject.id <= 20")
+     */
 }

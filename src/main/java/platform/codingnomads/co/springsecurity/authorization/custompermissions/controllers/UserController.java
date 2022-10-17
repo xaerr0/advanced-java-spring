@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import platform.codingnomads.co.springsecurity.authorization.custompermissions.models.User;
 import platform.codingnomads.co.springsecurity.authorization.custompermissions.services.UserService;
 
+import javax.annotation.security.RolesAllowed;
+
 @Controller
 public class UserController {
 
@@ -33,4 +35,5 @@ public class UserController {
         userService.deleteUser(id);
         return ("deleted user with id: " + id);
     }
+
 }

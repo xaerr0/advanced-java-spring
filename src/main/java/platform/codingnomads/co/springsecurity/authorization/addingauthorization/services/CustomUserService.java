@@ -26,6 +26,7 @@ public class CustomUserService implements UserDetailsService {
                 );
     }
 
+
     public UserMeta updateUserMeta(UserMeta userToUpdate) {
         UserMeta updatedUser = userMetaRepo.save(userToUpdate);
         UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

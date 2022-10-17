@@ -12,6 +12,7 @@ import java.util.List;
 @Component
 public class CustomPermissionEvaluator implements PermissionEvaluator {
 
+    // better suited for @PostAuthorize as we have access to the return object
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
         List<GrantedAuthority> grantedAuthorities = (List<GrantedAuthority>) authentication.getAuthorities();
@@ -38,6 +39,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         }
     }
 
+    // better suited for @PreAuthorize as we just have the id of and type of target object
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
         List<GrantedAuthority> grantedAuthorities = (List<GrantedAuthority>) authentication.getAuthorities();

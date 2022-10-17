@@ -23,9 +23,6 @@ public class User {
 
     private String password;
 
-    @OneToMany
-    private List<MyGrantedAuthority> grantedAuthorities;
-
     public User(String email, String password) {
         this.email = email;
         this.password = password;

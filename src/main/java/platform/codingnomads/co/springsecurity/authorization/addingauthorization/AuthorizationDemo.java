@@ -50,9 +50,12 @@ public class AuthorizationDemo implements CommandLineRunner {
         if (userPrincipalRepo.findAll().isEmpty()) {
             userPrincipalRepo.saveAll(
                     Arrays.asList(
-                            new UserPrincipal("SUPERUSER", passwordEncoder.encode("su"), Arrays.asList(userAuth, adminAuth, superUAuth, updaterAuth), superUser),
-                            new UserPrincipal("USER", passwordEncoder.encode("user"), Collections.singletonList(userAuth), basicUser),
-                            new UserPrincipal("ADMIN", passwordEncoder.encode("admin"), Arrays.asList(adminAuth, userAuth), admin)
+                            new UserPrincipal("SUPERUSER", passwordEncoder.encode("su"),
+                                    Arrays.asList(userAuth, adminAuth, superUAuth, updaterAuth), superUser),
+                            new UserPrincipal("USER", passwordEncoder.encode("user"),
+                                    Collections.singletonList(userAuth), basicUser),
+                            new UserPrincipal("ADMIN", passwordEncoder.encode("admin"),
+                                    Arrays.asList(adminAuth, userAuth), admin)
                     )
             );
         }

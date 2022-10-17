@@ -41,7 +41,11 @@ public class TestMain implements CommandLineRunner {
 
         UserMeta userMeta = UserMeta.builder().name("test user").email("email@email.com").build();
         CustomUserDetails userDetails
-                = new CustomUserDetails("USER", encoder.encode("user"),Collections.singletonList(new Role(Role.Roles.ROLE_USER)), userMeta);
+                = new CustomUserDetails("USER",
+                    encoder.encode("user"),
+                    Collections.singletonList(new Role(Role.Roles.ROLE_USER)),
+                    userMeta);
+
         userRepo.save(userDetails);
 
         Ingredient ingredient = Ingredient.builder().name("flour").state("dry").amount("2 cups").build();
@@ -67,7 +71,13 @@ public class TestMain implements CommandLineRunner {
 
         UserMeta userMeta2 = UserMeta.builder().name("test user 2").email("email2@email.com").build();
         CustomUserDetails userDetails2
-                = new CustomUserDetails("USER2", encoder.encode("user2"),Arrays.asList(new Role(Role.Roles.ROLE_USER), new Role(Role.Roles.ROLE_ADMIN)), userMeta2);
+                = new CustomUserDetails("USER2",
+                    encoder.encode("user2"),
+                    Arrays.asList(
+                            new Role(Role.Roles.ROLE_USER),
+                            new Role(Role.Roles.ROLE_ADMIN)),
+                        userMeta2);
+
         userRepo.save(userDetails2);
 
         Recipe recipe2 =  Recipe.builder()

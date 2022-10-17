@@ -11,13 +11,24 @@ import platform.codingnomads.co.springsecurity.recipeapi.models.Review;
 import platform.codingnomads.co.springsecurity.recipeapi.services.ReviewService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
-@RequestMapping("/review")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired
     ReviewService reviewService;
+
+    @GetMapping()
+    public ResponseEntity<?> getAllReviews() {
+        try {
+            List<Review> retrievedReviews = reviewService.getAllReviews();
+            return ResponseEntity.ok(retrievedReviews);
+        } catch (IllegalStateException | NoSuchReviewException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getReviewById(@PathVariable("id") Long id) {

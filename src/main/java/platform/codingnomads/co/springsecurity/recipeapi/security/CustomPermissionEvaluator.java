@@ -33,7 +33,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
-        if (!permission.getClass().equals("".getClass())) {
+        if (!permission.getClass().equals(String.class)) {
             throw new SecurityException("Cannot execute hasPermission() calls where permission is not in String form");
         }
 
