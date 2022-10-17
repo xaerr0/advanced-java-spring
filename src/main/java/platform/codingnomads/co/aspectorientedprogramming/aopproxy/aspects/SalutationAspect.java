@@ -16,6 +16,6 @@ public class SalutationAspect {
     @AfterReturning(pointcut = "execution(* platform.codingnomads.co.aspectorientedprogramming.aopproxy.services." +
             "PersonService+.getPersonFullName(..))", returning = "fullName")
     public void logFullName(JoinPoint joinPoint, String fullName) {
-        LOGGER.info("Full Name: " + fullName);
+        LOGGER.info("Full Name in ASPECT: " + fullName);
     }
 }

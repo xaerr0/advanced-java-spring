@@ -13,8 +13,7 @@ public class ServiceAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAspect.class);
 
     @Pointcut(value = "execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.*(..))")
-    private void logAllStudentServiceMethods() {
-    }
+    private void logAllStudentServiceMethods() { }
 
     @Before("logAllStudentServiceMethods()")
     public void logBeforeAdvice(JoinPoint joinPoint) {
