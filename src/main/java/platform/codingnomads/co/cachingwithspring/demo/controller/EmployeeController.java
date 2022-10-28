@@ -1,10 +1,6 @@
 package platform.codingnomads.co.cachingwithspring.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import platform.codingnomads.co.cachingwithspring.demo.model.Employee;
@@ -19,12 +15,9 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @Autowired
-    CacheManager cacheManager;
-
     @PostMapping("/employees")
-    public Employee addEmployee(@RequestBody Employee employee) {
-        return employeeService.saveEmployee(employee);
+    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+        return ResponseEntity.ok(employeeService.saveEmployee(employee));
     }
 
     @GetMapping("/employees")
@@ -33,24 +26,21 @@ public class EmployeeController {
     }
 
     @GetMapping("employees/{employeeId}")
-    @Cacheable(value = "employees", key = "#employeeId", sync = true)
-    public Employee findEmployeeById(@PathVariable(value = "employeeId") Integer employeeId) {
-        System.out.println("Employee fetching from database: " + employeeId);
-        return employeeService.getEmployee(employeeId);
+    public ResponseEntity<Employee> findEmployeeById(@PathVariable(value = "employeeId") Integer employeeId) {
+        return ResponseEntity.ok(employeeService.getEmployee(employeeId));
     }
 
     @PutMapping("employees/{employeeId}")
-    @CachePut(value = "employees", key = "#employeeId")
-    public Employee updateEmployee(@PathVariable(value = "employeeId") Integer employeeId,
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "employeeId") Integer employeeId,
                                    @RequestBody Employee employeeDetails) {
         Employee employee = employeeService.getEmployee(employeeId);
         employee.setName(employeeDetails.getName());
-        return employeeService.saveEmployee(employee);
+        return ResponseEntity.ok(employeeService.saveEmployee(employee));
     }
 
     @DeleteMapping("employees/{id}")
-    @CacheEvict(value = "employees", allEntries = true)
-    public void deleteEmployee(@PathVariable(value = "id") Integer employeeId) {
+    public ResponseEntity<Object> deleteEmployee(@PathVariable(value = "id") Integer employeeId) {
         employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok(new Object());
     }
 }
