@@ -27,4 +27,9 @@ public class LaptopConfiguration {
     public Harddrive harddrive() {
         return new Harddrive("Aluminum", "Actuator");
     }
+
+    @Bean
+    public CPU cpu() {
+        return new CPU();
+    }
 }
