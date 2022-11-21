@@ -16,4 +16,15 @@ public class LaptopConfiguration {
     public OS os() {
         return new OS("ubuntu");
     }
+
+    @Bean
+    public Motherboard motherboard() {
+        return new Motherboard("DDR4", "ATX");
+
+    }
+
+    @Bean
+    public Harddrive harddrive() {
+        return new Harddrive("Aluminum", "Actuator");
+    }
 }
