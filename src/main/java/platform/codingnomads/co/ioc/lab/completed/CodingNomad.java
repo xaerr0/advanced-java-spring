@@ -9,6 +9,7 @@ import java.text.MessageFormat;
 @Component
 @RequiredArgsConstructor
 public class CodingNomad {
+
     private final JDK jdk;
     private final IDE ide;
     private final Framework framework;
