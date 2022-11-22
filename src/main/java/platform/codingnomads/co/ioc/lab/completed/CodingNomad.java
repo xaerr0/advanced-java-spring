@@ -9,6 +9,7 @@ import java.text.MessageFormat;
 //@Component
 @RequiredArgsConstructor
 public class CodingNomad {
+    
     // automatically injected due to being private final
     private final JDK jdk;
     // automatically injected due to being private final
