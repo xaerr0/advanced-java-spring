@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 
-//@Component
+@Component
 @RequiredArgsConstructor
 public class CodingNomad {
     // automatically injected due to being private final

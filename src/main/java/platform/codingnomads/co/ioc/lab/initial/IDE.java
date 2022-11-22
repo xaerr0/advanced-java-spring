@@ -1,4 +1,4 @@
-package platform.codingnomads.co.ioc.lab.completed;
+package platform.codingnomads.co.ioc.lab.initial;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

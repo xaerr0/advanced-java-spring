@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @Builder
 public class OperatingSystem {
-    private String name;
+   private String name;
     private String version;
 }

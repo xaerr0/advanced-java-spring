@@ -1,4 +1,4 @@
-package platform.codingnomads.co.ioc.lab.completed;
+package platform.codingnomads.co.ioc.lab.initial;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class IDE {
+public class JDK {
     private String name;
     private String version;
 }

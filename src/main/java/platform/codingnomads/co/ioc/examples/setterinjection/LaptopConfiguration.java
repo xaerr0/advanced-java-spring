@@ -30,6 +30,6 @@ public class LaptopConfiguration {
 
     @Bean
     public CPU cpu() {
-        return new CPU();
+        return new CPU("Pentium", "Computer Memory");
     }
 }
