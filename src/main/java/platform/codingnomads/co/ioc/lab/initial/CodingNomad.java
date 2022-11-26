@@ -8,19 +8,21 @@ import java.text.MessageFormat;
 
 @Component
 @RequiredArgsConstructor
-
 public class CodingNomad {
+    // constructor injection
     private final JDK jdk;
     private final IDE ide;
     private final Framework framework;
 
     private Keyboard keyboard;
 
+    // setter injection
     @Autowired
     public void setKeyboard(Keyboard keyboard) {
         this.keyboard = keyboard;
     }
 
+    // field injection
     @Autowired
     Monitor monitor;
 

@@ -18,5 +18,9 @@
         <property name="name" value="OpenJDK"/>
         <property name="version" value="11"/>
     </bean>
+    <bean id="keyboard" class="platform.codingnomads.co.corespring.examples.application_context.xml.Keyboard">
+        <property name="keys" value="104"/>
+        <property name="type" value="Mechanical"/>
+    </bean>
 
 </beans>
