@@ -11,4 +11,9 @@ public class SpringBeansDemoConfig {
     public Address address() {
         return new Address("Main Street", 1500);
     }
+
+    @Bean
+    public Meal meal() {
+        return new Meal("Ribeye", "Mashed Potatoes");
+    }
 }
