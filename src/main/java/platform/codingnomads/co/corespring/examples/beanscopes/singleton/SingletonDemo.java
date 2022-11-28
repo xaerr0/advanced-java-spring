@@ -10,20 +10,18 @@ public class SingletonDemo {
         ctx.register(SingletonDemoConfig.class);
         ctx.refresh();
 
-        SpringBean springBean1 = ctx.getBean(SpringBean.class);
+        SpringBean springBean1 = ctx.getBean("springBean", SpringBean.class);
         System.out.println("Hash code: " + springBean1.hashCode());
 
-        SpringBean springBean2 = ctx.getBean(SpringBean.class);
+        SpringBean springBean2 = ctx.getBean("springBean", SpringBean.class);
         System.out.println("Hash code: " + springBean2.hashCode());
 
-        SpringBean springBean3 = ctx.getBean(SpringBean.class);
+        SpringBean springBean3 = ctx.getBean("greenBean", SpringBean.class);
         System.out.println("Hash code: " + springBean3.hashCode());
 
-        GreenBean greenBean = ctx.getBean(GreenBean.class);
-        System.out.println("Hash code: " + greenBean.hashCode());
+        SpringBean springBean4 = ctx.getBean("greenBean", SpringBean.class);
+        System.out.println("Hash code: " + springBean4.hashCode());
 
-        GreenBean greenBean2 = ctx.getBean(GreenBean.class);
-        System.out.println("Hash code: " + greenBean2.hashCode());
         ctx.close();
     }
 }

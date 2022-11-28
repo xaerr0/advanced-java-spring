@@ -14,7 +14,7 @@ public class SingletonDemoConfig {
     }
 
     @Bean
-    public GreenBean greenBean() {
-        return new GreenBean();
+    public SpringBean greenBean() {
+        return new SpringBean();
     }
 }
