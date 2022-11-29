@@ -3,6 +3,7 @@ package platform.codingnomads.co.corespring.examples.beanannotation;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+//TODO Runs out of order?
 @SpringBootApplication
 public class BeanAnnotationDemo {
     public static void main(String[] args) {

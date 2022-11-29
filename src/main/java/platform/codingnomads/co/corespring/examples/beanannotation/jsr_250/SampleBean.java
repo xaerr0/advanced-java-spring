@@ -19,4 +19,14 @@ public class SampleBean {
         System.out.println("time to @PreDestroy and head home..");
     }
 
+    @PostConstruct
+    public void init2() {
+        System.out.println("@PostConstruct part 2!");
+    }
+
+    @PreDestroy
+    public void cleanup2() {
+        System.out.println("@PreDestroy part 2!");
+    }
+
 }
