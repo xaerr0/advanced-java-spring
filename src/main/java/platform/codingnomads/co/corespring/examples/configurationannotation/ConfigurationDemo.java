@@ -10,6 +10,7 @@ public class ConfigurationDemo {
     public static void main(String[] args) {
         applicationContext = new AnnotationConfigApplicationContext(ConfigurationDemoConfig.class);
         isBeanPresent("sampleClass", "configurationDemoConfig");
+        isBeanPresent("secondClass", "configurationDemoConfig");
     }
 
     private static void isBeanPresent(String... beans) {

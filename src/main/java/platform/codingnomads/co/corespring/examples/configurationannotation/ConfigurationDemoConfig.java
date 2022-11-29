@@ -12,4 +12,9 @@ public class ConfigurationDemoConfig {
     public SampleClass sampleClass() {
         return new SampleClass();
     }
+
+    @Bean
+    public SecondClass secondClass() {
+        return new SecondClass();
+    }
 }
