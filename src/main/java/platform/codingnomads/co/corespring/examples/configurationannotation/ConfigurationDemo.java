@@ -16,7 +16,7 @@ public class ConfigurationDemo {
     private static void isBeanPresent(String... beans) {
         for (String beanName : beans) {
             System.out.println("Is " + beanName + " in ApplicationContext: " +
-                    applicationContext.containsBean(beanName));
+                               applicationContext.containsBean(beanName));
         }
     }
 }
