@@ -8,7 +8,7 @@ public class LazyAnnotationDemo {
         ctx.register(LazyAnnotationDemoConfiguration.class);
         ctx.refresh();
         ctx.start();
-        ctx.getBean(LazyBean.class);
+//        ctx.getBean(LazyBean.class);
         ctx.close();
     }
 }

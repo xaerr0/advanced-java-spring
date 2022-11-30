@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
 @Configuration
-@Lazy
+//@Lazy
 @ComponentScan(basePackages = "platform.codingnomads.co.corespring.examples.lazyannotation")
 public class LazyAnnotationDemoConfiguration {
     @Bean
