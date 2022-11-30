@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "platform.codingnomads.co.corespring.examples.componentscanannotation.tools")
+@ComponentScan(basePackages = "platform.codingnomads.co.corespring.examples.componentscanannotation")
 public class ComponentScanConfiguration {
 
     @Bean
