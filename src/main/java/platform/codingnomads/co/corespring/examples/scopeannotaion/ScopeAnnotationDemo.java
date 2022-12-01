@@ -23,6 +23,19 @@ public class ScopeAnnotationDemo {
         System.out.println(prototypeBean1.hashCode());
         System.out.println(prototypeBean2.hashCode());
         System.out.println();
+
+        SillyBean sillyBean1 = ctx.getBean(SillyBean.class);
+        SillyBean sillyBean2 = ctx.getBean(SillyBean.class);
+        System.out.println("-----Hashcode of Singleton Silly Beans-----");
+        System.out.println(sillyBean1.hashCode());
+        System.out.println(sillyBean2.hashCode());
+
+        final SillierBean sillierBean1 = ctx.getBean(SillierBean.class);
+        final SillierBean sillierBean2 = ctx.getBean(SillierBean.class);
+        System.out.println("-----Hashcode of Prototype Silly Beans-----");
+        System.out.println(sillierBean1.hashCode());
+        System.out.println(sillierBean2.hashCode());
+
         ctx.close();
     }
 }
