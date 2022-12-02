@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="brisket" class="platform.codingnomads.co.corespring.lab.Menu">
+        <property name="meat" value="Brisket"/>
+        <property name="priceLb" value="12"/>
+    </bean>
+
+    <bean id="beefRibs" class="platform.codingnomads.co.corespring.lab.Menu">
+        <property name="meat" value="Beef Ribs"/>
+        <property name="priceLb" value="7"/>
+    </bean>
+</beans>
