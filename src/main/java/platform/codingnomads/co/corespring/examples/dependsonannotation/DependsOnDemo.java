@@ -10,6 +10,7 @@ public class DependsOnDemo {
         ctx.register(DependsOnDemoConfig.class);
         ctx.refresh();
         final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
+        final Coffee coffee = ctx.getBean(Coffee.class);
         ctx.close();
     }
 }

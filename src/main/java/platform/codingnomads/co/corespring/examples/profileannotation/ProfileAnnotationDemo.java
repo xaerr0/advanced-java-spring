@@ -9,7 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ProfileAnnotationDemo {
     public static void main(String[] args) {
         final ConfigurableApplicationContext ctx = SpringApplication.run(ProfileAnnotationDemo.class);
-        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
+//        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
+        final Coffee coffee = ctx.getBean(Coffee.class);
         ctx.close();
     }
 }
