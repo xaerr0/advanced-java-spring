@@ -60,6 +60,7 @@ public class JPADomainDemo implements CommandLineRunner {
         codeWarrior.addWeapon(Weapon.builder().name("JDK").build());
         codeWarrior.addWeapon(Weapon.builder().name("Spring").build());
 
+
         codeWarriorRepository.save(codeWarrior);
         codeWarriorRepository.findAll().forEach(cw -> codeWarrior.getWeapons()
                 .forEach(item -> System.out.println(item.getName())));
