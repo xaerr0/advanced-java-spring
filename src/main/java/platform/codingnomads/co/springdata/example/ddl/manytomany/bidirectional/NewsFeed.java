@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Group {
+public class NewsFeed {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +18,4 @@ public class Group {
 
     @Column(nullable = false)
     private String name;
-
-
 }
