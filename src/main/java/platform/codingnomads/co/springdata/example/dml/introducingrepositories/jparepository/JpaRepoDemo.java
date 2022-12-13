@@ -23,21 +23,32 @@ public class JpaRepoDemo implements CommandLineRunner {
         SoftDrink fanta = SoftDrink.builder().name("Fanta").rating(10).build();
         SoftDrink coke = SoftDrink.builder().name("Coca-Cola").rating(4).build();
         SoftDrink drPepper = SoftDrink.builder().name("Dr. Pepper").rating(1).build();
+        SoftDrink sprite = SoftDrink.builder().name("Sprite").rating(3).build();
+        SoftDrink rootBeer = SoftDrink.builder().name("Root Beer").rating(2).build();
+        SoftDrink orangeSoda = SoftDrink.builder().name("Orange Crush").rating(5).build();
 
         //save single entity instance
         fanta = softDrinkRepo.save(fanta);
+        sprite = softDrinkRepo.save(sprite);
 
         //save multiple entity instances at a time
-        List<SoftDrink> insertedSoftDrinks = softDrinkRepo.saveAll(List.of(coke, drPepper));
+        List<SoftDrink> insertedSoftDrinks = softDrinkRepo.saveAll(List.of(coke, drPepper, rootBeer, orangeSoda));
 
+        //TODO Purpose of this??
         //make sure all entities are actually saved to the database
         softDrinkRepo.flush();
 
+        //change orangeSoda name to Faygo Orange Soda
+        orangeSoda.setName("Faygo Orange Soda");
+        softDrinkRepo.save(orangeSoda);
+
         //update coke and drPepper to have rating 0 in the database
-        for (SoftDrink sd : insertedSoftDrinks) {
-            sd.setRating(0);
-            softDrinkRepo.save(sd);
-        }
+//        for (SoftDrink sd : insertedSoftDrinks) {
+//            sd.setRating(0);
+//            softDrinkRepo.save(sd);
+//
+//
+//        }
 
         System.out.println("ALL SOFT DRINKS IN DESCENDING ORDER BASED ON ID");
         //get all soft drinks in ascending order and print toString() to the console
@@ -62,12 +73,24 @@ public class JpaRepoDemo implements CommandLineRunner {
         Page<SoftDrink> page = softDrinkRepo.findAll(pageRequest);
         page.getContent().forEach(System.out::println);
 
+
         System.out.println("SECOND PAGE");
         //get second page
         page = softDrinkRepo.findAll(pageRequest.next());
         page.getContent().forEach(System.out::println);
 
+        System.out.println("THIRD PAGE");
+        //get third page
+        page = softDrinkRepo.findAll(pageRequest.next());
+        page.getContent().forEach(System.out::println);
+
+        System.out.println("FOURTH PAGE");
+        //get fourth page
+        page = softDrinkRepo.findAll(pageRequest.next());
+        page.getContent().forEach(System.out::println);
+
+
         //delete all 3 soft drinks in a batch
-        softDrinkRepo.deleteAllInBatch();
+//        softDrinkRepo.deleteAllInBatch();
     }
 }
