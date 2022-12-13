@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -25,10 +26,19 @@ public class CrudRepoDemo implements CommandLineRunner {
         //create new user
         User user = User.builder().firstName("Bobby").lastName("Bobbert").age(56).build();
         User user2 = User.builder().firstName("Joanne").lastName("Joanna").age(36).build();
+        User user3 = User.builder().firstName("Emmet").lastName("Jennet").age(63).build();
+        User user4 = User.builder().firstName("Rocky").lastName("Balboa").age(4).build();
+
+        //TODO Is there a way to save all without entering individually?
+        Iterable<User> insertedUsers = userRepo.saveAll(List.of(user,user2, user3, user4));
 
         //save user and assign what is returned to the user variable.
-        user = userRepo.save(user);
-        user2 = userRepo.save(user2);
+//        user = userRepo.save(user);
+//        user2 = userRepo.save(user2);
+//        user3 = userRepo.save(user3);
+//        user4 = userRepo.save(user4);
+
+
 
         Iterable<User> users = userRepo.findAll();
 
@@ -36,8 +46,13 @@ public class CrudRepoDemo implements CommandLineRunner {
             System.out.println(u.toString());
         }
 
+
+    
+
         //delete the user using the id of the inserted user object
-        userRepo.deleteById(user.getId());
-        userRepo.deleteById(user2.getId());
+//        userRepo.deleteById(user.getId());
+//        userRepo.deleteById(user2.getId());
+
+
     }
 }
