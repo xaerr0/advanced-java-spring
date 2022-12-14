@@ -24,4 +24,8 @@ public interface ComputerRepo extends JpaRepository<Computer, Long> {
     List<Computer> findByMouseStartingWith(String monitorPrefix);
 
     List<Computer> findByMonitorEndingWith(String monitorSuffix);
+
+    List<Computer> findTop2ByMouse(String mouse);
+
+    Integer countByKeyboard(String keyboard);
 }

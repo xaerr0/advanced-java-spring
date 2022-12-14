@@ -66,6 +66,16 @@ public class ComputerApplication implements CommandLineRunner {
         final List<Computer> findByMonitorEndingWith = computerRepo.findByMonitorEndingWith("r");
         findByMonitorEndingWith.forEach(System.out::println);
 
+        System.out.println("----------Find First 2 'HyperX' Results ----------");
+        List<Computer> findTop2ByMouse = computerRepo.findTop2ByMouse("HyperX");
+        findTop2ByMouse.forEach(System.out::println);
+
+        System.out.println("----------Find the Number of Entities With 'Logitech'----------");
+        final Integer countByKeyboard = computerRepo.countByKeyboard("Logitech");
+        System.out.println(countByKeyboard);
+
+
+
     }
 
 }
