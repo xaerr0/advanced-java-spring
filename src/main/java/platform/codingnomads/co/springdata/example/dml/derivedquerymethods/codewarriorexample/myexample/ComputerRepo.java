@@ -28,4 +28,6 @@ public interface ComputerRepo extends JpaRepository<Computer, Long> {
     List<Computer> findTop2ByMouse(String mouse);
 
     Integer countByKeyboard(String keyboard);
+
+    List<Computer> findByForGamingIs(Boolean forGaming);
 }

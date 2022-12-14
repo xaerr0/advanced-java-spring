@@ -74,6 +74,9 @@ public class ComputerApplication implements CommandLineRunner {
         final Integer countByKeyboard = computerRepo.countByKeyboard("Logitech");
         System.out.println(countByKeyboard);
 
+        System.out.println("----------Find Computers That Are NOT For Gaming----------");
+        final List<Computer> findByForGamingIs = computerRepo.findByForGamingIs(false);
+        findByForGamingIs.forEach(System.out::println);
 
 
     }
