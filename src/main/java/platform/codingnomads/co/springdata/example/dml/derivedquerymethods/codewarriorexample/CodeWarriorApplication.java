@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import platform.codingnomads.co.springdata.example.dml.derivedquerymethods.codewarriorexample.myexample.ComputerRepo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,9 @@ public class CodeWarriorApplication implements CommandLineRunner {
 
     @Autowired
     CodeWarriorRepo codeWarriorRepo;
+
+    @Autowired
+    ComputerRepo computerRepo;
 
     public static void main(String[] args) {
         SpringApplication.run(CodeWarriorApplication.class);
