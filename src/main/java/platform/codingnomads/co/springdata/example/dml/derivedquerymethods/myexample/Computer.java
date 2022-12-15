@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.codewarriorexample.myexample;
+package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.myexample;
 
 
 import lombok.*;

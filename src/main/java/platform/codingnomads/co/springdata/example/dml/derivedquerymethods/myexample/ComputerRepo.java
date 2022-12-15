@@ -1,6 +1,5 @@
-package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.codewarriorexample.myexample;
+package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.myexample;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +16,7 @@ public interface ComputerRepo extends JpaRepository<Computer, Long> {
     List<Computer> findByKeyboardContainingAndForGaming(String partialKeyboardName, Boolean forGaming);
 
     //TODO How to use this one?
-//    List<Computer> findTop5DistinctForGamingIsTrue(Sort sort);
+//    List<Computer> findTop5DistinctId(Sort sort);
 
     List<Computer> findByKeyboardIsNot(String keyboard);
 

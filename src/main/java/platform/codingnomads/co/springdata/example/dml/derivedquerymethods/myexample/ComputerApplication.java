@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.codewarriorexample.myexample;
+package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.myexample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -78,6 +78,11 @@ public class ComputerApplication implements CommandLineRunner {
         final List<Computer> findByForGamingIs = computerRepo.findByForGamingIs(false);
         findByForGamingIs.forEach(System.out::println);
 
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+
+//        System.out.println("----------SORT----------");
+//        final List<Computer> findTop5DistinctId = computerRepo.findTop5DistinctId(sort);
+//        findTop5DistinctId.forEach(System.out::println);
 
     }
 
