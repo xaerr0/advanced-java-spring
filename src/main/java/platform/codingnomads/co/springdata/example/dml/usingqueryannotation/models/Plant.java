@@ -20,8 +20,10 @@ public class Plant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(nullable = false, unique = true)
     private String name;
+
 
     @ManyToOne(cascade = {CascadeType.ALL}, optional = false, fetch = FetchType.EAGER)
     private SoilType favoriteSoilType;
