@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class LifecycleCallbackDemo {
 
+    PrintEntity printEntity;
+
     public static void main(String[] args) {
         SpringApplication.run(LifecycleCallbackDemo.class);
     }
@@ -16,6 +18,9 @@ public class LifecycleCallbackDemo {
     public CommandLineRunner runStuff(PrintEntityRepository printEntityRepository) {
         return (args) -> {
             // put your logic here
+
+
+
 
         };
     }

@@ -18,8 +18,8 @@ public class CommonProblemsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userService.idError();
-//        userService.persistAFewUsers();
-//        userService.querySomeData();
+//        userService.idError();
+        userService.persistAFewUsers();
+        userService.querySomeData();
     }
 }

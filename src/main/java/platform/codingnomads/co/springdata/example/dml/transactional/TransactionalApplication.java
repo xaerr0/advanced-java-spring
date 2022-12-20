@@ -23,7 +23,7 @@ public class TransactionalApplication implements CommandLineRunner {
 
         //@Transactional I
 
-        pointService.foo();
+//        pointService.foo();
 //        pointService.doSomeWork();
 
         //@Transactional II
@@ -32,7 +32,7 @@ public class TransactionalApplication implements CommandLineRunner {
 //        pointService.triggerTimeout();
 
 //        System.out.println(pointService.getPointById(1L).toString());
-//        pointService.noExceptionExpected();
+        pointService.noExceptionExpected();
 
         try {
             pointService.rollbackFor();

@@ -23,4 +23,6 @@ public interface SoilTypeRepo extends JpaRepository<SoilType, Long> {
 
     @Query(value = "SELECT p FROM SoilType p WHERE id = :id")
     SoilType getSoilTypeByIdWithColon(@Param("id")Long id);
+
+
 }
