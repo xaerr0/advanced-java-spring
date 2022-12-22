@@ -34,7 +34,7 @@ public class PointService {
 
     @Transactional(propagation = Propagation.MANDATORY)
     public void foo() {
-        repo.getOne(1L);
+        repo.getOne(20L);
     }
 
     //@Transactional II
@@ -68,7 +68,7 @@ public class PointService {
 
     @Transactional(readOnly = true)
     public void noExceptionExpected() {
-        Point p = repo.getOne(1L);
+        Point p = repo.getOne(20L);
 
         p.setX(5);
 
@@ -77,7 +77,7 @@ public class PointService {
 
     @Transactional(rollbackFor = {IOException.class, ArithmeticException.class})
     public void rollbackFor() throws IOException, ArithmeticException {
-        Point p = repo.getOne(1L);
+        Point p = repo.getOne(20L);
         p.setX(100);
         p.setX(100);
         repo.save(p);
@@ -87,7 +87,7 @@ public class PointService {
 
     @Transactional(noRollbackFor = InterruptedException.class)
     public void noRollbackFor() throws InterruptedException{
-        Point p = repo.getOne(2L);
+        Point p = repo.getOne(21L);
         p.setX(4);
         p.setX(20);
         repo.save(p);

@@ -28,8 +28,9 @@ public class PrintEntity {
     @Transient
     private String brighterSide;
 
-
-
+    public PrintEntity(String greeting) {
+        this.greeting = greeting;
+    }
 
     @PreUpdate
     private void greeting() {
