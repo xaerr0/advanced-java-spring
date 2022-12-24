@@ -38,6 +38,20 @@ public interface SongMapper {
             "WHERE artist_name = #{param1};")
     ArrayList<Song> getSongsByArtist(String artistName);
 
+    @Select("SELECT * " +
+            "FROM mybatis.songs " +
+            "WHERE name LIKE '%' #{param1} '%';")
+    ArrayList<Song> getSongsLike(String name);
+
+    @Select("SELECT * " +
+            "FROM mybatis.songs " +
+            "WHERE song_length < #{param1} AND artist_name LIKE '%' #{param2} '%';")
+ArrayList<Song> getSongsShorterThanAndLike(int song_length, String artistName);
+
+
+
+
+
     @Update("UPDATE mybatis.songs " +
             "SET name = #{name}, artist_name = #{artist_name}, album_name = #{album_name}, song_length = #{song_length} " +
             "WHERE id = #{id};")

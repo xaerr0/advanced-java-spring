@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class PrintEntity {
 
-    //TODO Pretty sure I'm not doing this right. Learn by doing, bottom of page (https://platform.codingnomads.co/learn/mod/page/view.php?id=6346&forceview=1)
     @Id
     @GeneratedValue
     private Long id;
