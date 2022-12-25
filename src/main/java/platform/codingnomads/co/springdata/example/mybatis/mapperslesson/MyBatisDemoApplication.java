@@ -65,24 +65,51 @@ public class MyBatisDemoApplication {
             songMapper.insertNewSong(song4);
             songMapper.insertNewSong(song5);
 
-            song3 = songMapper.getSongById(1L);
+
+
 
             ArrayList<Song> longSongs = songMapper.getSongsWithLengthGreaterThan(250);
-
             longSongs.forEach(System.out::println);
 
-            System.out.println(song3.toString());
 
             System.out.println("test");
 
+
+            // get song by id
+            Song songById = songMapper.getSongById(3L);
+            System.out.println(songById.toString());
+
+            // get songs by name
+            System.out.println("get songs by name");
+            ArrayList<Song> songByName = songMapper.getSongsByName("Miracles");
+            songByName.forEach(System.out::println);
+
+
+            // get songs by album and artist
+            System.out.println("get songs by album and artist");
+            ArrayList<Song> songByAlbumAndArtist = songMapper.getSongsByAlbumAndArtist("war", "why can't");
+            songByAlbumAndArtist.forEach(System.out::println);
+
+            // get songs by artist
+            System.out.println("get songs by artist");
+            ArrayList<Song> songsByArtist = songMapper.getSongsByArtist("insane");
+            songsByArtist.forEach(System.out::println);
+
             // get song like
+            System.out.println("get song like");
             ArrayList<Song> songsLike = songMapper.getSongsLike("M");
             songsLike.forEach(System.out::println);
 
 
             // get song length less than and artist name
+            System.out.println("get song length less than and artist name");
             ArrayList<Song> shortSongLike = songMapper.getSongsShorterThanAndLike(250, "As");
             shortSongLike.forEach(System.out::println);
+
+            // update song
+
+            songMapper.updateSong(song5);
+
 
         };
     }
