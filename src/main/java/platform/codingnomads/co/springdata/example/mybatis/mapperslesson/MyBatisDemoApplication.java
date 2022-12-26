@@ -111,6 +111,11 @@ public class MyBatisDemoApplication {
             songMapper.updateSong(song5);
 
 
+            // delete song by ID
+            songMapper.deleteSongById(11L);
+
+            songMapper.deleteSongsByAlbumAndArtist("Astor Piazzolla", "Oblivion");
+
         };
     }
 }
