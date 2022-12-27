@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+
 @SpringBootApplication
 public class ResultsDemoApplication {
 
@@ -36,15 +38,31 @@ public class ResultsDemoApplication {
             System.out.println(song3.toString());
 
 
-
+            // label mapper
 
             Label label1 = new Label();
             label1.setName("Jagjaguwar");
+            label1.setGenre("Various");
+
+            Label label2 = new Label();
+            label1.setName("Awal Recordings America");
             label1.setGenre("Various");
             labelMapper.insertNewLabel(label1);
 
             labelMapper.getLabelById(1L);
             System.out.println(label1.toString());
+
+            // get label by name
+            ArrayList<Label> getByName = labelMapper.getLabelByName("Jagjaguwar");
+            getByName.forEach(System.out::println);
+
+            // get label by genre
+            ArrayList<Label> getByGenre = labelMapper.getLabelByGenre("Various");
+            getByGenre.forEach(System.out::println);
+
+
+            //delete label by Id
+            labelMapper.deleteLabelById(2L);
 
 
         };

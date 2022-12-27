@@ -2,6 +2,8 @@ package platform.codingnomads.co.springdata.example.mybatis.resultsandresult;
 
 import org.apache.ibatis.annotations.*;
 
+import java.util.ArrayList;
+
 @Mapper
 public interface LabelMapper {
 
@@ -23,5 +25,20 @@ public interface LabelMapper {
             }
     )
     Label getLabelById(Long id);
+
+    @Select("SELECT * " +
+            "FROM mybatis.labels " +
+            "WHERE label_name = #{param1};")
+    @ResultMap("labelResultMap")
+    ArrayList<Label> getLabelByName(String name);
+
+    @Select("SELECT * " +
+            "FROM mybatis.labels " +
+            "WHERE label_genre = #{param1};")
+    @ResultMap("labelResultMap")
+    ArrayList<Label> getLabelByGenre(String genre);
+
+    @Delete("DELETE from mybatis.labels WHERE id = #{param1};")
+    void deleteLabelById(Long Id);
 
 }
