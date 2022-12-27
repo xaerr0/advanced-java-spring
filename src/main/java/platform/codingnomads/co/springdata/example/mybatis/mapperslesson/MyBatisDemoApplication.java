@@ -30,33 +30,33 @@ public class MyBatisDemoApplication {
         return (args) -> {
             Song song1 = new Song();
             song1.setName("Minnesota, WI");
-            song1.setAlbum_name("Bon Iver");
-            song1.setArtist_name("Bon Iver");
-            song1.setSong_length(232);
+            song1.setAlbumName("Bon Iver");
+            song1.setArtistName("Bon Iver");
+            song1.setSongLength(232);
 
             Song song2 = new Song();
             song2.setName("Post Humorous");
-            song2.setAlbum_name("Orca");
-            song2.setArtist_name("Gus Dapperton");
-            song2.setSong_length(279);
+            song2.setAlbumName("Orca");
+            song2.setArtistName("Gus Dapperton");
+            song2.setSongLength(279);
 
             Song song3 = new Song();
             song3.setName("Miracles");
-            song3.setAlbum_name("Bang! Pow! Boom!");
-            song3.setArtist_name("Insane Clown Posse");
-            song3.setSong_length(307);
+            song3.setAlbumName("Bang! Pow! Boom!");
+            song3.setArtistName("Insane Clown Posse");
+            song3.setSongLength(307);
 
             Song song4 = new Song();
             song4.setName("Oblivion");
-            song4.setAlbum_name("Oblivion");
-            song4.setArtist_name("Astor Piazzolla");
-            song4.setSong_length(201);
+            song4.setAlbumName("Oblivion");
+            song4.setArtistName("Astor Piazzolla");
+            song4.setSongLength(201);
 
             Song song5 = new Song();
             song5.setName("Don't Let No One Get You Down");
-            song5.setAlbum_name("Why Can't We Be Friends");
-            song5.setArtist_name("War");
-            song5.setSong_length(242);
+            song5.setAlbumName("Why Can't We Be Friends");
+            song5.setArtistName("War");
+            song5.setSongLength(242);
 
 
             songMapper.insertNewSong(song1);
@@ -108,6 +108,7 @@ public class MyBatisDemoApplication {
 
             // update song
 
+            // TODO Not sure how?
             songMapper.updateSong(song5);
 
 

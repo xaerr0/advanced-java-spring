@@ -6,18 +6,16 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ToString
 public class Song {
 
     private Long id;
 
     private String name;
 
-    //allowed to be null if single
-    private String album_name;
+    private String albumName;
 
-    private String artist_name;
+    private String artistName;
 
     //song length in seconds
-    private int song_length;
+    private int songLength;
 }

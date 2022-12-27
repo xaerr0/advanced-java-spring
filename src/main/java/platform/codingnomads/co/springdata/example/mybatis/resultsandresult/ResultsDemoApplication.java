@@ -13,8 +13,9 @@ public class ResultsDemoApplication {
     }
 
     @Bean
-    public CommandLineRunner loadInitialData(SongMapper songMapper) {
+    public CommandLineRunner loadInitialData(SongMapper songMapper, LabelMapper labelMapper) {
         return (args) -> {
+
             //notice the setter names have changed to match Java naming conventions
             Song song1 = new Song();
             song1.setName("Minnesota, WI");
@@ -33,6 +34,21 @@ public class ResultsDemoApplication {
 
             Song song3 = songMapper.getSongById(1L);
             System.out.println(song3.toString());
+
+
+
+
+            Label label1 = new Label();
+            label1.setName("Jagjaguwar");
+            label1.setGenre("Various");
+            labelMapper.insertNewLabel(label1);
+
+            labelMapper.getLabelById(1L);
+            System.out.println(label1.toString());
+
+
         };
+
+
     }
 }
