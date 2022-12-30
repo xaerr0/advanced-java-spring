@@ -106,17 +106,26 @@ public class SpringDataLab implements CommandLineRunner {
 
         if (cafeRepository.count() == 0) {
 
-            Cafe cafe1 = new Cafe("Bean Martin's", 4, areaRepository.getByCode("A"));
-            Cafe cafe2 = new Cafe("Mr. Bean", 2, areaRepository.getByCode("Y"));
-            Cafe cafe3 = new Cafe("Fed-Espresso", 5, areaRepository.getByCode("G"));
-            Cafe cafe4 = new Cafe("Bean There, Bean That", 3, areaRepository.getByCode("H"));
-            Cafe cafe5 = new Cafe("Are You Coffee to Me?", 5, areaRepository.getByCode("C"));
+            Cafe cafe1 = new Cafe("Bean Martin's", 4, areaRepository.getByCode("A"),
+                    routeRepository.findAllByCodeContaining("A"));
+            Cafe cafe2 = new Cafe("Mr. Bean", 2, areaRepository.getByCode("Y"),
+                    routeRepository.findAllByCodeContaining("Y"));
+            Cafe cafe3 = new Cafe("Fed-Expresso", 5, areaRepository.getByCode("G"),
+                    routeRepository.findAllByCodeContaining("G"));
+            Cafe cafe4 = new Cafe("Bean There, Bean That", 3, areaRepository.getByCode("H"),
+                    routeRepository.findAllByCodeContaining("H"));
+            Cafe cafe5 = new Cafe("Are You Coffee to Me?", 5, areaRepository.getByCode("C"),
+                    routeRepository.findAllByCodeContaining("C"));
+            Cafe cafe6 = new Cafe("Espresso Yourself", 2,routeRepository.findAllByCodeContaining("C-A"));
+            Cafe cafe7 = new Cafe("To Bean or Not to Bean", 2,routeRepository.findAllByCodeContaining("G-H"));
 
-            List<Cafe> cafeList = cafeRepository.saveAll(List.of(cafe1, cafe2, cafe3, cafe4, cafe5));
-
-
-
+            List<Cafe> cafeList = cafeRepository.saveAll(List.of(cafe1, cafe2, cafe3, cafe4, cafe5, cafe6, cafe7));
         }
+
+
+
+        List<Cafe> cafeLikeName = cafeRepository.findByNameContaining("Bean");
+        System.out.println(Arrays.toString(cafeLikeName.toArray()));
 
 
     }

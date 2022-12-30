@@ -12,6 +12,8 @@ public interface RouteRepository extends JpaRepository<Route, Long> {
 
     List<Route> findByDestination_code(String code);
 
+    List<Route> findAllByCodeContaining(String code);
+
     Route findByCode(String code);
 
 

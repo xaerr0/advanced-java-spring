@@ -35,21 +35,21 @@ public class Cafe implements Serializable {
     private List<Route> routes;
 
 
-    public Cafe(String name, int rating, Area area) {
+    public Cafe(String name, int rating, Area area, List<Route> routes) {
         this.name = name;
         this.rating = rating;
         this.area = area;
+        this.routes = routes;
+
     }
+
+
 
     public Cafe(String name, int rating, List<Route> routes) {
         this.name = name;
         this.rating = rating;
         this.routes = routes;
-    }
 
-    public Cafe(String name, int rating) {
-        this.name = name;
-        this.rating = rating;
     }
 
     @Override
