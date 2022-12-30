@@ -29,9 +29,7 @@ public class CrudRepoDemo implements CommandLineRunner {
         User user3 = User.builder().firstName("Emmet").lastName("Jennet").age(63).build();
         User user4 = User.builder().firstName("Rocky").lastName("Balboa").age(4).build();
 
-        //TODO Questions about code under The CrudRepository Interface
-        //TODO https://platform.codingnomads.co/learn/mod/page/view.php?id=5054&forceview=1
-        //TODO Is there a way to save all without entering individually?
+
         Iterable<User> insertedUsers = userRepo.saveAll(List.of(user,user2, user3, user4));
 
         //save user and assign what is returned to the user variable.

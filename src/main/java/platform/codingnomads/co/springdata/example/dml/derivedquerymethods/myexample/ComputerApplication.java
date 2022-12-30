@@ -78,11 +78,11 @@ public class ComputerApplication implements CommandLineRunner {
         final List<Computer> findByForGamingIs = computerRepo.findByForGamingIs(false);
         findByForGamingIs.forEach(System.out::println);
 
-        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
 
-//        System.out.println("----------SORT----------");
-//        final List<Computer> findTop5DistinctId = computerRepo.findTop5DistinctId(sort);
-//        findTop5DistinctId.forEach(System.out::println);
+        System.out.println("----------SORT----------");
+        final List<Computer> findTop5DistinctByForGamingIsTrue = computerRepo.findTop5DistinctByForGamingIsTrue(sort);
+        findTop5DistinctByForGamingIsTrue.forEach(System.out::println);
 
     }
 

@@ -12,6 +12,8 @@ import java.util.List;
 @ToString(exclude = "songs")
 public class Album {
 
+    private Long id;
+
     private Artist artist;
 
     private List<Song> songs;

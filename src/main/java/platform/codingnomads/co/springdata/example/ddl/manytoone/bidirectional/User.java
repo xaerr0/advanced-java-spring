@@ -23,6 +23,6 @@ public class User {
     private String email;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    //TODO Shows comment_id on MySQL. Because "mappedBy"?
+
     private Post post;
 }

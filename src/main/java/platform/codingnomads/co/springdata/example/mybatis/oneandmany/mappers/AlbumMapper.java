@@ -10,8 +10,8 @@ import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Art
 public interface AlbumMapper {
 
     @Insert("INSERT INTO mybatis.albums " +
-            "(name, year " +
-            "VALUES (#{name}, #{year})")
+            "(name, year, artist_id " +
+            "VALUES (#{name}, #{year}, #{artist.id})")
     void insertNewAlbum(Album album);
 
     @Select("SELECT * " +

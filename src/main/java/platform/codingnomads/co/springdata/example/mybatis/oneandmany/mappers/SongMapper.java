@@ -2,6 +2,7 @@ package platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
+import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Album;
 import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Artist;
 import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Song;
 
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 public interface SongMapper {
 
     @Insert("INSERT INTO mybatis.songs " +
-            "(name, artist_id, album_name, song_length) " +
-            "VALUES (#{name}, #{artist.id}, #{album}, #{songLength});")
+            "(name, artist_id, album_id, song_length) " +
+            "VALUES (#{name}, #{artist.id}, #{album.id}, #{songLength});")
     @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
     void insertNewSong(Song song);
 
@@ -22,7 +23,16 @@ public interface SongMapper {
     @Results(
             id = "songResultMap",
             value = {
-                    @Result(property = "album", column = "album_name"),
+                    @Result(
+                            //property to map to
+                            property = "album",
+                            column = "album_id",
+                            javaType = Album.class,
+                            one = @One(
+                                    select = "platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers.AlbumMapper.getAlbumById",
+                                    fetchType = FetchType.LAZY
+                            )
+                    ),
                     @Result(property = "songLength", column = "song_length"),
                     @Result(
                             //property to map to

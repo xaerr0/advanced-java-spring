@@ -34,7 +34,7 @@ public class JpaRepoDemo implements CommandLineRunner {
         //save multiple entity instances at a time
         List<SoftDrink> insertedSoftDrinks = softDrinkRepo.saveAll(List.of(coke, drPepper, rootBeer, orangeSoda));
 
-        //TODO Purpose of this??
+
         //make sure all entities are actually saved to the database
         softDrinkRepo.flush();
 
