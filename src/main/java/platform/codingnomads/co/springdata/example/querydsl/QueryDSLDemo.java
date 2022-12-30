@@ -74,6 +74,43 @@ public class QueryDSLDemo implements CommandLineRunner {
                 .fetchOne();
         System.out.println(area);
 
+        QArea qArea1 = QArea.area;
+        JPAQuery<?> query1 = new JPAQuery<>(entityManager);
+        Area area1 = query1.select(qArea1)
+                .from(qArea1)
+                .where(qArea1.code.eq("C"))
+                .fetchOne();
+        System.out.println(area1);
+
+        QArea qArea2 = QArea.area;
+        JPAQuery<?> query2 = new JPAQuery<>(entityManager);
+        Area area2 = query2.select(qArea2)
+                .from(qArea2)
+                .where(qArea2.name.eq("D"))
+                .fetchOne();
+        System.out.println(area2);
+
+
+        //TODO trying to print by ID in desc. order
+
+//        JPAQuery<?> query3 = new JPAQuery<>(entityManager);
+        QArea qArea3 = QArea.area;
+        List<?> areaById = query.from(qArea3)
+                .where(qArea3.id.between(1L, 7L))
+                .orderBy(qArea3.id.desc())
+                .fetch();
+        System.out.println(areaById);
+
+
+
+
+
+
+
+
+
+
+
         routeRepository.deleteAll();
         areaRepository.deleteAll();
     }

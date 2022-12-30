@@ -12,7 +12,7 @@ public interface SongMapper {
 
     @Insert("INSERT INTO mybatis.songs " +
             "(name, artist_id, album_name, song_length) " +
-            "VALUES (#{name}, #{artist.id}, #{albumName}, #{songLength});")
+            "VALUES (#{name}, #{artist.id}, #{album}, #{songLength});")
     @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
     void insertNewSong(Song song);
 
@@ -22,7 +22,7 @@ public interface SongMapper {
     @Results(
             id = "songResultMap",
             value = {
-                    @Result(property = "albumName", column = "album_name"),
+                    @Result(property = "album", column = "album_name"),
                     @Result(property = "songLength", column = "song_length"),
                     @Result(
                             //property to map to

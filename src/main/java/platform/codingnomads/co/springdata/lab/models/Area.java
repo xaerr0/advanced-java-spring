@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Setter
 @Table(name = "areas")
 @Builder
-@ToString
+//@ToString
 public class Area implements Serializable {
 
     private static final long serialVersionUID = 153236560504273881L;
@@ -23,4 +23,9 @@ public class Area implements Serializable {
 
     @Column(unique = true)
     private String code;
+
+    @Override
+    public String toString() {
+        return code;
+    }
 }

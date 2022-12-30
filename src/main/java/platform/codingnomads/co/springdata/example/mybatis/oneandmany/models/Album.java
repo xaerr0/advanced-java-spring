@@ -4,21 +4,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @ToString(exclude = "songs")
-public class Artist {
+public class Album {
 
-    private Long id;
+    private Artist artist;
+
+    private List<Song> songs;
 
     private String name;
 
-    private String bio;
+    private String year;
 
-//    private List<Song> songs;
-
-    private List<Album> albums;
 }

@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Setter
 @Table(name = "routes")
 @Builder
-@ToString
+
 public class Route implements Serializable {
 
     private static final long serialVersionUID = -2624055642258734917L;
@@ -24,7 +24,7 @@ public class Route implements Serializable {
     @Column(unique = true)
     private String code;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(
             name = "origin_area_id",
             nullable = false,
@@ -32,11 +32,28 @@ public class Route implements Serializable {
     )
     private Area origin;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(
             name = "destination_area_id",
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_routes_destination_area_id")
     )
     private Area destination;
+
+    // TODO Can you have multiple toStrings methods w/ different name?
+//    @Override
+//    public String toString() {
+//        return "Route{" +
+//               "id=" + id +
+//               ", code='" + code + '\'' +
+//               ", origin=" + origin +
+//               ", destination=" + destination +
+//               '}';
+//    }
+    @Override
+    public String toString() {
+        return origin + " - " + destination;
+    }
+
+
 }
