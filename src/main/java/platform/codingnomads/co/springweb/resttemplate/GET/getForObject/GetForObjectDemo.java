@@ -4,11 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+<<<<<<< HEAD
 import platform.codingnomads.co.springweb.resttemplate.GET.getForObject.video_demo.CodingNomadsTasksApiResponse;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.KanyeTemplate;
+=======
+import platform.codingnomads.co.springweb.resttemplate.GET.models.QuoteTemplate;
+
+import java.util.Arrays;
+import java.util.List;
+>>>>>>> 5780cbda3eb53f9146d3ba20a6471c25ee36c8dc
 
 @SpringBootApplication
 public class GetForObjectDemo {
@@ -24,9 +30,9 @@ public class GetForObjectDemo {
     public CommandLineRunner run() throws Exception {
         return args -> {
 
-            KanyeTemplate kanyeQuote = restTemplate.getForObject("https://api.kanye.rest/", KanyeTemplate.class);
-
-            System.out.println(kanyeQuote.toString());
+            QuoteTemplate[] randomQuote;
+            randomQuote = restTemplate.getForObject("https://zenquotes.io/api/random/", QuoteTemplate[].class);
+            System.out.println(Arrays.toString(randomQuote));
 
             // submit more requests here
             
