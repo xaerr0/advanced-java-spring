@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -15,25 +14,21 @@ import platform.codingnomads.co.springweb.resttemplate.PUT.models.ResponseObject
 import platform.codingnomads.co.springweb.resttemplate.PUT.models.Task;
 
 @SpringBootApplication
-public class putMain {
+public class PutMain {
 
     @Autowired
     RestTemplate restTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(putMain.class, args);
-    }
-
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+        SpringApplication.run(PutMain.class, args);
     }
 
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
 
-            int taskId = 5;
+            //use a valid task id
+            int taskId = 171;
 
             //request Task 5 from server
             ResponseObject responseObject = restTemplate

@@ -22,11 +22,6 @@ public class GetForEntityDemo {
     }
 
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
-    }
-
-    @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
             ResponseEntity<KanyeTemplate> responseEntity =
