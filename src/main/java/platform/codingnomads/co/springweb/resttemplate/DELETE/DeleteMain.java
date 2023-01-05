@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.HttpClientErrorException;
@@ -14,20 +12,14 @@ import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.DELETE.models.ResponseObject;
 import platform.codingnomads.co.springweb.resttemplate.DELETE.models.Task;
 
-@ComponentScan(basePackages = "")
 @SpringBootApplication
-public class deleteMain {
+public class DeleteMain {
 
     @Autowired
     RestTemplate restTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(deleteMain.class, args);
-    }
-
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+        SpringApplication.run(DeleteMain.class, args);
     }
 
     @Bean
@@ -37,7 +29,8 @@ public class deleteMain {
             Task newTask = Task.builder()
                     .name("should be deleted")
                     .description("used in a delete RestTemplate example. If you see this something went wrong. Oops")
-                    .userId(5)
+                    //be sure to enter a valid user id
+                    .userId(380)
                     .completed(false)
                     .build();
 

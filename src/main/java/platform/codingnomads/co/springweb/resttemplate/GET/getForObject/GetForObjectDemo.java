@@ -20,13 +20,9 @@ public class GetForObjectDemo {
     }
 
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
-    }
-
-    @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
+
             KanyeTemplate kanyeQuote;
             kanyeQuote = restTemplate.getForObject("https://api.kanye.rest/", KanyeTemplate.class);
             System.out.println(kanyeQuote.toString());
