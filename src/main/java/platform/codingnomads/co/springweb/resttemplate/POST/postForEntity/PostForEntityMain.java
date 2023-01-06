@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.POST.models.ResponseObject;
+import platform.codingnomads.co.springweb.resttemplate.POST.models.ResponseObject2;
 import platform.codingnomads.co.springweb.resttemplate.POST.models.Task;
+import platform.codingnomads.co.springweb.resttemplate.POST.models.User;
 
 import java.util.Objects;
 
@@ -42,6 +44,38 @@ public class PostForEntityMain {
             } else {
                 System.out.println(Objects.requireNonNull(responseEntity.getBody()).getError());
             }
+
+
+            User newUser1 = User.builder()
+                    .email("FChild@geocities.com")
+                    .first_name("Foster")
+                    .last_name("Child")
+                    .build();
+
+            ResponseEntity<ResponseObject2> responseEntity1 = restTemplate.postForEntity(
+                    "http://demo.codingnomads.co:8080/tasks_api/users", newUser1, ResponseObject2.class);
+
+            if (responseEntity1.getStatusCode().equals(HttpStatus.CREATED)) {
+                System.out.println(Objects.requireNonNull(responseEntity1.getBody()));
+            } else {
+                System.out.println(Objects.requireNonNull(responseEntity1.getBody().getError()));
+            }
+
+            User newUser2 = User.builder()
+                    .email("Joking@angelfire.com")
+                    .first_name("Jo")
+                    .last_name("King")
+                    .build();
+            ResponseEntity<ResponseObject2> responseEntity2 = restTemplate.postForEntity(
+                    "http://demo.codingnomads.co:8080/tasks_api/users", newUser2, ResponseObject2.class);
+
+            if (responseEntity2.getStatusCode().equals(HttpStatus.CREATED)) {
+                System.out.println(Objects.requireNonNull(responseEntity2.getBody()));
+            } else {
+                System.out.println(Objects.requireNonNull(responseEntity2.getBody().getError()));
+            }
+
+
         };
     }
 }

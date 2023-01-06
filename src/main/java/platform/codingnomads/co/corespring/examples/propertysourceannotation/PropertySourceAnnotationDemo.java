@@ -9,7 +9,7 @@ public class PropertySourceAnnotationDemo {
         ctx.register(PropertySourceAnnotationConfig.class);
         ctx.refresh();
         final App app = ctx.getBean(App.class);
-        final Computer computer = ctx.getBean(Computer.class);
+        final platform.codingnomads.co.corespring.examples.propertysourceannoation.Computer computer = ctx.getBean(platform.codingnomads.co.corespring.examples.propertysourceannoation.Computer.class);
         System.out.println("Values from myapp.properties: " +
                 "App Name: " + app.getAppName() + ", App Version: " + app.getAppVersion());
 
