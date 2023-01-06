@@ -50,40 +50,47 @@ public class PostForLocationMain {
 
 
 
-            User newUser1 = User.builder()
-                    .email("tadpohl@angelcities2.com")
-                    .first_name("Tad2")
-                    .last_name("Pohl2")
-                    .build();
+//            User newUser1 = User.builder()
+//                    .email("tadpohl@angelcities2.com")
+//                    .first_name("Tad2")
+//                    .last_name("Pohl2")
+//                    .build();
 
 //            URI returnedLocation2 = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/users",
 //                    newUser1, ResponseObject2.class);
 //            System.out.println(Objects.requireNonNull(returnedLocation2));
 
-            ResponseEntity<?> responseEntity1 = restTemplate
-                    .postForEntity("http://demo.codingnomads.co:8080/tasks_api/users", newUser1, ResponseObject2.class);
-            System.out.println(responseEntity1.getHeaders().get("Location"));
-
-
-            User newUser2 = User.builder()
-                    .email("scupp@angelcities.com")
-                    .first_name("Stanley")
-                    .last_name("Cupp")
-                    .build();
-
-            URI returnedLocation2 = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/users",
-                    newUser2, ResponseObject2.class);
-            System.out.println(Objects.requireNonNull(returnedLocation2));
+//            ResponseEntity<?> responseEntity1 = restTemplate
+//                    .postForEntity("http://demo.codingnomads.co:8080/tasks_api/users", newUser1, ResponseObject2.class);
+//            System.out.println(responseEntity1.getHeaders().get("Location"));
+//
+//
+//            User newUser2 = User.builder()
+//                    .email("scupp2@angelcities.com")
+//                    .first_name("Stanley")
+//                    .last_name("Cupp")
+//                    .build();
+//
+//            URI returnedLocation2 = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/users",
+//                    newUser2, ResponseObject2.class);
+//            System.out.println(Objects.requireNonNull(returnedLocation2));
 
             User newUser3 = User.builder()
-                    .email("rsprout@angelcities.com")
-                    .first_name("Russell")
-                    .last_name("Sprouts")
+                    .email("rsprout2@angelcities.com")
+                    .first_name("Russell2")
+                    .last_name("Sprouts2")
                     .build();
 
-            URI returnedLocation3 = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/users",
-                    newUser3, ResponseObject2.class);
-            System.out.println(Objects.requireNonNull(returnedLocation3));
+//            URI returnedLocation3 = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/users",
+//                    newUser3, ResponseObject2.class);
+//            System.out.println(Objects.requireNonNull(returnedLocation3));
+
+            // trying other ResponseEntity headers
+            ResponseEntity<?> responseEntity2 = restTemplate
+                    .postForEntity("http://demo.codingnomads.co:8080/tasks_api/users", newUser3, ResponseObject2.class);
+            System.out.println(responseEntity2.getHeaders().get("Date"));
+
+
         };
     }
 }
