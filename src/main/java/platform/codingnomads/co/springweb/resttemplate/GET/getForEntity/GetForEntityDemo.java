@@ -22,7 +22,7 @@ public class GetForEntityDemo {
     }
 
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+    public static RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
 

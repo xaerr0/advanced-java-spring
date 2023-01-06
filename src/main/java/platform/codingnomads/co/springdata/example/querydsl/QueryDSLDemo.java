@@ -96,7 +96,7 @@ public class QueryDSLDemo implements CommandLineRunner {
 //        JPAQuery<?> query3 = new JPAQuery<>(entityManager);
         QArea qArea3 = QArea.area;
         List<?> areaById = query.from(qArea3)
-                .where(qArea3.id.between(35L, 40L))
+                .where(qArea3.id.between(62L, 70L))
                 .orderBy(qArea3.id.desc())
                 .fetch();
         System.out.println(areaById);
