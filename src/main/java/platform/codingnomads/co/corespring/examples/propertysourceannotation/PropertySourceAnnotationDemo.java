@@ -1,4 +1,4 @@
-package platform.codingnomads.co.corespring.examples.propertysourceannoation;
+package platform.codingnomads.co.corespring.examples.propertysourceannotation;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

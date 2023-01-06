@@ -18,21 +18,13 @@ import platform.codingnomads.co.springweb.resttemplate.PATCH.models.Task;
 import java.util.Objects;
 
 @SpringBootApplication
-public class patchMain {
+public class PatchMain {
 
     @Autowired
     RestTemplate restTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(patchMain.class, args);
-    }
-
-    @Bean
-    public RestTemplate restTemplate() {
-        HttpClient client = HttpClients.createDefault();
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(client));
-        return restTemplate;
+        SpringApplication.run(PatchMain.class, args);
     }
 
     @Bean
@@ -42,8 +34,8 @@ public class patchMain {
             //create an empty Task
             Task task = new Task();
 
-            //set fields for identification
-            task.setId(6);
+            //be sure to use a valid task id
+            task.setId(169);
 
             //set fields you want to change. All other fields are null and will not be updated
             task.setName("use patchForObject()");

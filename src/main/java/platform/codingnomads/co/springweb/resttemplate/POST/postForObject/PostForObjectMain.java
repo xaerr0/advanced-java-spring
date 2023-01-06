@@ -11,18 +11,13 @@ import platform.codingnomads.co.springweb.resttemplate.POST.models.ResponseObjec
 import platform.codingnomads.co.springweb.resttemplate.POST.models.Task;
 
 @SpringBootApplication
-public class postForObjectMain {
+public class PostForObjectMain {
 
     @Autowired
     RestTemplate restTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(postForObjectMain.class, args);
-    }
-
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+        SpringApplication.run(PostForObjectMain.class, args);
     }
 
     @Bean
@@ -31,7 +26,8 @@ public class postForObjectMain {
             Task newTask = Task.builder()
                     .name("learn how to use postForObject() - video demo")
                     .description("get comfortable using the RestTemplate postForObject() method")
-                    .userId(5)
+                    //use a valid user id
+                    .userId(380)
                     .completed(false)
                     .build();
 

@@ -22,7 +22,7 @@ public class CarController {
 
     @GetMapping("/cars")
     public String viewHomePage(Model model) {
-        final List<RentalCar> carList = carService.getCars();
+        List<RentalCar> carList = carService.getCars();
         model.addAttribute("carList", carList);
         return "cars";
     }
