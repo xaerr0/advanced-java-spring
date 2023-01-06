@@ -6,16 +6,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.*;
+import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.web.client.RestTemplate;
 
+import org.springframework.web.util.UriComponentsBuilder;
 import platform.codingnomads.co.springweb.resttemplate.GET.getForObject.video_demo.CodingNomadsTasksApiResponse;
 //import platform.codingnomads.co.springweb.resttemplate.GET.models.KanyeTemplate;
 
 import platform.codingnomads.co.springweb.resttemplate.GET.models.QuoteTemplate;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.RandomFactsTemplate;
+import platform.codingnomads.co.springweb.resttemplate.GET.models.TastyResponse;
 
+import java.net.URI;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @SpringBootApplication
@@ -51,11 +58,35 @@ public class GetForObjectDemo {
 ////
 //            System.out.println(response.toString());
 
-            RandomFactsTemplate randomFacts =
-                    restTemplate.getForObject("https://uselessfacts.jsph.pl/random.json?language=en",
-                        RandomFactsTemplate.class);
+//            RandomFactsTemplate randomFacts =
+//                    restTemplate.getForObject("https://uselessfacts.jsph.pl/random.json?language=en",
+//                        RandomFactsTemplate.class);
+//
+//            System.out.println(randomFacts.toString());
 
-            System.out.println(randomFacts.toString());
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("X-RapidAPI-Key", "a051247f27msh4a9f4086c6e6991p1235adjsnde5f31eb9f20");
+            headers.add("X-RapidAPI-Host", "tasty.p.rapidapi.com");
+
+            HttpEntity<?> httpEntity = new HttpEntity<>(headers);
+            Map<String, String> params = new HashMap<>();
+            params.put("prefix", "chicken");
+
+            URI uri = UriComponentsBuilder.fromUriString(
+                    "https://tasty.p.rapidapi.com/recipes/auto-complete")
+                    .queryParam("prefix", "chicken soup")
+                              .build().toUri();
+
+            ResponseEntity<TastyResponse> response = restTemplate.exchange(
+                    uri, HttpMethod.GET, httpEntity, TastyResponse.class);
+
+
+
+            System.out.println(response.getBody());
+
+
+
 
         };
     }

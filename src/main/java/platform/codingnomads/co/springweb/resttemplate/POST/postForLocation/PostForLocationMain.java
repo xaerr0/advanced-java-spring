@@ -77,8 +77,8 @@ public class PostForLocationMain {
 
             User newUser3 = User.builder()
                     .email("rsprout2@angelcities.com")
-                    .first_name("Russell2")
-                    .last_name("Sprouts2")
+                    .firstName("Russell2")
+                    .lastName("Sprouts2")
                     .build();
 
 //            URI returnedLocation3 = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/users",

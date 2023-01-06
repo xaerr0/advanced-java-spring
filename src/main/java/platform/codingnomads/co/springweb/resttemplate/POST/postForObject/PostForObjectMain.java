@@ -9,9 +9,6 @@ import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.POST.models.ResponseObject2;
 import platform.codingnomads.co.springweb.resttemplate.POST.models.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 @SpringBootApplication
 public class PostForObjectMain {
 
@@ -42,28 +39,28 @@ public class PostForObjectMain {
 
 
 
-            //TODO are underscores necessary?
+
             User newUser1 = User.builder()
-                    .email("billyjenkins@hotmail2.com")
-                    .first_name("Billy")
-                    .last_name("Jenkins")
+                    .email("billyjenkins@hotmail22.com")
+                    .firstName("Billy")
+                    .lastName("Jenkins")
                     .build();
 
             User newUser2 = User.builder()
-                    .email("mrsandman@hotmail.com")
-                    .first_name("Meister")
-                    .last_name("Sangman")
+                    .email("mrsandman@hotmail2.com")
+                    .firstName("Meister")
+                    .lastName("Sangman")
                     .build();
 
             User newUser3 = User.builder()
-                    .email("PuPu@geocities.com")
-                    .first_name("PuPu")
-                    .last_name("Stank")
+                    .email("PuPu@geocities.com2")
+                    .firstName("PuPu")
+                    .lastName("Stank")
                     .build();
 
 
 
-            // TODO There's gotta be a cleaner way to achieve the same results? :P
+
             ResponseObject2 userReturnedByServerAfterPost = restTemplate
                     .postForObject("http://demo.codingnomads.co:8080/tasks_api/users",
                             newUser1, ResponseObject2.class);

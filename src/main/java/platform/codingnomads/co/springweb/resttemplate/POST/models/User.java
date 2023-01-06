@@ -1,5 +1,6 @@
 package platform.codingnomads.co.springweb.resttemplate.POST.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,8 +9,13 @@ import lombok.Data;
 public class User {
     private long id;
     private String email;
-    private String first_name;
-    private String last_name;
+
+    @JsonProperty("first_name")
+    private String firstName;
+
+    @JsonProperty("last_name")
+    private String lastName;
+
     private long createdAt;
     private long updatedAt;
 

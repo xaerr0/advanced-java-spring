@@ -8,10 +8,10 @@ public class BoredTemplateAPI {
     String activity;
     String type;
     int participants;
-    int price;
+    Integer price;
     String link;
     String key;
-    int accessibility;
+    Integer accessibility;
 
 
 }

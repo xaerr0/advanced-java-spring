@@ -43,13 +43,13 @@ public class GetForEntityDemo {
 //                System.out.println("Something went wrong! The response was not marked with status code 200");
 //            }
 
-            // TODO Fail! :(
-            ResponseEntity<BoredTemplateAPI[]> responseEntity1 =
-                    restTemplate.getForEntity("http://www.boredapi.com/api/activity", BoredTemplateAPI[].class);
+
+            ResponseEntity<BoredTemplateAPI> responseEntity1 =
+                    restTemplate.getForEntity("http://www.boredapi.com/api/activity", BoredTemplateAPI.class);
 
             if (responseEntity1.getStatusCode().equals(HttpStatus.OK) && responseEntity1.getBody() != null) {
-                BoredTemplateAPI[] boredTemplate = responseEntity1.getBody();
-                System.out.println(Arrays.toString(boredTemplate));
+                BoredTemplateAPI boredTemplate = responseEntity1.getBody();
+                System.out.println(boredTemplate.toString());
 
             } else {
                 System.out.println("Something went wrong! The response was not marked with status code 200");

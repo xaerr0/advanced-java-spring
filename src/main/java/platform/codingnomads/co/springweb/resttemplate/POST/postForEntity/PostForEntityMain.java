@@ -48,8 +48,8 @@ public class PostForEntityMain {
 
             User newUser1 = User.builder()
                     .email("FChild@geocities.com")
-                    .first_name("Foster")
-                    .last_name("Child")
+                    .firstName("Foster")
+                    .lastName("Child")
                     .build();
 
             ResponseEntity<ResponseObject2> responseEntity1 = restTemplate.postForEntity(
@@ -63,8 +63,8 @@ public class PostForEntityMain {
 
             User newUser2 = User.builder()
                     .email("Joking@angelfire.com")
-                    .first_name("Jo")
-                    .last_name("King")
+                    .firstName("Jo")
+                    .lastName("King")
                     .build();
             ResponseEntity<ResponseObject2> responseEntity2 = restTemplate.postForEntity(
                     "http://demo.codingnomads.co:8080/tasks_api/users", newUser2, ResponseObject2.class);
