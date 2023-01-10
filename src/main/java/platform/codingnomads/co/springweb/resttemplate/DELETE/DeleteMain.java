@@ -10,7 +10,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.DELETE.models.ResponseObject;
+import platform.codingnomads.co.springweb.resttemplate.DELETE.models.ResponseObject2;
 import platform.codingnomads.co.springweb.resttemplate.DELETE.models.Task;
+import platform.codingnomads.co.springweb.resttemplate.DELETE.models.User;
 
 @SpringBootApplication
 public class DeleteMain {
@@ -70,6 +72,53 @@ public class DeleteMain {
             } catch (HttpClientErrorException e) {
                 System.out.println(e.getMessage());
             }
+
+
+
+
+            // create new user
+            User newUser1 = User.builder()
+                    .email("vIce@yoyo.com")
+                    .firstName("Vanilla")
+                    .lastName("Ice")
+                    .build();
+
+
+            // POST new user to server
+            ResponseObject2 responseObject2 = restTemplate
+                    .postForObject("http://demo.codingnomads.co:8080/tasks_api/users/", newUser1, ResponseObject2.class);
+
+
+
+            // confirm data was returned and avoid NullPointerExceptions
+            if (responseObject2 == null) {
+                throw new Exception("The server did not return anything.");
+            } else if (responseObject2.getData() == null) {
+                throw new Exception("The server encountered this error while creating the user: " +
+                                    responseObject2.getError().getMessage());
+            } else {
+                newUser1 = responseObject2.getData();
+            }
+
+            System.out.println("The user was created successfully!");
+            System.out.println(newUser1);
+
+            // delete the newUser1 using the ID the server returned
+            restTemplate.delete("http://demo.codingnomads.co:8080/tasks_api/users/" + newUser1.getId());
+            System.out.println("The user was successfully deleted!");
+
+            try {
+                restTemplate.getForEntity("http://demo.codingnomads.co:8080/tasks_api/users/" + newUser1.getId(),
+                        ResponseObject2.class);
+            } catch (HttpClientErrorException e) {
+                System.out.println(e.getMessage());
+            }
+
+
+
         };
+
+
+
     }
 }
