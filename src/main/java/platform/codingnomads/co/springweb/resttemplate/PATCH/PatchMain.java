@@ -1,7 +1,5 @@
 package platform.codingnomads.co.springweb.resttemplate.PATCH;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,10 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import platform.codingnomads.co.springweb.resttemplate.PATCH.models.ResponseObject;
+import platform.codingnomads.co.springweb.resttemplate.PATCH.models.ResponseObject2;
 import platform.codingnomads.co.springweb.resttemplate.PATCH.models.Task;
+import platform.codingnomads.co.springweb.resttemplate.PATCH.models.User;
 
 import java.util.Objects;
 
@@ -55,6 +54,48 @@ public class PatchMain {
                     .exchange("http://demo.codingnomads.co:8080/tasks_api/tasks/" + task.getId(), HttpMethod.PATCH, httpEntity, ResponseObject.class);
 
             System.out.println(Objects.requireNonNull(response));
+
+
+            // patchForObject()
+
+            // create an empty User
+            User user = new User();
+
+            // use valid user id
+            user.setId(457);
+
+            // set fields to be changed
+            user.setFirstName("Bubba (PATCH)");
+            user.setLastName("Rubba (PATCH");
+
+            // send the patch request using the URL, the User created above and the ResponseObject Class
+            ResponseObject2 responseUser = restTemplate
+                    .patchForObject("http://demo.codingnomads.co:8080/tasks_api/users/" + user.getId(), user,
+                            ResponseObject2.class);
+
+            System.out.println(Objects.requireNonNull(responseUser));
+
+
+            //exchange()
+
+            // create an empty User
+            User user2 = new User();
+
+            // set a valid user ID
+            user2.setId(455);
+
+            // set fields to be changed
+            user2.setFirstName("Fanny");
+            user2.setLastName("Pack");
+
+
+            HttpEntity<User> httpEntity2 = new HttpEntity<>(user2);
+            ResponseEntity<ResponseObject2> response2 = restTemplate
+                    .exchange("http://demo.codingnomads.co:8080/tasks_api/users/" + user2.getId(), HttpMethod.PATCH,
+                            httpEntity2, ResponseObject2.class);
+
+            System.out.println(Objects.requireNonNull(response2));
+
         };
     }
 }
