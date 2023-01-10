@@ -77,6 +77,7 @@ public class DeleteMain {
 
 
             // create new user
+            System.out.println("test");
             User newUser1 = User.builder()
                     .email("vIce@yoyo.com")
                     .firstName("Vanilla")
@@ -113,6 +114,24 @@ public class DeleteMain {
             } catch (HttpClientErrorException e) {
                 System.out.println(e.getMessage());
             }
+
+            //try to GET, verify record was deleted
+            try {
+                restTemplate.getForEntity("http://demo.codingnomads.co:8080/tasks_api/users/" + newUser1.getId(),
+                        ResponseObject2.class);
+            } catch (HttpClientErrorException e) {
+                System.out.println(e.getMessage());
+            }
+
+            //delete using exchange()
+            HttpEntity<User> httpEntity2 = new HttpEntity<>(newUser1);
+            try {
+                restTemplate.exchange("http://demo.codingnomads.co:8080/tasks_api/users/" + newUser1.getId(),
+                        HttpMethod.DELETE, httpEntity2, ResponseObject2.class);
+            } catch (HttpClientErrorException e) {
+                System.out.println(e.getMessage());
+            }
+
 
 
 
