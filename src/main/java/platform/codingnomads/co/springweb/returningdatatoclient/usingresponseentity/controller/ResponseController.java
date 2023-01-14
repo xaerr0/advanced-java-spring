@@ -14,6 +14,7 @@ import java.net.URI;
 public class ResponseController {
 
     User user = new User(1, "Test User", "test@email.com");
+    User user2 = new User(463, "ResponseEntity2", "Response@Entity@poo2.com");
 
     @GetMapping("/constructor")
     public ResponseEntity<User> constructorMethod() {
@@ -37,5 +38,22 @@ public class ResponseController {
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
+    }
+
+//    @GetMapping("/practice")
+//    public ResponseEntity<User> createUser() {
+//        // builder method
+//        return ResponseEntity.created(URI.create("/users/" + user2.getId()))
+//                .header("Header 1", "Header 1 Value")
+//                .body(user2);
+//    }
+
+    @GetMapping("/practice2")
+    public ResponseEntity<User> createUser2() {
+        // constructor method
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Header 2", "Header 2 Value");
+        headers.add("Location", "/users/" + user2.getId());
+        return new ResponseEntity<>(user2, headers, HttpStatus.CREATED);
     }
 }
