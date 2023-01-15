@@ -48,5 +48,30 @@ public class TaskController {
     public String pathVariableIsNotEncoded(@PathVariable String name) {
         return name;
     }
-}
 
+    //TODO https://platform.codingnomads.co/learn/mod/page/view.php?id=4628&forceview=1
+    @GetMapping(value = "/test/{name}")
+    public String pathVariable(@PathVariable (required = false) String name) {
+        if (!StringUtils.isEmpty(name)) {
+            return "Value of Path Variable: " + name;
+        } else {
+            return "Path Variable Value : Not Provided";
+        }
+    }
+
+    @GetMapping(value = "test2/{id}/{name},{completed}")
+    public Task getTask2(@PathVariable Map<String, String> pathVariableMaps) {
+        return Task.builder()
+                .id(Long.valueOf(pathVariableMaps.get("id")))
+                .name(pathVariableMaps.get("name"))
+                .completed(Boolean.parseBoolean(pathVariableMaps.get("completed")))
+                .build();
+    }
+
+    @GetMapping(value = "/test3/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String notEncoded(@PathVariable String name) {
+        return name;
+    }
+
+
+}
