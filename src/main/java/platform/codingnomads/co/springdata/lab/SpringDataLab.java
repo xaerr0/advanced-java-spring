@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 import platform.codingnomads.co.springdata.lab.models.Area;
 import platform.codingnomads.co.springdata.lab.models.Cafe;
 import platform.codingnomads.co.springdata.lab.models.Route;
@@ -26,6 +27,7 @@ public class SpringDataLab implements CommandLineRunner {
         SpringApplication.run(SpringDataLab.class);
     }
 
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
 
@@ -96,7 +98,7 @@ public class SpringDataLab implements CommandLineRunner {
 
         }
 
-        // TODO Had to change fetchtype to EAGER for this to work? por queso?
+
         System.out.println(routeRepository.findByOrigin_code("A"));
         System.out.println(routeRepository.findByDestination_code("Z"));
 

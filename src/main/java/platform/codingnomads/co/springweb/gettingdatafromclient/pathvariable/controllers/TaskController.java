@@ -49,7 +49,7 @@ public class TaskController {
         return name;
     }
 
-    //TODO https://platform.codingnomads.co/learn/mod/page/view.php?id=4628&forceview=1
+
     @GetMapping(value = "/test/{name}")
     public String pathVariable(@PathVariable (required = false) String name) {
         if (!StringUtils.isEmpty(name)) {

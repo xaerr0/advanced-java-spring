@@ -16,6 +16,8 @@ import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipar
 
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -86,12 +88,12 @@ public class HandleMultipartDataController {
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(databaseFile.getFileType()))
                 // display the file inline
-//                .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
                 // download file, without setting file name
 //                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment")
                 // download file, and specify file name
-                .header(HttpHeaders.CONTENT_DISPOSITION,
-                        String.format("attachment; filename=\"%s\"", databaseFile.getFileName()))
+//                .header(HttpHeaders.CONTENT_DISPOSITION,
+//                        String.format("attachment; filename=\"%s\"", databaseFile.getFileName()))
                 .body(new ByteArrayResource(databaseFile.getData()));
     }
 
@@ -104,7 +106,7 @@ public class HandleMultipartDataController {
         if (optional.isEmpty()) {
             return ResponseEntity.badRequest()
                     .body(new NoSuchFileException("The ID you passed in was not valid. " +
-                            "Where you trying to upload a new file?"));
+                                                  "Where you trying to upload a new file?"));
         } else if (file == null) {
             return ResponseEntity.badRequest()
                     .body(new NoSuchFileException("No file was received, please try again."));
@@ -118,7 +120,7 @@ public class HandleMultipartDataController {
         } catch (IOException ex) {
             return ResponseEntity.badRequest()
                     .body(new IllegalStateException("Sorry could not update file "
-                            + file.getOriginalFilename() + "Try again!", ex));
+                                                    + file.getOriginalFilename() + "Try again!", ex));
         }
 
         final DatabaseFile savedFile = fileRepository.save(databaseFile);
@@ -149,5 +151,40 @@ public class HandleMultipartDataController {
         fileRepository.deleteById(fileId);
         return ResponseEntity.ok("File with ID " + fileId + " and name " + optional.get().getFileName() + " was deleted");
     }
-}
 
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchFilesByName(@RequestParam(name = "term") String fileName) {
+
+        final List<DatabaseFile> fileList = fileRepository.findByFileNameContainingIgnoreCase(fileName);
+
+        if (fileList.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("File not found with " + fileName);
+        }
+
+        List<FileResponse> fileResponses = new ArrayList<>();
+        for (DatabaseFile d : fileList) {
+            fileResponses.add(FileResponse.builder()
+                    .fileName(d.getFileName())
+                    .fileDownloadUri(d.getDownloadUrl())
+                    .fileType(d.getFileType())
+                    .size(d.getData().length)
+                    .build());
+
+        }
+        return ResponseEntity.ok().body(fileResponses);
+
+
+    }
+
+    //TODO create a new method duplicateFile(), which creates a copy of a file and gives the copy a new name
+    // (specified by the user)
+    // HALP! :(
+
+//    @GetMapping("/duplicate/{id}")
+//    public ResponseEntity<?> duplicateFile(@PathVariable(name = "id") Long fileId) {
+//
+//
+//    }
+}

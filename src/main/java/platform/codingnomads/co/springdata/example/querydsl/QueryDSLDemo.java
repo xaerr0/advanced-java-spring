@@ -91,7 +91,7 @@ public class QueryDSLDemo implements CommandLineRunner {
         System.out.println(area2);
 
 
-        //TODO trying to print by ID in desc. order
+
 
 //        JPAQuery<?> query3 = new JPAQuery<>(entityManager);
         QArea qArea3 = QArea.area;

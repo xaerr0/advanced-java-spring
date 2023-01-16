@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Album;
 import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Artist;
-//TODO HALP! https://platform.codingnomads.co/learn/mod/page/view.php?id=6543
+
 
 @Mapper
 public interface AlbumMapper {

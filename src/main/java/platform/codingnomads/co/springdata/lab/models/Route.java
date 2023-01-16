@@ -24,7 +24,7 @@ public class Route implements Serializable {
     @Column(unique = true)
     private String code;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "origin_area_id",
             nullable = false,
@@ -32,7 +32,7 @@ public class Route implements Serializable {
     )
     private Area origin;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "destination_area_id",
             nullable = false,
@@ -40,18 +40,18 @@ public class Route implements Serializable {
     )
     private Area destination;
 
-    // TODO Can you have multiple toStrings methods w/ different name?
-//    @Override
-//    public String toString() {
-//        return "Route{" +
-//               "id=" + id +
-//               ", code='" + code + '\'' +
-//               ", origin=" + origin +
-//               ", destination=" + destination +
-//               '}';
-//    }
+
     @Override
     public String toString() {
+        return "Route{" +
+               "id=" + id +
+               ", code='" + code + '\'' +
+               ", origin=" + origin +
+               ", destination=" + destination +
+               '}';
+    }
+
+    public String toString3() {
         return origin + " - " + destination;
     }
 
