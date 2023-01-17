@@ -1,4 +1,4 @@
-package platform.codingnomads.co.springweb.wrappingup.multipartdata.models;
+package platform.codingnomads.co.springweb.wrappingup.multipartdata.services.models;
 
 import lombok.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import platform.codingnomads.co.springweb.wrappingup.multipartdata.models.DatabaseFile;
-import platform.codingnomads.co.springweb.wrappingup.multipartdata.models.FileResponse;
+import platform.codingnomads.co.springweb.wrappingup.multipartdata.services.models.DatabaseFile;
+import platform.codingnomads.co.springweb.wrappingup.multipartdata.services.models.FileResponse;
 import platform.codingnomads.co.springweb.wrappingup.multipartdata.repositories.DatabaseFileRepository;
 
 import java.io.IOException;

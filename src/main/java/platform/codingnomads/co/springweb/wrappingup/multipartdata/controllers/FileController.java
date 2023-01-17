@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import platform.codingnomads.co.springweb.wrappingup.multipartdata.models.DatabaseFile;
+import platform.codingnomads.co.springweb.wrappingup.multipartdata.services.models.DatabaseFile;
 import platform.codingnomads.co.springweb.wrappingup.multipartdata.services.FileService;
 
 import java.nio.file.NoSuchFileException;
@@ -72,4 +72,3 @@ public class FileController {
         }
     }
 }
-

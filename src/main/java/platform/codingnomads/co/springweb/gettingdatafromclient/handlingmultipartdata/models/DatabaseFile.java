@@ -25,4 +25,11 @@ public class DatabaseFile {
 
     @Transient
     private String downloadUrl;
+
+    public DatabaseFile(String fileName, String fileType, byte[] data, String downloadUrl) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
+        this.downloadUrl = downloadUrl;
+    }
 }

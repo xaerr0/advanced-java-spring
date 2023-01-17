@@ -10,4 +10,6 @@ public interface DatabaseFileRepository extends JpaRepository<DatabaseFile, Long
     Optional<DatabaseFile> findByFileName(String fileName);
 
     List<DatabaseFile> findByFileNameContainingIgnoreCase(String fileName);
+
+    Optional<DatabaseFile> duplicateFile(Long fileId);
 }

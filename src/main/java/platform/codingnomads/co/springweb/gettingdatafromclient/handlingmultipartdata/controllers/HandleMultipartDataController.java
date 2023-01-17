@@ -13,13 +13,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.models.DatabaseFile;
 import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.models.FileResponse;
 import platform.codingnomads.co.springweb.gettingdatafromclient.handlingmultipartdata.repositories.DatabaseFileRepository;
+import platform.codingnomads.co.springweb.resttemplate.GET.getForObject.video_demo.Data;
 
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/images")
@@ -182,9 +180,32 @@ public class HandleMultipartDataController {
     // (specified by the user)
     // HALP! :(
 
-//    @GetMapping("/duplicate/{id}")
-//    public ResponseEntity<?> duplicateFile(@PathVariable(name = "id") Long fileId) {
-//
-//
-//    }
+    @GetMapping("/duplicate/{id}")
+    public ResponseEntity<?> duplicateFile(@PathVariable(name ="newFileName") Long fileId, String newFileName) {
+
+        final Optional<DatabaseFile> optional = fileRepository.findById(fileId);
+
+        if (optional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found with id: " + fileId);
+        }
+
+        DatabaseFile databaseFile = optional.get();
+
+        FileResponse fileResponse = new FileResponse();
+
+        DatabaseFile newDatabaseFile = new DatabaseFile(databaseFile.getFileType(),
+                databaseFile.getFileType(),
+                databaseFile.getData(),
+                databaseFile.getDownloadUrl());
+
+
+        fileResponse.setFileName(newFileName);
+        fileResponse.setFileType(newDatabaseFile.getFileType());
+        fileResponse.setFileDownloadUri(newDatabaseFile.getDownloadUrl());
+        fileResponse.setSize(newDatabaseFile.getData().length);
+
+
+        return ResponseEntity.ok(fileResponse);
+
+    }
 }
