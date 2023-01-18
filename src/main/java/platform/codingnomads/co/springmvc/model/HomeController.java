@@ -18,6 +18,11 @@ public class HomeController {
         model.addAttribute("name", "Developer");
         model.addAttribute("language", "Java");
         model.addAttribute("framework", "Spring");
+        model.addAttribute("drink", "Coffee");
+        model.addAttribute("pants", "Khakis");
+        model.addAttribute("accessory", "Puke Shells");
+        model.addAttribute("song", "Who Let the Dogs Out");
+
         return "model-page";
     }
 
