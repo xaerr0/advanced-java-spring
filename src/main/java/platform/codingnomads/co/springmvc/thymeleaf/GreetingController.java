@@ -12,7 +12,7 @@ public class GreetingController {
     @GetMapping({ "/", "/index" })
     public String index(Model model) {
         model.addAttribute("name", "Spring Developer!");
-        return "greeting"; 
+        return "greeting";
     }
 
     @GetMapping("/subjects")
@@ -28,5 +28,15 @@ public class GreetingController {
 
         model.addAttribute("subjects", subjects);
         return "subjects";
+    }
+
+    @GetMapping("/practice")
+    public String practice(Model model) {
+        model.addAttribute("back", "Reverse Flys");
+        model.addAttribute("chest", "Chest Press");
+        model.addAttribute("legs", "Barbell Squats");
+        model.addAttribute("shoulders", "Arnold Press");
+        model.addAttribute("arms", "Curls to Overhead Tricep Extensions");
+        return "practice";
     }
 }
