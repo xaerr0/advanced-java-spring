@@ -2,13 +2,52 @@ h2 {
     font-family: sans-serif;
     font-size: 1.5em;
     text-transform: uppercase;
+    color: pink;
 }
-
 strong {
     font-weight: 700;
-    background-color: darkgoldenrod;
+    background-color: pink;
 }
-
 p {
     font-family: sans-serif;
+}
+h1 {
+    font-family: fantasy;
+    font-size: 3em;
+    color: brown;
+}
+th, td {
+	border: 1px solid black;
+	padding: 8px;
+}
+thead th {
+  width: 25%;
+}
+
+tbody th {
+  background-color: #36c;
+  color: #fff;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) th {
+  background-color: #25c;
+}
+h3 {
+    font-family: Tahoma ;
+    font-size: 3em;
+    color: blue;
+    background-color:black;
+}
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
 }
