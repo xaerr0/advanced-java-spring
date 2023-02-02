@@ -21,4 +21,10 @@ public class HomeController {
     public String greet() {
         return "Hello Back";
     }
+
+    @GetMapping("/ciao")
+    @ResponseBody
+    public String greetingNumberTwo() {
+        return "ciao!";
+    }
 }
