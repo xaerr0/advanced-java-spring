@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -57,6 +56,26 @@ public class TestingWebServices {
                 .perform(get("/ciao"))
                 .andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(view().name("ciao!"))
                 .andExpect(content().string(containsString("ciao!")));
+
+    }
+
+    @Test
+    public void pathDoesNotExist() throws Exception {
+        mockMvc
+                .perform(get("/greeting2"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json"));
+    }
+
+    @Test
+    public void testForModelAttribute() throws Exception {
+        mockMvc
+                .perform(get("/greeting2"))
+                .andExpect(model().attribute("city", "The Big City"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("greeting2"))
+                .andDo(print());
     }
 }

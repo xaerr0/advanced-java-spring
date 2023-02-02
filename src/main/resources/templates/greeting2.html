@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application</title>
+</head>
+<body>
+<h1>Greeting Two!</h1>
+<h2>
+    <span>Hello, <th:block th:text="${name}">[name]</th:block>!</span>
+    <span>Are you from <th:block th:text="${city}">[city]</th:block>?</span>
+</h2>
+</body>
+</html>

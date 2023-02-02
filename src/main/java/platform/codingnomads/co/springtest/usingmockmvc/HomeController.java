@@ -27,4 +27,11 @@ public class HomeController {
     public String greetingNumberTwo() {
         return "ciao!";
     }
+
+    @GetMapping("/greeting2")
+    public String indexTwo(Model model) {
+        model.addAttribute("name", "Tommathy");
+        model.addAttribute("city","The Big City");
+        return "greeting2";
+    }
 }
