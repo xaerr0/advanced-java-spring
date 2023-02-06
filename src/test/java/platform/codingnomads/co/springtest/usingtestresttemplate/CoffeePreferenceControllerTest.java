@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
 import platform.codingnomads.co.springtest.usingtestresttemplate.models.CoffeePreference;
 
@@ -18,6 +19,7 @@ public class CoffeePreferenceControllerTest {
     TestRestTemplate testRestTemplate;
 
     @Test
+    @Order(1)
     public void testPostCoffeePreference() throws Exception {
 
         //build new CoffeePreference to post
@@ -39,5 +41,14 @@ public class CoffeePreferenceControllerTest {
 
         //confirm ID was assigned
         assertThat(Objects.requireNonNull(postedCoffeePreference.getBody()).getId()).isNotNull();
+    }
+
+    @Test
+    @Order(2)
+    public void testGetCoffeePreference() throws Exception {
+        final long id = 1L;
+        ResponseEntity<CoffeePreference> getCoffeePreference = testRestTemplate.getForEntity("/coffee/" +
+                                                                                             id, CoffeePreference.class);
+        assertThat(Objects.requireNonNull(getCoffeePreference.getBody()).getId()).isNotNull();
     }
 }
