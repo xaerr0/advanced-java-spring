@@ -38,11 +38,6 @@ class MovieServiceTest {
         assertThat(movies.get(1).getRating()).isEqualTo(8.0);
     }
 
-
-
-
-
-
     @Test
     public void getAllMoviesByMinimumRatingSuccess() {
         when(movieRepository.findByRatingGreaterThanEqual(4.0)).thenReturn(
@@ -60,14 +55,12 @@ class MovieServiceTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 movieService.getAllMoviesByMinimumRating(-1d)
         );
-
         assertThat(exception.getMessage()).isEqualTo("Rating must specify a value between 0 and 10");
     }
 
 
     @Test
     public void testGetAllMoviesFailure() {
-
         movieRepository.deleteAll();
 
         List<Movie> movies = movieService.getAllMovies();

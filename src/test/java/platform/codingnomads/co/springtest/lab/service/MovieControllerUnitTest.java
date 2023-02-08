@@ -52,7 +52,6 @@ public class MovieControllerUnitTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$", hasSize(3)));
-
     }
 
     @Test

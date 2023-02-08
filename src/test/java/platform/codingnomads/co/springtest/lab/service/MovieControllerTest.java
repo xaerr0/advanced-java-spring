@@ -63,12 +63,8 @@ public class MovieControllerTest {
     public void testGetAllMoviesSuccessAlternate() throws Exception {
         mockMvc.perform((get("/movies/all")))
                 .andDo(print())
-//                .andExpect(handler().handlerType(MovieController.class))
-//                .andExpect(handler().method(MovieController.class.getMethod("getAllMovies")))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
-//                .andExpect(jsonPath("movie").isArray())
-//                .andExpect(jsonPath("movie.length", is(2)))
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].name").value("The Shawshank Redemption"))
                 .andExpect(jsonPath("$[0].rating").value(9.3))

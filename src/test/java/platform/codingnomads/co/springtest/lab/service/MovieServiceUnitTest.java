@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import platform.codingnomads.co.springtest.lab.SpringTestLab;
-import platform.codingnomads.co.springtest.lab.controller.MovieController;
 import platform.codingnomads.co.springtest.lab.entity.Movie;
 import platform.codingnomads.co.springtest.lab.repository.MovieRepository;
 
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyDouble;
@@ -47,7 +44,7 @@ public class MovieServiceUnitTest {
 
         IntStream.range(0, movieList.size())
                 .forEach(i -> assertThat(movieService.getAllMovies().get(i)).isEqualTo(movieList.get(i)));
-        }
+    }
 
     @Test
     public void testGetAllMoviesFailure() {
@@ -82,7 +79,7 @@ public class MovieServiceUnitTest {
         assertThat(movieService.getAllMoviesByMinimumRating(8.0d).size())
                 .isEqualTo(movieList.size());
 
-        for (int i = 0; i < movieList.size(); i++){
+        for (int i = 0; i < movieList.size(); i++) {
             assertThat(movieService.getAllMoviesByMinimumRating(8.0d).get(i))
                     .isEqualTo(movieList.get(i));
         }
@@ -97,4 +94,4 @@ public class MovieServiceUnitTest {
             movieService.getAllMoviesByMinimumRating(1d);
         });
     }
-    }
+}
