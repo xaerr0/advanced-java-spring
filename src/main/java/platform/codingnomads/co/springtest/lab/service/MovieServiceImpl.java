@@ -17,6 +17,15 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
+        List<Movie> movieList = movieRepository.findAll();
+        if (movieList.isEmpty()) {
+            throw new IllegalStateException("No movies found!");
+        }
+        return movieList;
+    }
+
+    @Override
+    public List<Movie> getAllMoviesByMinimumRating(Double rating) {
+        return movieRepository.findByRatingGreaterThanEqual(rating);
     }
 }
