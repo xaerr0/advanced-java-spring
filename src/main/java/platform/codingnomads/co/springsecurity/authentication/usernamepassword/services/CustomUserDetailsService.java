@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import platform.codingnomads.co.springsecurity.authentication.usernamepassword.models.UserPrincipal;
 import platform.codingnomads.co.springsecurity.authentication.usernamepassword.repositories.UserPrincipalRepo;
 
-@Service
+//@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     // Medium Customization
