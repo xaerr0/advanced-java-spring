@@ -10,6 +10,8 @@ import platform.codingnomads.co.springsecurity.authorization.addingauthorization
 import platform.codingnomads.co.springsecurity.authorization.addingauthorization.repositories.UserMetaRepo;
 import platform.codingnomads.co.springsecurity.authorization.addingauthorization.repositories.UserPrincipalRepo;
 
+import java.util.List;
+
 @Service
 public class CustomUserService implements UserDetailsService {
 
@@ -22,8 +24,8 @@ public class CustomUserService implements UserDetailsService {
     @Override
     public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
         return userPrincipalRepo.findByUsername(username).orElseThrow(() ->
-                        new UsernameNotFoundException("User not found with username or email : " + username)
-                );
+                new UsernameNotFoundException("User not found with username or email : " + username)
+        );
     }
 
 
@@ -32,5 +34,9 @@ public class CustomUserService implements UserDetailsService {
         UserPrincipal userPrincipal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userPrincipal.setUserMeta(userToUpdate);
         return updatedUser;
+    }
+
+    public List<UserPrincipal> getAllUsers() {
+        return userPrincipalRepo.findAll();
     }
 }

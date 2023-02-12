@@ -10,6 +10,9 @@ import platform.codingnomads.co.springsecurity.authorization.addingauthorization
 import platform.codingnomads.co.springsecurity.authorization.addingauthorization.models.UserPrincipal;
 import platform.codingnomads.co.springsecurity.authorization.addingauthorization.services.CustomUserService;
 
+import javax.annotation.security.RolesAllowed;
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -27,6 +30,11 @@ public class UserController {
         return principal.getUserMeta();
     }
 
+    @GetMapping("/all-users")
+    @RolesAllowed("ADMIN")
+    public List<UserPrincipal> getAllUsers(Authentication authentication) {
+        return userDetailsService.getAllUsers();
+    }
     /*
         Method Security Annotations
 
