@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{authorization/fragments/layout}">
+<head>
+  <title>Home Page</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+  <h1>Spring Security Demo Super User Page (testadming)</h1>
+  <p>This page is only accessible to users with admin and updater rights</p>
+</div>
+</body>
+</html>

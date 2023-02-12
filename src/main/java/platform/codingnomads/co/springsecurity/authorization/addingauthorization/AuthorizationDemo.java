@@ -46,6 +46,9 @@ public class AuthorizationDemo implements CommandLineRunner {
         UserMeta superUser = UserMeta.builder().name("super user").email("superuser@email.com").build();
         UserMeta admin = UserMeta.builder().name("admin").email("admin@email.com").build();
         UserMeta basicUser = UserMeta.builder().name("basic user").email("basicuser@email.com").build();
+        UserMeta testUser1 = UserMeta.builder().name("Test User 1").email("testuser1@test.com").build();
+        UserMeta updater = UserMeta.builder().name("Test User 2").email("testuser2@test.com").build();
+        UserMeta testAdmin = UserMeta.builder().name("Test User 3").email("testuser3@test.com").build();
 
         if (userPrincipalRepo.findAll().isEmpty()) {
             userPrincipalRepo.saveAll(
@@ -55,10 +58,16 @@ public class AuthorizationDemo implements CommandLineRunner {
                             new UserPrincipal("USER", passwordEncoder.encode("user"),
                                     Collections.singletonList(userAuth), basicUser),
                             new UserPrincipal("ADMIN", passwordEncoder.encode("admin"),
-                                    Arrays.asList(adminAuth, userAuth), admin)
+                                    Collections.singletonList(userAuth), admin),
+                            new UserPrincipal("TEST1", passwordEncoder.encode("test"),
+                                    Arrays.asList(adminAuth, superUAuth), testUser1),
+                            new UserPrincipal("UPDATER", passwordEncoder.encode("testing"),
+                                    Collections.singletonList(updaterAuth), updater),
+                            new UserPrincipal("TESTADMIN", passwordEncoder.encode("tester"),
+                                    Arrays.asList(adminAuth, updaterAuth), testAdmin)
+
                     )
             );
         }
     }
 }
-

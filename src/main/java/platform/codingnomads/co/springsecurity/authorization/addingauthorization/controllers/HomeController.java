@@ -28,6 +28,25 @@ public class HomeController {
         return "authorization/home";
     }
 
+    @GetMapping("/test1")
+    public String testPage1() {
+        return "authorization/test1";
+
+    }
+
+    @GetMapping("/updater")
+    public String testPage2() {
+        return "authorization/updater";
+
+    }
+
+    @GetMapping("/testAdmin")
+    public String testPage3() {
+        return "authorization/testAdmin";
+
+    }
+
+
     /*
         Method Security Annotations
 
