@@ -15,6 +15,7 @@ import platform.codingnomads.co.springsecurity.authorization.addingauthorization
 import java.util.Arrays;
 import java.util.Collections;
 
+//TODO https://platform.codingnomads.co/learn/mod/page/view.php?id=7208 - Learn by Doing
 @SpringBootApplication
 public class AuthorizationDemo implements CommandLineRunner {
 
@@ -58,7 +59,7 @@ public class AuthorizationDemo implements CommandLineRunner {
                             new UserPrincipal("USER", passwordEncoder.encode("user"),
                                     Collections.singletonList(userAuth), basicUser),
                             new UserPrincipal("ADMIN", passwordEncoder.encode("admin"),
-                                    Collections.singletonList(userAuth), admin),
+                                    Arrays.asList(userAuth, adminAuth), admin),
                             new UserPrincipal("TEST1", passwordEncoder.encode("test"),
                                     Arrays.asList(adminAuth, superUAuth), testUser1),
                             new UserPrincipal("UPDATER", passwordEncoder.encode("testing"),

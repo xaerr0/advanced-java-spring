@@ -20,16 +20,18 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 //start changing endpoint access settings
                 .authorizeRequests(auth -> auth
-                    //the following 4 paths should be allowed to all always. They are static and are required to present the pages properly.
-                    .antMatchers("/js/**", "/css/**", "/img/**", "/webjars/**").permitAll()
-                    //make sure that the admin page can only be accessed user with ROLE_ADMIN
-                    .antMatchers("/admin").hasRole("ADMIN")
-                    //only allow users with ROLE_SUPERU to access the super user page
-                    .antMatchers("/superu").hasRole("SUPERU")
-                    //only allow users with an UPDATER authority to update users.
-                    .antMatchers("/update-user").hasAuthority("UPDATER")
-                    //make sure that all others requests require authentication.
-                    .anyRequest().authenticated())
+                        //the following 4 paths should be allowed to all always. They are static and are required to present the pages properly.
+                        .antMatchers("/js/**", "/css/**", "/img/**", "/webjars/**").permitAll()
+                        //make sure that the admin page can only be accessed user with ROLE_ADMIN
+                        .antMatchers("/admin").hasRole("ADMIN")
+                        .antMatchers("/all-users").hasRole("ADMIN")
+                        //only allow users with ROLE_SUPERU to access the super user page
+                        .antMatchers("/superu").hasRole("SUPERU")
+                        //only allow users with an UPDATER authority to update users.
+                        .antMatchers("/update-user").hasAuthority("UPDATER")
+
+                        //make sure that all others requests require authentication.
+                        .anyRequest().authenticated())
                 //use HttpBasic authentication for /update-user, withDefaults() allows you to chain the next method
                 .httpBasic(Customizer.withDefaults())
                 //use a form to log in with the default login page

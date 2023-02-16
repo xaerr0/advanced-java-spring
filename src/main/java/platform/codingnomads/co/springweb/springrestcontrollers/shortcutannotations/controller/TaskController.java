@@ -24,7 +24,6 @@ public class TaskController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> createNewTask(@RequestBody Task task) throws URISyntaxException {
 
-        //TODO Not quite sure what to do. Post in Postman but debug in here??
         /**
          * Time to POST some tasks! This is very much like the practice you did earlier with the actual Demo API,
          * but this time you get to see what is taking place server-side. Inside TaskController, set a breakpoint in
@@ -69,7 +68,7 @@ public class TaskController {
         return ResponseEntity.ok().body(id);
     }
 
-    //TODO This right???
+
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> updateTask(@RequestBody Task task) throws URISyntaxException {
 

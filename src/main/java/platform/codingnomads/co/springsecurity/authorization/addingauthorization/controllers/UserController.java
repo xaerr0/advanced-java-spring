@@ -30,6 +30,7 @@ public class UserController {
         return principal.getUserMeta();
     }
 
+    //TODO Not quite sure why admin can't access /all-users? https://platform.codingnomads.co/learn/mod/page/view.php?id=6930&forceview=1 - Learn by Doing
     @GetMapping("/all-users")
     @RolesAllowed("ADMIN")
     public List<UserPrincipal> getAllUsers(Authentication authentication) {
@@ -37,6 +38,8 @@ public class UserController {
     }
     /*
         Method Security Annotations
+
+//TODO Other examples of Pre/PostAuthorize?
 
         @RolesAllowed("USER")
         @PreAuthorize("#id != 1")

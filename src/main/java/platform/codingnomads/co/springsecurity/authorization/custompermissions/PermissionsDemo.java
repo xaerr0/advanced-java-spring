@@ -28,6 +28,7 @@ public class PermissionsDemo implements CommandLineRunner {
         SpringApplication.run(PermissionsDemo.class);
     }
 
+    //TODO https://platform.codingnomads.co/learn/mod/page/view.php?id=6928&forceview=1 - Learn by Doing
     @Override
     public void run(String... args) throws Exception {
 
@@ -51,4 +52,3 @@ public class PermissionsDemo implements CommandLineRunner {
         }
     }
 }
-
