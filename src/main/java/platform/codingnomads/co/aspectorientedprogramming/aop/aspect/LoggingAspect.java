@@ -1,6 +1,7 @@
 package platform.codingnomads.co.aspectorientedprogramming.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -32,4 +33,24 @@ public class LoggingAspect {
 
     @Pointcut("@annotation(Loggable)")
     public void executeLogging() { }
+
+
+
+    @After("executeHamburger()")
+    public void logMethodCallTwo(JoinPoint jp) {
+        StringBuilder message = new StringBuilder("*** Method Name : ");
+        message.append(message.append(jp.getSignature().getName()));
+        final Object[] args = jp.getArgs();
+        if (args != null && args.length > 0) {
+            message.append("method args=|");
+            Arrays.asList(args).forEach(arg -> {
+                message.append("arg=").append(arg).append("|");
+            });
+        }
+        LOGGER.info(message.toString());
+    }
+
+
+    @Pointcut("@annotation(Hamburger)")
+    public void executeHamburger() { }
 }

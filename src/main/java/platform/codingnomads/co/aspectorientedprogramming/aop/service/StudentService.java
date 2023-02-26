@@ -2,6 +2,7 @@ package platform.codingnomads.co.aspectorientedprogramming.aop.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import platform.codingnomads.co.aspectorientedprogramming.aop.aspect.Hamburger;
 import platform.codingnomads.co.aspectorientedprogramming.aop.aspect.Loggable;
 import platform.codingnomads.co.aspectorientedprogramming.aop.aspect.TrackMethodExecutionTime;
 import platform.codingnomads.co.aspectorientedprogramming.aop.model.Student;
@@ -28,6 +29,8 @@ public class StudentService {
     }
 
 
+
+    @Hamburger
     public Student saveStudent (Student student) {
         return studentRepository.save(student);
     }
