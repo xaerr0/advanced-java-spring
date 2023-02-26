@@ -176,9 +176,7 @@ public class HandleMultipartDataController {
 
     }
 
-    //TODO create a new method duplicateFile(), which creates a copy of a file and gives the copy a new name
-    // (specified by the user)
-    // HALP! :(
+
 
     @GetMapping("/duplicate/{id}")
     public ResponseEntity<?> duplicateFile(@PathVariable(name ="newFileName") Long fileId, String newFileName) {
