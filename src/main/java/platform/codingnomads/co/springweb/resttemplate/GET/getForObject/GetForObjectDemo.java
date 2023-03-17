@@ -6,22 +6,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.*;
-import org.springframework.http.server.reactive.HttpHandler;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
 import org.springframework.web.util.UriComponentsBuilder;
-import platform.codingnomads.co.springweb.resttemplate.GET.getForObject.video_demo.CodingNomadsTasksApiResponse;
-//import platform.codingnomads.co.springweb.resttemplate.GET.models.KanyeTemplate;
-
-import platform.codingnomads.co.springweb.resttemplate.GET.models.QuoteTemplate;
-import platform.codingnomads.co.springweb.resttemplate.GET.models.RandomFactsTemplate;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.TastyResponse;
 
 import java.net.URI;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -74,18 +68,14 @@ public class GetForObjectDemo {
             params.put("prefix", "chicken");
 
             URI uri = UriComponentsBuilder.fromUriString(
-                    "https://tasty.p.rapidapi.com/recipes/auto-complete")
+                            "https://tasty.p.rapidapi.com/recipes/auto-complete")
                     .queryParam("prefix", "chicken soup")
-                              .build().toUri();
+                    .build().toUri();
 
             ResponseEntity<TastyResponse> response = restTemplate.exchange(
                     uri, HttpMethod.GET, httpEntity, TastyResponse.class);
 
-
-
             System.out.println(response.getBody());
-
-
 
 
         };
