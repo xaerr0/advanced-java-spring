@@ -76,8 +76,6 @@ public class GetForObjectDemo {
                     uri, HttpMethod.GET, httpEntity, TastyResponse.class);
 
             System.out.println(response.getBody());
-
-
         };
     }
 }
